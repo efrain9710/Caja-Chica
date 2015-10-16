@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="panel1" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="panel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="org.edisoncor.gui.panel.Panel" name="panel1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="PanelTop" alignment="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="PanelTop" alignment="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="org.edisoncor.gui.tabbedPane.TabbedPaneHeader" name="PanelTop">
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="org.edisoncor.gui.panel.Panel" name="PersonalEmpleado">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Empleado">
+                    <Property name="tabTitle" type="java.lang.String" value="Empleado"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="labelMetric7" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelMetric2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelMetric3" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelMetric1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelMetric6" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelMetric4" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelMetric5" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtCargoEm" linkSize="3" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtCedulaEmpleado" linkSize="3" alignment="0" pref="117" max="32767" attributes="0"/>
+                                      <Component id="txtCorreoEm" linkSize="3" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtTelEm" linkSize="3" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtIDEmpleado" linkSize="3" alignment="0" pref="214" max="32767" attributes="0"/>
+                                      <Component id="txtNomEm" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtApeEm" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Component id="btnRegistrarEm" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                                  <Component id="btnCancelarEm" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="236" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelMetric1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtIDEmpleado" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="labelMetric2" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCedulaEmpleado" linkSize="2" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelMetric3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNomEm" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelMetric4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtApeEm" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="txtTelEm" linkSize="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelMetric5" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelMetric6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCorreoEm" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelMetric7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCargoEm" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnRegistrarEm" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCancelarEm" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="107" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ID:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="C&#xe9;dula:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric3">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nombre:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric4">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Apellido:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric5">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Telefono:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric6">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Correo:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric7">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cargo:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCedulaEmpleado">
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtTelEm">
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCorreoEm">
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCargoEm">
+                </Component>
+                <Component class="org.edisoncor.gui.button.ButtonAction" name="btnRegistrarEm">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Registrar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarEmActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="org.edisoncor.gui.button.ButtonAction" name="btnCancelarEm">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cancelar"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtIDEmpleado">
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtNomEm">
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtApeEm">
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="org.edisoncor.gui.panel.Panel" name="PersonalCliente">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Cliente">
+                    <Property name="tabTitle" type="java.lang.String" value="Cliente"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="233" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="labelMetric10" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelMetric8" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelMetric9" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelMetric12" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtCedulaCliente" linkSize="4" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtIDCliente" linkSize="4" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                                      <Component id="txtNomCli" linkSize="4" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtApeClie" linkSize="4" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="259" max="-2" attributes="0"/>
+                                  <Component id="btnRegistrarCliente" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="btnCancelarCliente" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="235" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="labelMetric10" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtIDCliente" linkSize="5" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                  <Component id="labelMetric8" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="txtCedulaCliente" linkSize="5" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelMetric9" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNomCli" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelMetric12" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtApeClie" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnRegistrarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCancelarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="206" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="org.edisoncor.gui.button.ButtonAction" name="btnRegistrarCliente">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Registrar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarClienteActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtApeClie">
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtNomCli">
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCedulaCliente">
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric8">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cedula:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric9">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nombre:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric10">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ID:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric12">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Apellido:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.button.ButtonAction" name="btnCancelarCliente">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cancelar"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtIDCliente">
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="org.edisoncor.gui.panel.Panel" name="PersonalGerente">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Gerente">
+                    <Property name="tabTitle" type="java.lang.String" value="Gerente"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="215" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="labelMetric19" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelMetric13" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelMetric14" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelMetric11" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelMetric18" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelMetric16" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelMetric17" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelMetric20" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtCargoGe" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtCedulaGerente" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtCorreoGe" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtTelGe" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtIDGerente" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtNomGe" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtApeGe" alignment="0" pref="214" max="32767" attributes="0"/>
+                                      <Component id="cmbIDCliente" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Component id="btnRegistrarGe" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                                  <Component id="btnCancelarGe" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="208" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelMetric11" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtIDGerente" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="labelMetric13" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCedulaGerente" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelMetric14" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNomGe" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelMetric16" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtApeGe" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="txtTelGe" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelMetric17" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelMetric18" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCorreoGe" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelMetric19" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCargoGe" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelMetric20" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbIDCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnRegistrarGe" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCancelarGe" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="90" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric11">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ID:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric13">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="C&#xe9;dula:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric14">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nombre:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric16">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Apellido:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric17">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Telefono:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric18">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Correo:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric19">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cargo:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCedulaGerente">
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtTelGe">
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCorreoGe">
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCargoGe">
+                </Component>
+                <Component class="org.edisoncor.gui.button.ButtonAction" name="btnRegistrarGe">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Registrar"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.button.ButtonAction" name="btnCancelarGe">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cancelar"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtIDGerente">
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtNomGe">
+                </Component>
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtApeGe">
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric20">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ID Cliente:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.comboBox.ComboBoxRound" name="cmbIDCliente">
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
