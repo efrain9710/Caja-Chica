@@ -4,6 +4,23 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
+        <Menu class="javax.swing.JMenu" name="mnuProyectos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Gestion de Proyectos"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuProyectoRegistrar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Registrar"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuProyectoUpDele">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Modificar y/o Eliminar"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="mnuPersonal">
           <Properties>
             <Property name="text" type="java.lang.String" value="Personal"/>
@@ -12,6 +29,11 @@
             <MenuItem class="javax.swing.JMenuItem" name="mnuPersonalGestion">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gestion"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jMenuItem1"/>
               </Properties>
             </MenuItem>
           </SubComponents>

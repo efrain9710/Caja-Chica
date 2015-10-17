@@ -4,9 +4,7 @@
  */
 package Formularios;
 
-import Clases.Cliente;
 import Clases.Datos;
-import Clases.Empleado;
 import javax.swing.JOptionPane;
 
 /**
@@ -276,6 +274,11 @@ public class frmPersonal extends javax.swing.JFrame {
         labelMetric19.setText("Cargo:");
 
         btnRegistrarGe.setText("Registrar");
+        btnRegistrarGe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarGeActionPerformed(evt);
+            }
+        });
 
         btnCancelarGe.setText("Cancelar");
 
@@ -398,7 +401,7 @@ public class frmPersonal extends javax.swing.JFrame {
         /* Instanciamos un objeto de la Clase Empleado, el cual se lo pasaremos
         a la funcion agregarEmpleado, la cual pide como parametro un obejto Empleado */
         
-        Empleado empleado = new Empleado(
+       /* Personal personal = new Empleado(
                 Integer.parseInt(txtIDEmpleado.getText()), 
                 txtCedulaEmpleado.getText(), 
                 txtNomEm.getText(), 
@@ -411,14 +414,14 @@ public class frmPersonal extends javax.swing.JFrame {
         agregarEmpleado, validamos si la funcion retorna true, imprimimos en 
         pantalla un mensaje de aprobacion, si no lo contrario. */
         
-        if(datos.agregarEmpleado(empleado)){
+       /* if(datos.agregarEmpleado(empleado)){
             JOptionPane.showMessageDialog(this, "Empleado Agregado Correctamente");
             
         } else {
             JOptionPane.showMessageDialog(this, "En estos momentos no es posible"
                     + "agregar al usuario, intentelo mas tarde");
         }
-                
+                */
                 
                 
     }//GEN-LAST:event_btnRegistrarEmActionPerformed
@@ -435,7 +438,7 @@ public class frmPersonal extends javax.swing.JFrame {
         /* Instanciamos un objeto de la Clase Cliente, el cual se lo pasaremos
         a la funcion agregarCliente, la cual pide como parametro un obejto Cliente */
         
-        Cliente cliente = new Cliente(
+        /*Cliente cliente = new Cliente(
                 Integer.parseInt(txtIDCliente.getText()), 
                 txtCedulaCliente.getText(), 
                 txtNomCli.getText(), 
@@ -444,7 +447,7 @@ public class frmPersonal extends javax.swing.JFrame {
         /* Una ves instanciado y cargado el objeto llamamos a la funcion 
         agregarCliente, validamos si la funcion retorna true, imprimimos en 
         pantalla un mensaje de aprobacion, si no lo contrario. */
-        
+        /*
         if(datos.agregarCliente(cliente)){
             JOptionPane.showMessageDialog(this, "Cliente Agregado Correctamente");
             
@@ -452,8 +455,14 @@ public class frmPersonal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "En estos momentos no es posible"
                     + "agregar al Cliente, intentelo mas tarde");
         }
+        */
         
     }//GEN-LAST:event_btnRegistrarClienteActionPerformed
+
+    private void btnRegistrarGeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarGeActionPerformed
+        
+        
+    }//GEN-LAST:event_btnRegistrarGeActionPerformed
 
     /**
      * @param args the command line arguments

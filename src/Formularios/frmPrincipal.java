@@ -29,8 +29,12 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         panel1 = new org.edisoncor.gui.panel.Panel();
         jMenuBar1 = new javax.swing.JMenuBar();
+        mnuProyectos = new javax.swing.JMenu();
+        mnuProyectoRegistrar = new javax.swing.JMenuItem();
+        mnuProyectoUpDele = new javax.swing.JMenuItem();
         mnuPersonal = new javax.swing.JMenu();
         mnuPersonalGestion = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         mnuRecibos = new javax.swing.JMenu();
         mnuRecibosRegistrar = new javax.swing.JMenuItem();
         mnuConsultas = new javax.swing.JMenu();
@@ -50,10 +54,23 @@ public class frmPrincipal extends javax.swing.JFrame {
             .addGap(0, 430, Short.MAX_VALUE)
         );
 
+        mnuProyectos.setText("Gestion de Proyectos");
+
+        mnuProyectoRegistrar.setText("Registrar");
+        mnuProyectos.add(mnuProyectoRegistrar);
+
+        mnuProyectoUpDele.setText("Modificar y/o Eliminar");
+        mnuProyectos.add(mnuProyectoUpDele);
+
+        jMenuBar1.add(mnuProyectos);
+
         mnuPersonal.setText("Personal");
 
         mnuPersonalGestion.setText("Gestion");
         mnuPersonal.add(mnuPersonalGestion);
+
+        jMenuItem1.setText("jMenuItem1");
+        mnuPersonal.add(jMenuItem1);
 
         jMenuBar1.add(mnuPersonal);
 
@@ -131,9 +148,13 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu mnuConsultas;
     private javax.swing.JMenu mnuPersonal;
     private javax.swing.JMenuItem mnuPersonalGestion;
+    private javax.swing.JMenuItem mnuProyectoRegistrar;
+    private javax.swing.JMenuItem mnuProyectoUpDele;
+    private javax.swing.JMenu mnuProyectos;
     private javax.swing.JMenu mnuRecibos;
     private javax.swing.JMenuItem mnuRecibosRegistrar;
     private javax.swing.JMenu mnuSalir;

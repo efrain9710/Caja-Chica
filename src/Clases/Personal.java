@@ -1,36 +1,43 @@
 package Clases;
+
 /**
  *
  * @author Victor Pino
  */
-public class Gerente {
-
-    private Integer idGerente;
+public class Personal {
+    
+    private Integer idPersonal;
+    private String usuario;
     private String cedula;
     private String nombre;
     private String apellido;
     private Integer telefono;
-    private String correo;
     private String cargo;
-    private Integer idCliente;
 
-    public Gerente(Integer idGerente, String cedula, String nombre, String apellido, Integer telefono, String correo, String cargo, Integer idCliente) {
-        this.idGerente = idGerente;
+    public Personal(Integer idPersonal, String usuario, String cedula, String nombre, String apellido, Integer telefono, String cargo) {
+        this.idPersonal = idPersonal;
+        this.usuario = usuario;
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
-        this.correo = correo;
         this.cargo = cargo;
-        this.idCliente = idCliente;
     }
 
-    public Integer getIdGerente() {
-        return idGerente;
+    public Integer getIdPersonal() {
+        return idPersonal;
     }
 
-    public void setIdGerente(Integer idGerente) {
-        this.idGerente = idGerente;
+    public void setIdPersonal(Integer idPersonal) {
+        this.idPersonal = idPersonal;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public String getCedula() {
@@ -65,14 +72,6 @@ public class Gerente {
         this.telefono = telefono;
     }
 
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
     public String getCargo() {
         return cargo;
     }
@@ -81,14 +80,8 @@ public class Gerente {
         this.cargo = cargo;
     }
 
-    public Integer getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
-    }
+    
+   
     
     
-
 }

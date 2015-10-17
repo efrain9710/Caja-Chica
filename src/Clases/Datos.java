@@ -45,21 +45,18 @@ public class Datos {
 
     public boolean validarUsuario(String usuario, String clave) {
         try {
-            //Definimos la consulta en la base datos
-            //select 1 significa que si hay registro devuelve 1 si no 0
+            /* Definimos la consulta en la base datos
+            select 1 significa que si hay registro devuelve 1 si no 0 */
             String sql = "SELECT (1) FROM usuarios "
                     + "WHERE idUsuario = '" + usuario + "'"
                     + "AND clave = '" + clave + "'";
 
-            //Creamos el statement para poder enviarle la sentencia sql
+            /* Creamos el statement para poder enviarle la sentencia sql */
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
 
-            if (rs.next()) {
-                return true;
-            } else {
-                return false;
-            }
+            return rs.next();
+            
         } catch (SQLException ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
             return false;
@@ -68,19 +65,18 @@ public class Datos {
     }
 
     /* Funcion para insertar un empleado a la base de datos la cual recibe
-     como parametro un objeto de la clase Empleado */
-    public boolean agregarEmpleado(Empleado empleado) {
+     como parametro un objeto de la clase personal */
+    public boolean agregarPersonal(Personal personal) {
         try {
             /* Definimos el codigo sql que queremos ejecutar. En este caso es un
-            insert a la tabla empleados */
-            String sql = "INSERT INTO empleados VALUES('"
-                    + empleado.getIdEmpleado()+ "', '"
-                    + empleado.getCedula()+ "', '"
-                    + empleado.getNombre() + "', '"
-                    + empleado.getApellido() + "', "
-                    + empleado.getTelefono()+ ", '"
-                    + empleado.getCorreo() + "', '"
-                    + empleado.getCargo() + "')";
+            insert a la tabla personal */
+            String sql = "INSERT INTO empleados VALUES("
+                    + personal.getIdPersonal()+ ", '"
+                    + personal.getCedula()+ "', '"
+                    + personal.getNombre() + "', '"
+                    + personal.getApellido() + "', "
+                    + personal.getTelefono()+ ", '"
+                    + personal.getCargo() + "')";
 
             /* El createStatement cree un cuadro donde se puede insertar codigo
             sql, el statement se podria decir que es el cuadro en blanco que
@@ -97,17 +93,15 @@ public class Datos {
         }
     }
 
-     /* Funcion para insertar un cliente a la base de datos la cual recibe
-     como parametro un objeto de la clase Cliente */
-    public boolean agregarCliente(Cliente cliente) {
+     /* Funcion para insertar un proyecto a la base de datos la cual recibe
+     como parametro un objeto de la clase Proyecto */
+    public boolean agregarProyecto(Proyecto proyecto) {
         try {
              /* Definimos el codigo sql que queremos ejecutar. En este caso es un
-            insert a la tabla cliente */
-            String sql = "INSERT INTO cliente VALUES('"
-                    + cliente.getIdCliente()+ "', '"
-                    + cliente.getCedula()+ "', '"
-                    + cliente.getNombre() + "', '"
-                    + cliente.getApellido()+ "')";
+            insert a la tabla proyecto */
+            String sql = "INSERT INTO proyecto VALUES("
+                    + proyecto.getIdProyecto()+ ", '"
+                    + proyecto.getNombre() + "')";
 
             /* El createStatement cree un cuadro donde se puede insertar codigo
             sql, el statement se podria decir que es el cuadro en blanco que
@@ -124,21 +118,18 @@ public class Datos {
         }
     }
     
-    /* Funcion para insertar un empleado a la base de datos la cual recibe
-     como parametro un objeto de la clase Gerente */
-    public boolean agregarGerente(Gerente gerente) {
+    /* Funcion para insertar un usuario a la base de datos la cual recibe
+     como parametro un OBJETO de la clase Usuario */
+    public boolean agregarUsuario(Usuario usuario) {
         try {
             /* Definimos el codigo sql que queremos ejecutar. En este caso es un
-            insert a la tabla gerentes */
-            String sql = "INSERT INTO gerentes VALUES('"
-                    + gerente.getIdGerente()+ "', '"
-                    + gerente.getCedula()+ "', '"
-                    + gerente.getNombre() + "', '"
-                    + gerente.getApellido() + "', "
-                    + gerente.getTelefono()+ ", '"
-                    + gerente.getCorreo() + "', '"
-                    + gerente.getCargo() + "', "
-                    + gerente.getIdCliente() + ")";
+            insert a la tabla usuarios */
+            String sql = "INSERT INTO usuarios VALUES("
+                    + usuario.getIdUsuario()+ ", "
+                    + usuario.getIdTipo()+ ", '"
+                    + usuario.getUsuario()+ "', '"
+                    + usuario.getClave()+ "', '"
+                    + usuario.getCorreo()+ "')";
 
             /* El createStatement cree un cuadro donde se puede insertar codigo
             sql, el statement se podria decir que es el cuadro en blanco que
@@ -155,13 +146,12 @@ public class Datos {
         }
     }
    
-    public boolean actualizarProducto(String codigo, int cantidad, double costo){
+    public boolean modificarProyecto(int id, String nombre){
         
         try {
-            String sql = "UPDATE productos SET  "
-                    + " cantidad = "+ cantidad + ", "
-                    + " costo = "+ costo + ""
-                    + " WHERE Codigo = '"+ codigo +"' ";
+            String sql = "UPDATE proyecto SET  "
+                    + " nom_pro = '"+ nombre + "'"
+                    + " WHERE id_proyecto = "+ id +" ";
             
             Statement st = con.createStatement();
             st.executeUpdate(sql);
@@ -173,11 +163,28 @@ public class Datos {
         }
     }
     
+    public boolean eliminarProyecto(int id){
+        
+        try {
+            String sql = "DELETE FROM proyecto WHERE id_proyecto = "+ id +" ";
+            
+            Statement st = con.createStatement();
+            st.executeUpdate(sql);
+            
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+    
+    
 
-    public ResultSet getProductos() {
+    public ResultSet getProyectos() {
 
         try {
-            String sql = "SELECT * FROM productos ";
+            String sql = "SELECT * FROM proyecto ";
 
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -188,36 +195,37 @@ public class Datos {
         }
     }
     
-    public ResultSet getProductoId(String codigo) {
+    public ResultSet getProductoNom(String nombre) {
 
         try {
-            String sql = "SELECT * FROM productos "
-                        + "WHERE codigo LIKE  '%" + codigo + "'";
+            String sql = "SELECT * FROM proyecto "
+                        + "WHERE nom_pro LIKE  '%" + nombre + "'";
                        
-             
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             return rs;
+            
         } catch (SQLException ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
     
-    public boolean getProducto(String codigo) {
+    /* Funcion que sirve para validar si un proyecto ya esta registrado.
+    - La funcion recibe como parametro un String el cual corresponde
+    al nombre del proyecto.
+    - La funcion retorna true si el nombre del proyecto se encuentra y
+    si no false.
+    */
+    public boolean getProyecto(String nombre) {
 
         try {
-            String sql = "SELECT * FROM productos "
-                        + "WHERE codigo = '" + codigo + "'";
+            String sql = "SELECT * FROM proyecto "
+                        + "WHERE nombre = '" + nombre + "'";
                        
-             
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
-             if (rs.next()) {
-                return true;
-            } else {
-                return false;
-            }
+            return rs.next();
             
         } catch (SQLException ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
@@ -234,11 +242,7 @@ public class Datos {
              
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
-             if (rs.next()) {
-                return true;
-            } else {
-                return false;
-            }
+            return rs.next();
             
         } catch (SQLException ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
