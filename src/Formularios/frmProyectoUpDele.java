@@ -91,7 +91,7 @@ public class frmProyectoUpDele extends javax.swing.JFrame {
             llenar la tabla con los registros.
             
             */
-            ResultSet rs = datos.getProductoNom(nombre);
+            ResultSet rs = datos.getProyectoNom(nombre);
 
             String registro[] = new String[4];
 

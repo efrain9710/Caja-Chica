@@ -178,9 +178,6 @@ public class Datos {
         }
     }
     
-    
-    
-
     public ResultSet getProyectos() {
 
         try {
@@ -195,7 +192,7 @@ public class Datos {
         }
     }
     
-    public ResultSet getProductoNom(String nombre) {
+    public ResultSet getProyectoNom(String nombre) {
 
         try {
             String sql = "SELECT * FROM proyecto "
@@ -230,6 +227,20 @@ public class Datos {
         } catch (SQLException ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
             return false;
+        }
+    }
+    
+    public ResultSet getTiposUsuario() {
+
+        try {
+            String sql = "SELECT * FROM tipo_usuario";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
     }
     
