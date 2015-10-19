@@ -34,8 +34,8 @@ public class Datos {
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String db = "jdbc:mysql://localhost/Caja";
-            con = DriverManager.getConnection(db, "root", "");
+            String url = "jdbc:mysql://localhost/Caja";
+            con = DriverManager.getConnection(url, "victor", "root");
             return con;
         } catch (Exception ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
@@ -48,7 +48,7 @@ public class Datos {
             /* Definimos la consulta en la base datos
             select 1 significa que si hay registro devuelve 1 si no 0 */
             String sql = "SELECT (1) FROM usuarios "
-                    + "WHERE idUsuario = '" + usuario + "'"
+                    + "WHERE usuario = '" + usuario + "'"
                     + "AND clave = '" + clave + "'";
 
             /* Creamos el statement para poder enviarle la sentencia sql */
@@ -63,36 +63,8 @@ public class Datos {
         }
 
     }
-
-    /* Funcion para insertar un empleado a la base de datos la cual recibe
-     como parametro un objeto de la clase personal */
-    public boolean agregarPersonal(Personal personal) {
-        try {
-            /* Definimos el codigo sql que queremos ejecutar. En este caso es un
-            insert a la tabla personal */
-            String sql = "INSERT INTO empleados VALUES("
-                    + personal.getIdPersonal()+ ", '"
-                    + personal.getCedula()+ "', '"
-                    + personal.getNombre() + "', '"
-                    + personal.getApellido() + "', "
-                    + personal.getTelefono()+ ", '"
-                    + personal.getCargo() + "')";
-
-            /* El createStatement cree un cuadro donde se puede insertar codigo
-            sql, el statement se podria decir que es el cuadro en blanco que
-            te da el phpmyadmin para insertar codigo sql. */
-            Statement st = con.createStatement();
-            
-            /* Una vez creado el statement el cuadrito mandamos a ejecutar el 
-            codigo sql que definimos en la variable sql. */
-            st.executeUpdate(sql);
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-    }
-
+    
+    
      /* Funcion para insertar un proyecto a la base de datos la cual recibe
      como parametro un objeto de la clase Proyecto */
     public boolean agregarProyecto(Proyecto proyecto) {
@@ -118,7 +90,7 @@ public class Datos {
         }
     }
     
-    /* Funcion para insertar un usuario a la base de datos la cual recibe
+       /* Funcion para insertar un usuario a la base de datos la cual recibe
      como parametro un OBJETO de la clase Usuario */
     public boolean agregarUsuario(Usuario usuario) {
         try {
@@ -146,6 +118,90 @@ public class Datos {
         }
     }
    
+    
+    /* Funcion para insertar un empleado a la base de datos la cual recibe
+     como parametro un objeto de la clase personal */
+    public boolean agregarPersonal(Personal personal) {
+        try {
+            /* Definimos el codigo sql que queremos ejecutar. En este caso es un
+            insert a la tabla personal */
+            String sql = "INSERT INTO personal VALUES("
+                    + personal.getIdPersonal()+ ", '"
+                    + personal.getUsuario()+ "', '"
+                    + personal.getCedula()+ "', '"
+                    + personal.getNombre() + "', '"
+                    + personal.getApellido() + "', "
+                    + personal.getTelefono()+ ", '"
+                    + personal.getCargo() + "')";
+
+            /* El createStatement cree un cuadro donde se puede insertar codigo
+            sql, el statement se podria decir que es el cuadro en blanco que
+            te da el phpmyadmin para insertar codigo sql. */
+            Statement st = con.createStatement();
+            
+            /* Una vez creado el statement el cuadrito mandamos a ejecutar el 
+            codigo sql que definimos en la variable sql. */
+            st.executeUpdate(sql);
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+    /* Funcion para insertar un gerente a la base de datos y el proyecto al cual
+     pertenece, esta recibe como parametros el ID del gerente y del proyecto */
+    public boolean agregarProyeGere(int idProyecto, int idGerente) {
+        try {
+            /* Definimos el codigo sql que queremos ejecutar. En este caso es un
+            insert a la tabla proye_geren */
+      
+            String sql = "INSERT INTO proye_geren (id_proyecto, id_gerente) VALUES("
+                    + idProyecto + ", "
+                    + idGerente + ")";
+
+            /* El createStatement cree un cuadro donde se puede insertar codigo
+            sql, el statement se podria decir que es el cuadro en blanco que
+            te da el phpmyadmin para insertar codigo sql. */
+            Statement st = con.createStatement();
+            
+            /* Una vez creado el statement el cuadrito mandamos a ejecutar el 
+            codigo sql que definimos en la variable sql. */
+            st.executeUpdate(sql);
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+     /* Funcion para insertar un empleado a la base de datos y el gerente al cual
+     pertenece, esta recibe como parametros el ID del empleado y del gerente */
+    public boolean agregarEmGeren(int idEmpleado, int idGerente) {
+        try {
+            /* Definimos el codigo sql que queremos ejecutar. En este caso es un
+            insert a la tabla em_geren */
+      
+            String sql = "INSERT INTO em_geren (id_empleado, id_gerente) VALUES("
+                    + idEmpleado + ", "
+                    + idGerente + ")";
+
+            /* El createStatement cree un cuadro donde se puede insertar codigo
+            sql, el statement se podria decir que es el cuadro en blanco que
+            te da el phpmyadmin para insertar codigo sql. */
+            Statement st = con.createStatement();
+            
+            /* Una vez creado el statement el cuadrito mandamos a ejecutar el 
+            codigo sql que definimos en la variable sql. */
+            st.executeUpdate(sql);
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+    
     public boolean modificarProyecto(int id, String nombre){
         
         try {
@@ -178,10 +234,78 @@ public class Datos {
         }
     }
     
+    public int getIdUsuario() {
+        try {
+            String sql = "SELECT MAX(id_usuario) AS num FROM usuarios";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                return rs.getInt("num") + 1;
+            } else {
+                return 0;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+    
+     public int getIdProyecto() {
+        try {
+            String sql = "SELECT MAX(id_proyecto) AS num FROM proyecto";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                return rs.getInt("num") + 1;
+            } else {
+                return 0;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+     
     public ResultSet getProyectos() {
 
         try {
             String sql = "SELECT * FROM proyecto ";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+       public int getIdPersonal() {
+        try {
+            String sql = "SELECT MAX(id_personal) AS num FROM personal";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                return rs.getInt("num") + 1;
+            } else {
+                return 0;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+       
+    public ResultSet getGerentes() {
+
+        try {
+            String sql = "SELECT personal.id_personal,  personal.nom_per, personal.ape_per " 
+                    + "FROM personal " 
+                    + "INNER JOIN usuarios ON personal.usuario = usuarios.usuario " 
+                    + "WHERE usuarios.tipo_usu = 1";
 
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -218,7 +342,7 @@ public class Datos {
 
         try {
             String sql = "SELECT * FROM proyecto "
-                        + "WHERE nombre = '" + nombre + "'";
+                        + "WHERE nom_pro = '" + nombre + "'";
                        
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);

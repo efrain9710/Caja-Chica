@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Formularios;
 
 import Clases.Datos;
@@ -43,6 +42,11 @@ public class frmProyectoInsert extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro de Proyectos");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         labelMetric1.setText("Registro de Proyectos");
         labelMetric1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -71,6 +75,11 @@ public class frmProyectoInsert extends javax.swing.JFrame {
         });
 
         bntCancelar.setText("Cancelar");
+        bntCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
@@ -137,58 +146,80 @@ public class frmProyectoInsert extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        
+
         /* Instanciamos el objetos Datos */
         Datos datos = new Datos();
-        
+
         /* Validaciones */
-        if(txtIdProyecto.getText().equals("")){
+        if (txtIdProyecto.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar el id del proyecto");
             txtIdProyecto.setText("");
             txtIdProyecto.requestFocusInWindow();
             return;
         }
-        
-        if(txtNombre.getText().equals("")){
+
+        if (txtNombre.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar el nombre del proyecto");
             txtNombre.setText("");
             txtNombre.requestFocusInWindow();
             return;
         }
-        
+
         /* Instanciamos un obejto de la Clase Proyecto, para luego pasarselo 
-        a la funcion agregarProyecto. */
-        
+         a la funcion agregarProyecto. */
         Proyecto proyecto = new Proyecto(
-                Integer.parseInt(txtIdProyecto.getText()), 
+                Integer.parseInt(txtIdProyecto.getText()),
                 txtNombre.getText());
-        
-        if(datos.agregarProyecto(proyecto)){
-             JOptionPane.showMessageDialog(rootPane, "El Proyecto ha sido "
+
+        if (datos.agregarProyecto(proyecto)) {
+            JOptionPane.showMessageDialog(rootPane, "El Proyecto ha sido "
                     + "registrado correctamente ");
         } else {
             JOptionPane.showMessageDialog(rootPane, "No se ha podido registrar el"
                     + "Proyecto, por favor intentelo mas tarde ");
-            
+
         }
-       
+        
+        txtIdProyecto.setText("");
+        txtNombre.setText("");
+        
+        int idPro = datos.getIdProyecto();
+        txtIdProyecto.setText("" + idPro);
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
         
         /* Instanciamos el objetos Datos */
         Datos datos = new Datos();
-        
+
         /*Llamamos al metro getProyecto para validar si el proyecto esta registrado */
-        if(datos.getProyecto(txtNombre.getText())){
+        if (datos.getProyecto(txtNombre.getText())) {
             JOptionPane.showMessageDialog(rootPane, "El nombre del proyecto ya"
                     + " existe, por favor introduzca uno diferente");
             txtNombre.setText("");
             txtNombre.requestFocusInWindow();
             return;
         }
-        
+
     }//GEN-LAST:event_txtNombreKeyReleased
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        /* Evento cuando el formulario se abra */
+
+        /* Instanciamos un objeto de la Clase Datos, para poder acceder a los
+         metodos */
+        Datos datos = new Datos();
+
+        /* Cargamos los ID en los formularios */
+        int idPro = datos.getIdProyecto();
+        txtIdProyecto.setText("" + idPro);
+
+    }//GEN-LAST:event_formWindowOpened
+
+    private void bntCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntCancelarActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_bntCancelarActionPerformed
 
     /**
      * @param args the command line arguments

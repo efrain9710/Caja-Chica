@@ -34,7 +34,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuProyectoUpDele = new javax.swing.JMenuItem();
         mnuPersonal = new javax.swing.JMenu();
         mnuPersonalGestion = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
         mnuRecibos = new javax.swing.JMenu();
         mnuRecibosRegistrar = new javax.swing.JMenuItem();
         mnuConsultas = new javax.swing.JMenu();
@@ -47,35 +46,54 @@ public class frmPrincipal extends javax.swing.JFrame {
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+            .addGap(0, 599, Short.MAX_VALUE)
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 430, Short.MAX_VALUE)
         );
 
+        mnuProyectos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Archivo.png"))); // NOI18N
         mnuProyectos.setText("Gestion de Proyectos");
 
+        mnuProyectoRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
         mnuProyectoRegistrar.setText("Registrar");
+        mnuProyectoRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuProyectoRegistrarActionPerformed(evt);
+            }
+        });
         mnuProyectos.add(mnuProyectoRegistrar);
 
+        mnuProyectoUpDele.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Update-32.png"))); // NOI18N
         mnuProyectoUpDele.setText("Modificar y/o Eliminar");
+        mnuProyectoUpDele.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuProyectoUpDeleActionPerformed(evt);
+            }
+        });
         mnuProyectos.add(mnuProyectoUpDele);
 
         jMenuBar1.add(mnuProyectos);
 
+        mnuPersonal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Usuarios.png"))); // NOI18N
         mnuPersonal.setText("Personal");
 
+        mnuPersonalGestion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Gestion-32.png"))); // NOI18N
         mnuPersonalGestion.setText("Gestion");
+        mnuPersonalGestion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuPersonalGestionActionPerformed(evt);
+            }
+        });
         mnuPersonal.add(mnuPersonalGestion);
-
-        jMenuItem1.setText("jMenuItem1");
-        mnuPersonal.add(jMenuItem1);
 
         jMenuBar1.add(mnuPersonal);
 
+        mnuRecibos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Reporte.png"))); // NOI18N
         mnuRecibos.setText("Gestion de Recibos");
 
+        mnuRecibosRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Factura.png"))); // NOI18N
         mnuRecibosRegistrar.setText("Registrar");
         mnuRecibosRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,9 +104,11 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(mnuRecibos);
 
+        mnuConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Buscar.png"))); // NOI18N
         mnuConsultas.setText("Consultas");
         jMenuBar1.add(mnuConsultas);
 
+        mnuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
         mnuSalir.setText("Salir");
         jMenuBar1.add(mnuSalir);
 
@@ -98,11 +118,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -111,6 +131,31 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void mnuRecibosRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRecibosRegistrarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mnuRecibosRegistrarActionPerformed
+
+    private void mnuProyectoRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuProyectoRegistrarActionPerformed
+        
+        frmProyectoInsert inser = new frmProyectoInsert();
+        inser.setVisible(true);
+        inser.setLocationRelativeTo(null);
+
+    }//GEN-LAST:event_mnuProyectoRegistrarActionPerformed
+
+    private void mnuProyectoUpDeleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuProyectoUpDeleActionPerformed
+        
+        frmProyectoUpDele updele = new frmProyectoUpDele();
+        updele.setVisible(true);
+        updele.setLocationRelativeTo(null);
+        
+        
+    }//GEN-LAST:event_mnuProyectoUpDeleActionPerformed
+
+    private void mnuPersonalGestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuPersonalGestionActionPerformed
+        
+        frmPersonal personal = new frmPersonal();
+        personal.setVisible(true);
+        personal.setLocationRelativeTo(null);
+                
+    }//GEN-LAST:event_mnuPersonalGestionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,7 +193,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu mnuConsultas;
     private javax.swing.JMenu mnuPersonal;
     private javax.swing.JMenuItem mnuPersonalGestion;

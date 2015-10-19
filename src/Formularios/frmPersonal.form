@@ -73,9 +73,9 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnCancelarUsuario" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Component id="btnSiguiente" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="231" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
@@ -88,15 +88,17 @@
                               <Component id="labelMetric21" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="txtUsuario" max="32767" attributes="0"/>
-                              <Component id="txtIdUsuario" linkSize="4" alignment="1" pref="179" max="32767" attributes="0"/>
-                              <Component id="txtCorreoUsu" linkSize="4" alignment="1" max="32767" attributes="0"/>
-                              <Component id="cmbTipo" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtClave" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtConfirmarClave" alignment="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="txtUsuario" linkSize="4" max="32767" attributes="0"/>
+                                  <Component id="txtCorreoUsu" linkSize="4" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="cmbTipo" linkSize="4" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtClave" linkSize="4" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtConfirmarClave" linkSize="4" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="txtIdUsuario" linkSize="4" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="244" max="32767" attributes="0"/>
+                          <EmptySpace pref="217" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -111,22 +113,22 @@
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelMetric15" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmbTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbTipo" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelMetric21" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtUsuario" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelMetric8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtClave" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtClave" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelMetric9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtConfirmarClave" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtConfirmarClave" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -217,7 +219,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="215" max="32767" attributes="0"/>
+                          <EmptySpace pref="217" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -225,7 +227,6 @@
                                       <Component id="labelMetric13" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="labelMetric14" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="labelMetric11" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labelMetric18" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="labelMetric16" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="labelMetric17" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="labelMetric20" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -234,22 +235,21 @@
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="txtCargoGe" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtCedulaGerente" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtCorreoGe" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtTelGe" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtIDGerente" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtNomGe" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtApeGe" alignment="0" pref="214" max="32767" attributes="0"/>
-                                      <Component id="cmbIDCliente" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cmbProyecto" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   <Component id="btnRegistrarGe" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnCancelarGe" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="208" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="231" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -281,12 +281,7 @@
                               <Component id="txtTelGe" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="labelMetric17" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="labelMetric18" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtCorreoGe" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelMetric19" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtCargoGe" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -294,14 +289,14 @@
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelMetric20" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmbIDCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbProyecto" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnRegistrarGe" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnCancelarGe" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnRegistrarGe" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="90" max="32767" attributes="0"/>
+                          <EmptySpace pref="121" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -332,11 +327,6 @@
                     <Property name="text" type="java.lang.String" value="Telefono:"/>
                   </Properties>
                 </Component>
-                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric18">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Correo:"/>
-                  </Properties>
-                </Component>
                 <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric19">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cargo:"/>
@@ -345,8 +335,6 @@
                 <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCedulaGerente">
                 </Component>
                 <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtTelGe">
-                </Component>
-                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCorreoGe">
                 </Component>
                 <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCargoGe">
                 </Component>
@@ -362,8 +350,14 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cancelar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarGeActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtIDGerente">
+                  <Properties>
+                    <Property name="enabled" type="boolean" value="false"/>
+                  </Properties>
                 </Component>
                 <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtNomGe">
                 </Component>
@@ -371,10 +365,10 @@
                 </Component>
                 <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric20">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="ID Cliente:"/>
+                    <Property name="text" type="java.lang.String" value="Proyecto:"/>
                   </Properties>
                 </Component>
-                <Component class="org.edisoncor.gui.comboBox.ComboBoxRound" name="cmbIDCliente">
+                <Component class="org.edisoncor.gui.comboBox.ComboBoxRound" name="cmbProyecto">
                 </Component>
               </SubComponents>
             </Container>
@@ -391,15 +385,26 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="252" max="-2" attributes="0"/>
+                          <Component id="btnRegistrarEm" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnCancelarEm" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="238" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="labelMetric22" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cmbGerente" max="32767" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="labelMetric7" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="labelMetric2" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="labelMetric3" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="labelMetric1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labelMetric6" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="labelMetric4" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="labelMetric5" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -407,28 +412,21 @@
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="txtCargoEm" linkSize="3" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtCedulaEmpleado" linkSize="3" alignment="0" pref="117" max="32767" attributes="0"/>
-                                      <Component id="txtCorreoEm" linkSize="3" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtTelEm" linkSize="3" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtIDEmpleado" linkSize="3" alignment="0" pref="214" max="32767" attributes="0"/>
                                       <Component id="txtNomEm" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtApeEm" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtApeEm" alignment="0" min="-2" pref="214" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Component id="btnRegistrarEm" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                                  <Component id="btnCancelarEm" min="-2" max="-2" attributes="0"/>
-                              </Group>
                           </Group>
-                          <EmptySpace pref="236" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelMetric1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtIDEmpleado" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -453,17 +451,17 @@
                               <Component id="txtTelEm" linkSize="2" min="-2" max="-2" attributes="0"/>
                               <Component id="labelMetric5" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="labelMetric6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtCorreoEm" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelMetric7" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtCargoEm" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelMetric22" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbGerente" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnRegistrarEm" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnCancelarEm" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -499,11 +497,6 @@
                     <Property name="text" type="java.lang.String" value="Telefono:"/>
                   </Properties>
                 </Component>
-                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric6">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Correo:"/>
-                  </Properties>
-                </Component>
                 <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric7">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cargo:"/>
@@ -512,8 +505,6 @@
                 <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCedulaEmpleado">
                 </Component>
                 <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtTelEm">
-                </Component>
-                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCorreoEm">
                 </Component>
                 <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCargoEm">
                 </Component>
@@ -529,12 +520,25 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cancelar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarEmActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtIDEmpleado">
+                  <Properties>
+                    <Property name="enabled" type="boolean" value="false"/>
+                  </Properties>
                 </Component>
                 <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtNomEm">
                 </Component>
                 <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtApeEm">
+                </Component>
+                <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric22">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Gerente:"/>
+                  </Properties>
+                </Component>
+                <Component class="org.edisoncor.gui.comboBox.ComboBoxRound" name="cmbGerente">
                 </Component>
               </SubComponents>
             </Container>

@@ -15,20 +15,19 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Victor Pino
  */
-
 public class frmProyectoUpDele extends javax.swing.JFrame {
 
     /* Definimos los titulos que llevara la tabla*/
-     public String titulos[] = {"ID Proyecto", "Nombre", "Gerente"};
-    
+    public String titulos[] = {"ID Proyecto", "Nombre", "Gerente"};
+
     public frmProyectoUpDele() {
         initComponents();
     }
 
-     Datos datos = new Datos();
-    
+    Datos datos = new Datos();
+
     /* Definimos una tabla modelo y sobreeescribimos el metodo isCellEditable
-    para que las columnas y filas de la tabla no se puedan editar*/
+     para que las columnas y filas de la tabla no se puedan editar*/
     DefaultTableModel tablaModelo = new DefaultTableModel(null, titulos) {
         @Override
         public boolean isCellEditable(int row, int col) {
@@ -36,35 +35,35 @@ public class frmProyectoUpDele extends javax.swing.JFrame {
         }
 
     };
-    
+
     /* Funcion para llenar la tabla cuando abre el formulario */
     public void llenarTabla() {
 
         try {
 
             /* Alineamos la columna ID del Proyecto a la derecha */
-            DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
-            tcr.setHorizontalAlignment(SwingConstants.RIGHT);
-            tablaProyectos.getColumnModel().getColumn(1).setCellRenderer(tcr);
-            
+//            DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+//            tcr.setHorizontalAlignment(SwingConstants.RIGHT);
+//            tablaProyectos.getColumnModel().getColumn(0).setCellRenderer(tcr);
+
             /* Llamos a la funcion getProyectos la cual nos devuelve todos 
-            los proyectos registrados en la base de datos. 
-            - Los datos recibidos lo guardamos en el objeto ResulSet para luego
-            llenar la tabla con los registros.
-            */
+             los proyectos registrados en la base de datos. 
+             - Los datos recibidos lo guardamos en el objeto ResulSet para luego
+             llenar la tabla con los registros.
+             */
             ResultSet rs = datos.getProyectos();
 
             /* Instaciamos un obejto vector tipo string, el cual nos servira
-            para guardar las filas de la tabla. */
+             para guardar las filas de la tabla. */
             String registro[] = new String[4];
 
             /* Hacemos un while que mientras en rs hallan datos el ira agregando
-            filas a la tabla. */
+             filas a la tabla. */
             while (rs.next()) {
 
                 registro[0] = rs.getString("id_proyecto");
-                registro[1] = rs.getString("nombre");
-                registro[2] = rs.getString("nombre");
+                registro[1] = rs.getString("nom_pro");
+                registro[2] = rs.getString("nom_pro");
                 tablaModelo.addRow(registro);
 
             }
@@ -76,32 +75,32 @@ public class frmProyectoUpDele extends javax.swing.JFrame {
 
     }
 
-     /* Funcion para llenar la tabla cuando se busque un proyecto en especifico
-    por el nombre */
+    /* Funcion para llenar la tabla cuando se busque un proyecto en especifico
+     por el nombre */
     public void llenarTabla(String nombre) {
 
         try {
             /* Limpiamos la tabla */
             tablaModelo.setRowCount(0);
+
+            /* Llamos a la funcion getProyectosNom la cual nos devuelve todos 
+             los proyectos relaciones con el nombre a buscar en la base de datos. 
             
-             /* Llamos a la funcion getProyectosNom la cual nos devuelve todos 
-            los proyectos relaciones con el nombre a buscar en la base de datos. 
+             - Los datos recibidos lo guardamos en el objeto ResulSet para luego
+             llenar la tabla con los registros.
             
-            - Los datos recibidos lo guardamos en el objeto ResulSet para luego
-            llenar la tabla con los registros.
-            
-            */
+             */
             ResultSet rs = datos.getProyectoNom(nombre);
 
             String registro[] = new String[4];
 
             /* Hacemos un while que mientras en rs hallan datos el ira agregando
-            filas a la tabla. */
+             filas a la tabla. */
             while (rs.next()) {
 
                 registro[0] = rs.getString("id_proyecto");
-                registro[1] = rs.getString("nombre");
-                registro[2] = rs.getString("nombre");
+                registro[1] = rs.getString("nom_pro");
+                registro[2] = rs.getString("nom_pro");
                 tablaModelo.addRow(registro);
 
             }
@@ -112,7 +111,7 @@ public class frmProyectoUpDele extends javax.swing.JFrame {
         }
 
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -193,14 +192,13 @@ public class frmProyectoUpDele extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Añadir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        txtBuscar.setEnabled(false);
         txtBuscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -225,7 +223,7 @@ public class frmProyectoUpDele extends javax.swing.JFrame {
                     .addGroup(panel1Layout.createSequentialGroup()
                         .addComponent(labelMetric4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(panel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,7 +241,7 @@ public class frmProyectoUpDele extends javax.swing.JFrame {
                                     .addComponent(labelMetric2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(panel1Layout.createSequentialGroup()
                                         .addComponent(jButton1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                                         .addComponent(labelMetric3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,7 +281,7 @@ public class frmProyectoUpDele extends javax.swing.JFrame {
                             .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bntCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -306,9 +304,9 @@ public class frmProyectoUpDele extends javax.swing.JFrame {
         Datos datos = new Datos();
 
         /* Llamamos al metodo getProyecto para validar si el proyecto esta registrado */
-        if(datos.getProyecto(txtNombre.getText())){
+        if (datos.getProyecto(txtNombre.getText())) {
             JOptionPane.showMessageDialog(rootPane, "El nombre del proyecto ya"
-                + " existe, por favor introduzca uno diferente");
+                    + " existe, por favor introduzca uno diferente");
             txtNombre.setText("");
             txtNombre.requestFocusInWindow();
             return;
@@ -322,104 +320,115 @@ public class frmProyectoUpDele extends javax.swing.JFrame {
         Datos datos = new Datos();
 
         /* Validaciones */
-        if(txtIdProyecto.getText().equals("")){
+        if (txtIdProyecto.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar el id del proyecto");
             txtIdProyecto.setText("");
             txtIdProyecto.requestFocusInWindow();
             return;
         }
 
-        if(txtNombre.getText().equals("")){
+        if (txtNombre.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar el nombre del proyecto");
             txtNombre.setText("");
             txtNombre.requestFocusInWindow();
             return;
         }
-        
-        /* Llamamos a la funcion modificarProyecto la cual recibe como parametro
-        un Integer que es el ID del proyecto y un String que seria el nombre
-        del proyecto */
 
-         if(datos.modificarProyecto(Integer.parseInt(txtIdProyecto.getText()), 
-                 txtNombre.getText())){
+        /* Llamamos a la funcion modificarProyecto la cual recibe como parametro
+         un Integer que es el ID del proyecto y un String que seria el nombre
+         del proyecto */
+        if (datos.modificarProyecto(Integer.parseInt(txtIdProyecto.getText()),
+                txtNombre.getText())) {
             JOptionPane.showMessageDialog(rootPane, "El Proyecto ha sido "
-                + "modificado correctamente ");
+                    + "modificado correctamente ");
         } else {
             JOptionPane.showMessageDialog(rootPane, "No se ha podido modificar el"
-                + "Proyecto, por favor intentelo mas tarde ");
+                    + "Proyecto, por favor intentelo mas tarde ");
 
         }
-       
+        
+        txtIdProyecto.setText("");
+        txtNombre.setText("");
+        
+        /* Limpiamos la tabla */
+        tablaModelo.setRowCount(0);
+        llenarTabla();
+
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-       
-         /* Instanciamos el objetos Datos */
+
+        /* Instanciamos el objetos Datos */
         Datos datos = new Datos();
 
         /* Validaciones */
-        if(txtIdProyecto.getText().equals("")){
+        if (txtIdProyecto.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar el id del proyecto");
             txtIdProyecto.setText("");
             txtIdProyecto.requestFocusInWindow();
             return;
         }
 
-        if(txtNombre.getText().equals("")){
+        if (txtNombre.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar el nombre del proyecto");
             txtNombre.setText("");
             txtNombre.requestFocusInWindow();
             return;
         }
-        
-        /* Llamamos a la funcion ElinarProyecto la cual recibe como parametro
-        un Integer que es el ID del proyecto  */
 
-         if(datos.eliminarProyecto(Integer.parseInt(txtIdProyecto.getText()))){
+        /* Llamamos a la funcion ElinarProyecto la cual recibe como parametro
+         un Integer que es el ID del proyecto  */
+        if (datos.eliminarProyecto(Integer.parseInt(txtIdProyecto.getText()))) {
             JOptionPane.showMessageDialog(rootPane, "El Proyecto ha sido "
-                + "eliminado correctamente ");
+                    + "eliminado correctamente ");
         } else {
             JOptionPane.showMessageDialog(rootPane, "No se ha podido eliminar el"
-                + "Proyecto, por favor intentelo mas tarde ");
+                    + "Proyecto, por favor intentelo mas tarde ");
 
         }
-         
         
+        txtIdProyecto.setText("");
+        txtNombre.setText("");
+        
+        /* Limpiamos la tabla */
+        tablaModelo.setRowCount(0);
+        llenarTabla();
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         /* Cuando el formulario se abra llenamos la tabla */
-          llenarTabla();
-        
+        llenarTabla();
+
     }//GEN-LAST:event_formWindowOpened
 
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
-        
+
         /* Cuando el usuario digite en el campo txt Buscar y tabulee
-        llenamos la tabla con la busqueda */
+         llenamos la tabla con la busqueda */
         llenarTabla(txtNombre.getText());
-        
+
     }//GEN-LAST:event_txtBuscarKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         /* Variable que contendra el ID de la fila seleccionada */
         int s = 0;
-        
+
         /* Limpiamos los txt, idProyecto y Nombre */
         txtIdProyecto.setText("");
         txtNombre.setText("");
-        
+
         /* Guardamos el ID de dla fila selecciona en la variable s*/
-         s = tablaProyectos.getSelectedRow();
-         
-         /* Validamos que hallan seleccionado */
-         if (s < 0) {
-                JOptionPane.showMessageDialog(this, "Debe seleccionar un proyecto");
-                return;
-            }
-         
-         /* Llenamos el campo IDProyecto con el ID de la fila seleccionada 
+        s = tablaProyectos.getSelectedRow();
+
+        /* Validamos que hallan seleccionado */
+        if (s < 0) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un proyecto");
+            return;
+        }
+
+        /* Llenamos el campo IDProyecto con el ID de la fila seleccionada 
          
          - Como la funcion getValueAt recibe como parametro, el numero de la fila
          y el numero de la columna y devuelve como parametro un Objeto y el campo
@@ -428,9 +437,9 @@ public class frmProyectoUpDele extends javax.swing.JFrame {
          que me transforma un objeto a String.
          
          */
-         txtIdProyecto.setText(Utilidades.objectToString(tablaProyectos.getValueAt(s, 0)));
-         
-         /* Llenamos el campo nombre con el nombre de la fila seleccionada 
+        txtIdProyecto.setText(Utilidades.objectToString(tablaProyectos.getValueAt(s, 0)));
+
+        /* Llenamos el campo nombre con el nombre de la fila seleccionada 
          
          - Como la funcion getValueAt recibe como parametro, el numero de la fila
          y el numero de la columna y devuelve como parametro un Objeto y el campo
@@ -438,8 +447,8 @@ public class frmProyectoUpDele extends javax.swing.JFrame {
          Para eso utilizamos el metodo de la clase Utilidades objetoToString
          que me transforma un objeto a String.
          */
-         txtNombre.setText(Utilidades.objectToString(tablaProyectos.getValueAt(s, 1)));
-         
+        txtNombre.setText(Utilidades.objectToString(tablaProyectos.getValueAt(s, 1)));
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bntCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntCancelarActionPerformed
