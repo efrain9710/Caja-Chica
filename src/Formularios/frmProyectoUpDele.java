@@ -131,7 +131,7 @@ public class frmProyectoUpDele extends javax.swing.JFrame {
         txtBuscar = new org.edisoncor.gui.textField.TextFieldRoundIcon();
         labelMetric4 = new org.edisoncor.gui.label.LabelMetric();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestion de Proyecto");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {

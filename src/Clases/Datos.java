@@ -9,7 +9,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,8 +20,8 @@ public class Datos {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://localhost/Caja";
-            con = DriverManager.getConnection(url, "root", "");
+            String url = "jdbc:mysql://localhost/caja";
+            con = DriverManager.getConnection(url, "root", "11");
         } catch (Exception ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -230,6 +229,34 @@ public class Datos {
             return false;
         }
     }
+    
+    /* Funcion para insertar una Proveedor a la base de datos , esta recibe como 
+    parametros un Objeto de la clase Proveedor */
+    public boolean agregarProveedor(Proveedor proveedor) {
+        try {
+            /* Definimos el codigo sql que queremos ejecutar. En este caso es un
+             insert a la tabla Proveedor */
+
+           String sql = "INSERT INTO proveedor VALUES("
+                    + proveedor.getIdProveedor()+ ", '"
+                    + proveedor.getRifCed()+ "', '"
+                    + proveedor.getNombre()+ "', '"
+                    + proveedor.getDireccion()+ "')";
+           
+            /* El createStatement cree un cuadro donde se puede insertar codigo
+             sql, el statement se podria decir que es el cuadro en blanco que
+             te da el phpmyadmin para insertar codigo sql. */
+            Statement st = con.createStatement();
+
+            /* Una vez creado el statement el cuadrito mandamos a ejecutar el 
+             codigo sql que definimos en la variable sql. */
+            st.executeUpdate(sql);
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
 
     public boolean modificarProyecto(int id, String nombre) {
 
@@ -283,6 +310,23 @@ public class Datos {
     public int getIdProyecto() {
         try {
             String sql = "SELECT MAX(id_proyecto) AS num FROM proyecto";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                return rs.getInt("num") + 1;
+            } else {
+                return 0;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+    
+    public int getIdProveedor() {
+        try {
+            String sql = "SELECT MAX(id_proveedor) AS num FROM proveedor";
 
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);

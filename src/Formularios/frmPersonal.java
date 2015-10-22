@@ -7,6 +7,7 @@ package Formularios;
 import Clases.Datos;
 import Clases.Opcion;
 import Clases.Personal;
+import Clases.Proveedor;
 import Clases.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -64,31 +65,26 @@ public class frmPersonal extends javax.swing.JFrame {
         txtTelGe = new org.edisoncor.gui.textField.TextFieldRoundIcon();
         txtCargoGe = new org.edisoncor.gui.textField.TextFieldRoundIcon();
         btnRegistrarGe = new org.edisoncor.gui.button.ButtonAction();
-        btnCancelarGe = new org.edisoncor.gui.button.ButtonAction();
         txtIDGerente = new org.edisoncor.gui.textField.TextFieldRoundIcon();
         txtNomGe = new org.edisoncor.gui.textField.TextFieldRoundIcon();
         txtApeGe = new org.edisoncor.gui.textField.TextFieldRoundIcon();
         labelMetric20 = new org.edisoncor.gui.label.LabelMetric();
         cmbProyecto = new org.edisoncor.gui.comboBox.ComboBoxRound();
-        PersonalEmpleado = new org.edisoncor.gui.panel.Panel();
+        btnCancelarGe = new org.edisoncor.gui.button.ButtonAction();
+        PersonalProveedor = new org.edisoncor.gui.panel.Panel();
         labelMetric1 = new org.edisoncor.gui.label.LabelMetric();
         labelMetric2 = new org.edisoncor.gui.label.LabelMetric();
         labelMetric3 = new org.edisoncor.gui.label.LabelMetric();
         labelMetric4 = new org.edisoncor.gui.label.LabelMetric();
-        labelMetric5 = new org.edisoncor.gui.label.LabelMetric();
-        labelMetric7 = new org.edisoncor.gui.label.LabelMetric();
-        txtCedulaEmpleado = new org.edisoncor.gui.textField.TextFieldRoundIcon();
-        txtTelEm = new org.edisoncor.gui.textField.TextFieldRoundIcon();
-        txtCargoEm = new org.edisoncor.gui.textField.TextFieldRoundIcon();
-        btnRegistrarEm = new org.edisoncor.gui.button.ButtonAction();
-        btnCancelarEm = new org.edisoncor.gui.button.ButtonAction();
-        txtIDEmpleado = new org.edisoncor.gui.textField.TextFieldRoundIcon();
-        txtNomEm = new org.edisoncor.gui.textField.TextFieldRoundIcon();
-        txtApeEm = new org.edisoncor.gui.textField.TextFieldRoundIcon();
-        labelMetric22 = new org.edisoncor.gui.label.LabelMetric();
-        cmbGerente = new org.edisoncor.gui.comboBox.ComboBoxRound();
+        txtCedulaProveedor = new org.edisoncor.gui.textField.TextFieldRoundIcon();
+        btnRegistrarPro = new org.edisoncor.gui.button.ButtonAction();
+        btnCancelarPro = new org.edisoncor.gui.button.ButtonAction();
+        txtIDProveedor = new org.edisoncor.gui.textField.TextFieldRoundIcon();
+        txtNomPro = new org.edisoncor.gui.textField.TextFieldRoundIcon();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        areaProve = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -211,6 +207,10 @@ public class frmPersonal extends javax.swing.JFrame {
             }
         });
 
+        txtIDGerente.setEnabled(false);
+
+        labelMetric20.setText("Proyecto:");
+
         btnCancelarGe.setText("Cancelar");
         btnCancelarGe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,16 +218,12 @@ public class frmPersonal extends javax.swing.JFrame {
             }
         });
 
-        txtIDGerente.setEnabled(false);
-
-        labelMetric20.setText("Proyecto:");
-
         javax.swing.GroupLayout PersonalGerenteLayout = new javax.swing.GroupLayout(PersonalGerente);
         PersonalGerente.setLayout(PersonalGerenteLayout);
         PersonalGerenteLayout.setHorizontalGroup(
             PersonalGerenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PersonalGerenteLayout.createSequentialGroup()
-                .addContainerGap(217, Short.MAX_VALUE)
+                .addContainerGap(221, Short.MAX_VALUE)
                 .addGroup(PersonalGerenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PersonalGerenteLayout.createSequentialGroup()
                         .addGroup(PersonalGerenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,122 +283,96 @@ public class frmPersonal extends javax.swing.JFrame {
                     .addComponent(cmbProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(59, 59, 59)
                 .addGroup(PersonalGerenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelarGe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistrarGe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRegistrarGe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelarGe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(121, Short.MAX_VALUE))
         );
 
-        PanelTop.addTab("Gerente", PersonalGerente);
+        PanelTop.addTab("Personal", PersonalGerente);
 
-        labelMetric1.setText("ID:");
+        labelMetric1.setText("ID Proveedor:");
 
-        labelMetric2.setText("Cédula:");
+        labelMetric2.setText("Rif-Cédula:");
 
         labelMetric3.setText("Nombre:");
 
-        labelMetric4.setText("Apellido:");
+        labelMetric4.setText("Descripción:");
 
-        labelMetric5.setText("Telefono:");
-
-        labelMetric7.setText("Cargo:");
-
-        btnRegistrarEm.setText("Registrar");
-        btnRegistrarEm.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrarPro.setText("Registrar");
+        btnRegistrarPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarEmActionPerformed(evt);
+                btnRegistrarProActionPerformed(evt);
             }
         });
 
-        btnCancelarEm.setText("Cancelar");
-        btnCancelarEm.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelarPro.setText("Cancelar");
+        btnCancelarPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarEmActionPerformed(evt);
+                btnCancelarProActionPerformed(evt);
             }
         });
 
-        txtIDEmpleado.setEnabled(false);
+        txtIDProveedor.setEnabled(false);
 
-        labelMetric22.setText("Gerente:");
+        areaProve.setColumns(20);
+        areaProve.setRows(5);
+        jScrollPane1.setViewportView(areaProve);
 
-        javax.swing.GroupLayout PersonalEmpleadoLayout = new javax.swing.GroupLayout(PersonalEmpleado);
-        PersonalEmpleado.setLayout(PersonalEmpleadoLayout);
-        PersonalEmpleadoLayout.setHorizontalGroup(
-            PersonalEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PersonalEmpleadoLayout.createSequentialGroup()
-                .addGap(252, 252, 252)
-                .addComponent(btnRegistrarEm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCancelarEm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(238, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PersonalEmpleadoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(PersonalEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PersonalEmpleadoLayout.createSequentialGroup()
-                        .addComponent(labelMetric22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbGerente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PersonalEmpleadoLayout.createSequentialGroup()
-                        .addGroup(PersonalEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelMetric7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelMetric2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelMetric3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelMetric1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelMetric4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelMetric5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(PersonalEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCargoEm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtCedulaEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                            .addComponent(txtTelEm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtIDEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
-                            .addComponent(txtNomEm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtApeEm, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(222, 222, 222))
-        );
-
-        PersonalEmpleadoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtCargoEm, txtCedulaEmpleado, txtIDEmpleado, txtTelEm});
-
-        PersonalEmpleadoLayout.setVerticalGroup(
-            PersonalEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PersonalEmpleadoLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(PersonalEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelMetric1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIDEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(PersonalEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labelMetric2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCedulaEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(PersonalEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelMetric3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNomEm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(PersonalEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelMetric4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtApeEm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(PersonalEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtTelEm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelMetric5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout PersonalProveedorLayout = new javax.swing.GroupLayout(PersonalProveedor);
+        PersonalProveedor.setLayout(PersonalProveedorLayout);
+        PersonalProveedorLayout.setHorizontalGroup(
+            PersonalProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PersonalProveedorLayout.createSequentialGroup()
+                .addGap(348, 348, 348)
+                .addComponent(btnRegistrarPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addGroup(PersonalEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelMetric7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCargoEm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(PersonalEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelMetric22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbGerente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(66, 66, 66)
-                .addGroup(PersonalEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrarEm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelarEm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addComponent(btnCancelarPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PersonalProveedorLayout.createSequentialGroup()
+                .addGap(198, 198, 198)
+                .addGroup(PersonalProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelMetric1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelMetric2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelMetric3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelMetric4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PersonalProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PersonalProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtIDProveedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                        .addComponent(txtCedulaProveedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtNomPro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(130, 130, 130))
+        );
+        PersonalProveedorLayout.setVerticalGroup(
+            PersonalProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PersonalProveedorLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(PersonalProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelMetric1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIDProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(PersonalProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelMetric2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCedulaProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(PersonalProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelMetric3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNomPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(PersonalProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelMetric4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68)
+                .addGroup(PersonalProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelarPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegistrarPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
-        PersonalEmpleadoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtCargoEm, txtCedulaEmpleado, txtIDEmpleado, txtTelEm});
+        PersonalProveedorLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtCedulaProveedor, txtIDProveedor});
 
-        PanelTop.addTab("Empleado", PersonalEmpleado);
+        PanelTop.addTab("Proveedor", PersonalProveedor);
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
@@ -431,58 +401,34 @@ public class frmPersonal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegistrarEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEmActionPerformed
-        /* Evento de click sobre el boton de REGISTRAR EMPLEADO */
+    private void btnRegistrarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarProActionPerformed
+        /* Evento de click sobre el boton de REGISTRAR Proveedor */
 
         /* Instanciamos un objeto de la Clase Datos */
         Datos datos = new Datos();
 
         /* Validaciones */
-        if (txtIDEmpleado.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Debe digitar el ID del Empleado");
-            txtIDEmpleado.requestFocusInWindow();
+        if (txtIDProveedor.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Debe digitar el ID del Proveedor");
+            txtIDProveedor.requestFocusInWindow();
             return;
         }
 
-        if (txtCedulaEmpleado.getText().equals("")) {
+        if (txtCedulaProveedor.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar una cedula");
-            txtCedulaEmpleado.requestFocusInWindow();
+            txtCedulaProveedor.requestFocusInWindow();
             return;
         }
 
-        if (txtNomEm.getText().equals("")) {
+        if (txtNomPro.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar un nombre ");
-            txtNomEm.requestFocusInWindow();
-            return;
-        }
-
-        if (txtApeEm.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Debe ingresar un apellido ");
-            txtApeEm.requestFocusInWindow();
-            return;
-        }
-
-        if (txtTelEm.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Debe especificar un telefono de contacto ");
-            txtTelEm.requestFocusInWindow();
-            return;
-        }
-
-        if (txtCargoEm.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Debe especificar el cargo ");
-            txtCargoEm.requestFocusInWindow();
-            return;
-        }
-
-        if (cmbGerente.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Debe Seleccionar el gerente");
-            cmbGerente.requestFocusInWindow();
+            txtNomPro.requestFocusInWindow();
             return;
         }
 
         String clave = new String(txtClave.getPassword());
 
-        /* Instanciamos un objeto de la Clase Usuario, el cual se lo pasaremos
+        /* Instanciamos un objeto de la Clase usuario se lo pasaremos
          a la funcion agregarUsuario, la cual pide como parametro un objeto Usuario */
         Usuario usuario = new Usuario(Integer.parseInt(txtIdUsuario.getText()),
                 cmbTipo.getSelectedIndex(),
@@ -490,49 +436,37 @@ public class frmPersonal extends javax.swing.JFrame {
                 clave,
                 txtCorreoUsu.getText());
 
-        int tele = Integer.parseInt(txtTelEm.getText());
+      
 
-        /* Instanciamos un objeto de la Clase Personal, el cual se lo pasaremos
-         a la funcion agregarPersonal, la cual pide como parametro un objeto Personal */
-        Personal personal = new Personal(Integer.parseInt(txtIDEmpleado.getText()),
-                txtUsuario.getText(),
-                txtCedulaEmpleado.getText(),
-                txtNomEm.getText(),
-                txtApeEm.getText(),
-                tele,
-                txtCargoEm.getText());
+        /* Instanciamos un objeto de la Clase Proveedor, el cual se lo pasaremos
+         a la funcion agregarProveedor, la cual pide como parametro un objeto Proveedor */
+        Proveedor proveedor = new Proveedor(
+                Integer.parseInt(txtIDProveedor.getText()), 
+                txtCedulaProveedor.getText(),
+                txtNomPro.getText(), 
+                areaProve.getText());
 
         /* Una ves instanciado y cargado el objeto llamamos a la funcion 
-         agregarPersonal, validamos si la funcion retorna true, imprimimos en 
+         agregarProveedor, validamos si la funcion retorna true, imprimimos en 
          pantalla un mensaje de aprobacion, si no lo contrario. */
-        /*Id del empleado lo convertimos a integer para pasarselo a la funcion
-         agregarEmGeren*/
-        int idEm = Integer.parseInt(txtIDEmpleado.getText());
+        
+      
 
-        /* Convertimos el Objeto que nos devuelve el combox a integer para pasarselo 
-         a la funcion agregarEmGeren */
-        int idGeren = Integer.parseInt(((Opcion) cmbGerente.getSelectedItem()).getValor());
-
-        if (datos.agregarUsuario(usuario) && datos.agregarPersonal(personal)
-                && datos.agregarEmGeren(idEm, idGeren)) {
-            JOptionPane.showMessageDialog(this, "Empleado Agregado Correctamente");
+        if (datos.agregarProveedor(proveedor)) {
+            JOptionPane.showMessageDialog(this, "Proveedor Agregado Correctamente");
 
         } else {
             JOptionPane.showMessageDialog(this, "En estos momentos no es posible"
-                    + " agregar al Empleado, intentelo mas tarde");
+                    + " agregar al Proveedor, intentelo mas tarde");
         }
         
-          /* Limpiamos lo campos  */
-        txtUsuario.setText("");
-        txtCedulaGerente.setText("");
-        txtNomGe.setText("");
-        txtApeGe.setText("");
-        txtTelGe.setText("");
-        txtCargoGe.setText("");
+          /* LimpitxtIDProveedors  */
+        txtIDProveedor.setText("");
+        txtCedulaProveedor.setText("");
+        txtNomPro.setText("");
+        areaProve.setText("");
         
-        setVisible(false);
-
-    }//GEN-LAST:event_btnRegistrarEmActionPerformed
+    }//GEN-LAST:event_btnRegistrarProActionPerformed
 
     private void btnCancelarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarUsuarioActionPerformed
 
@@ -584,7 +518,7 @@ public class frmPersonal extends javax.swing.JFrame {
         }
 
         if (cmbProyecto.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Debe Seleccionar un Proyecto");
+            JOptionPane.showMessageDialog(rootPane, "DebtxtIDProveedor un Proyecto");
             cmbProyecto.requestFocusInWindow();
             return;
         }
@@ -599,7 +533,7 @@ public class frmPersonal extends javax.swing.JFrame {
                 clave,
                 txtCorreoUsu.getText());
 
-        /* Instanciamos un objeto de la Clase Personal, el cual se lo pasaremos
+        /* Instanciamos un objeto de la ClatxtIDProveedorel cual se lo pasaremos
          a la funcion agregarPersonal, la cual pide como parametro un objeto Personal */
         Personal personal = new Personal(Integer.parseInt(txtIDGerente.getText()),
                 txtUsuario.getText(),
@@ -711,7 +645,7 @@ public class frmPersonal extends javax.swing.JFrame {
 
             /* Si el tipo seleccionado es igual a 2, Mostramos el formulario
              de gerente */
-            PanelTop.setSelectedComponent(PersonalEmpleado);
+            PanelTop.setSelectedComponent(PersonalProveedor);
 
         }
 
@@ -731,7 +665,9 @@ public class frmPersonal extends javax.swing.JFrame {
 
             int idPer = datos.getIdPersonal();
             txtIDGerente.setText("" + idPer);
-            txtIDEmpleado.setText("" + idPer);
+            
+            int idPro = datos.getIdProveedor();
+            txtIDProveedor.setText("" + idPro);
 
             /* Instaciamos un objeto de la clase Opcion para cargar el combo box 
              de tipos de usuarios  */
@@ -777,44 +713,20 @@ public class frmPersonal extends javax.swing.JFrame {
                 cmbProyecto.addItem(op2);
             }
 
-            /* Instaciamos un objeto de la clase Opcion para cargar el combo box 
-             de gerentes  */
-            Opcion op3 = new Opcion("0", "Seleccione un gerente");
-
-            /* Añadimos el primer elemento al combo box */
-            cmbGerente.addItem(op3);
-
-            /* Llamos a la funcion getGerentes la cual nos devuelve todos los 
-             gerentes que hay, esos datos los guardamos en un ResultSet para luego
-             llenar el combo box con todos los gerentes */
-            ResultSet rsGere = datos.getGerentes();
-
-            /* Hacemos un while que mientras hallan registros en rs, sobreescrira
-             al objeto de la clase opcion con los datos del objeto rs, y los añada
-             al combo box */
-            while (rsGere.next()) {
-                op3 = new Opcion(
-                        rsGere.getString("id_personal"),
-                        rsGere.getString("nom_per")
-                        + " " + rsGere.getString("ape_per"));
-                cmbGerente.addItem(op3);
-            }
-
         } catch (SQLException ex) {
             Logger.getLogger(frmPersonal.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_formWindowOpened
 
-    private void btnCancelarEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEmActionPerformed
+    private void btnCancelarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarProActionPerformed
 
         setVisible(false);
 
-    }//GEN-LAST:event_btnCancelarEmActionPerformed
+    }//GEN-LAST:event_btnCancelarProActionPerformed
 
     private void btnCancelarGeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarGeActionPerformed
         setVisible(false);
-
     }//GEN-LAST:event_btnCancelarGeActionPerformed
 
     /**
@@ -854,18 +766,19 @@ public class frmPersonal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.edisoncor.gui.tabbedPane.TabbedPaneHeader PanelTop;
-    private org.edisoncor.gui.panel.Panel PersonalEmpleado;
     private org.edisoncor.gui.panel.Panel PersonalGerente;
+    private org.edisoncor.gui.panel.Panel PersonalProveedor;
     private org.edisoncor.gui.panel.Panel PersonalUsuario;
-    private org.edisoncor.gui.button.ButtonAction btnCancelarEm;
+    private javax.swing.JTextArea areaProve;
     private org.edisoncor.gui.button.ButtonAction btnCancelarGe;
+    private org.edisoncor.gui.button.ButtonAction btnCancelarPro;
     private org.edisoncor.gui.button.ButtonAction btnCancelarUsuario;
-    private org.edisoncor.gui.button.ButtonAction btnRegistrarEm;
     private org.edisoncor.gui.button.ButtonAction btnRegistrarGe;
+    private org.edisoncor.gui.button.ButtonAction btnRegistrarPro;
     private org.edisoncor.gui.button.ButtonAction btnSiguiente;
-    private org.edisoncor.gui.comboBox.ComboBoxRound cmbGerente;
     private org.edisoncor.gui.comboBox.ComboBoxRound cmbProyecto;
     private org.edisoncor.gui.comboBox.ComboBoxRound cmbTipo;
+    private javax.swing.JScrollPane jScrollPane1;
     private org.edisoncor.gui.label.LabelMetric labelMetric1;
     private org.edisoncor.gui.label.LabelMetric labelMetric10;
     private org.edisoncor.gui.label.LabelMetric labelMetric11;
@@ -879,29 +792,23 @@ public class frmPersonal extends javax.swing.JFrame {
     private org.edisoncor.gui.label.LabelMetric labelMetric2;
     private org.edisoncor.gui.label.LabelMetric labelMetric20;
     private org.edisoncor.gui.label.LabelMetric labelMetric21;
-    private org.edisoncor.gui.label.LabelMetric labelMetric22;
     private org.edisoncor.gui.label.LabelMetric labelMetric3;
     private org.edisoncor.gui.label.LabelMetric labelMetric4;
-    private org.edisoncor.gui.label.LabelMetric labelMetric5;
-    private org.edisoncor.gui.label.LabelMetric labelMetric7;
     private org.edisoncor.gui.label.LabelMetric labelMetric8;
     private org.edisoncor.gui.label.LabelMetric labelMetric9;
     private org.edisoncor.gui.panel.Panel panel1;
-    private org.edisoncor.gui.textField.TextFieldRoundIcon txtApeEm;
     private org.edisoncor.gui.textField.TextFieldRoundIcon txtApeGe;
-    private org.edisoncor.gui.textField.TextFieldRoundIcon txtCargoEm;
     private org.edisoncor.gui.textField.TextFieldRoundIcon txtCargoGe;
-    private org.edisoncor.gui.textField.TextFieldRoundIcon txtCedulaEmpleado;
     private org.edisoncor.gui.textField.TextFieldRoundIcon txtCedulaGerente;
+    private org.edisoncor.gui.textField.TextFieldRoundIcon txtCedulaProveedor;
     private org.edisoncor.gui.passwordField.PasswordFieldRoundIcon txtClave;
     private org.edisoncor.gui.passwordField.PasswordFieldRoundIcon txtConfirmarClave;
     private org.edisoncor.gui.textField.TextFieldRoundIcon txtCorreoUsu;
-    private org.edisoncor.gui.textField.TextFieldRoundIcon txtIDEmpleado;
     private org.edisoncor.gui.textField.TextFieldRoundIcon txtIDGerente;
+    private org.edisoncor.gui.textField.TextFieldRoundIcon txtIDProveedor;
     private org.edisoncor.gui.textField.TextFieldRoundIcon txtIdUsuario;
-    private org.edisoncor.gui.textField.TextFieldRoundIcon txtNomEm;
     private org.edisoncor.gui.textField.TextFieldRoundIcon txtNomGe;
-    private org.edisoncor.gui.textField.TextFieldRoundIcon txtTelEm;
+    private org.edisoncor.gui.textField.TextFieldRoundIcon txtNomPro;
     private org.edisoncor.gui.textField.TextFieldRoundIcon txtTelGe;
     private org.edisoncor.gui.textField.TextFieldRoundIcon txtUsuario;
     // End of variables declaration//GEN-END:variables

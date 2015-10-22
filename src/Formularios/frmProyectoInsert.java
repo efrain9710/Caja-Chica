@@ -40,7 +40,7 @@ public class frmProyectoInsert extends javax.swing.JFrame {
         btnRegistrar = new org.edisoncor.gui.button.ButtonAction();
         bntCancelar = new org.edisoncor.gui.button.ButtonAction();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro de Proyectos");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
