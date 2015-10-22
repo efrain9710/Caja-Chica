@@ -129,7 +129,11 @@ public class frmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnuRecibosRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRecibosRegistrarActionPerformed
-        // TODO add your handling code here:
+       
+        frmFactura fac = new frmFactura();
+        fac.setVisible(true);
+        fac.setLocationRelativeTo(null);
+        
     }//GEN-LAST:event_mnuRecibosRegistrarActionPerformed
 
     private void mnuProyectoRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuProyectoRegistrarActionPerformed
