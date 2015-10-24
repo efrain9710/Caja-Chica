@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-10-2015 a las 03:06:23
+-- Tiempo de generación: 24-10-2015 a las 17:30:48
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.3.13
 
@@ -63,7 +63,15 @@ CREATE TABLE IF NOT EXISTS `factura` (
   KEY `id_personal` (`id_personal`),
   KEY `id_servicio` (`id_servicio`),
   KEY `id_status` (`id_status`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `factura`
+--
+
+INSERT INTO `factura` (`id_factura`, `fecha_fac`, `fecha_carga`, `id_proveedor`, `id_personal`, `id_servicio`, `descri_fac`, `id_status`, `monto`) VALUES
+(1, '2015-10-23', '2015-10-23', 1, 2, 2, 'PRUEBA	', 1, 200),
+(2, '2015-10-24', '2015-10-24', 1, 3, 1, 'Segunda prueba', 2, 500);
 
 -- --------------------------------------------------------
 
@@ -84,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `personal` (
   KEY `ci_per` (`ci_per`),
   KEY `usuario` (`usuario`),
   KEY `usuario_2` (`usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `personal`
@@ -108,7 +116,14 @@ CREATE TABLE IF NOT EXISTS `proveedor` (
   `nom_prove` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `direcc_prove` text COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_proveedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `proveedor`
+--
+
+INSERT INTO `proveedor` (`id_proveedor`, `rif_cedula`, `nom_prove`, `direcc_prove`) VALUES
+(1, '22447878', 'Victor', 'Proveedor del CNTI');
 
 -- --------------------------------------------------------
 
@@ -164,11 +179,19 @@ INSERT INTO `proye_geren` (`id_proge`, `id_proyecto`, `id_gerente`) VALUES
 
 CREATE TABLE IF NOT EXISTS `servicio` (
   `id_servicio` int(100) NOT NULL AUTO_INCREMENT,
-  `nom_servi` int(11) NOT NULL,
+  `nom_servi` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `descri_servi` text COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_servicio`),
   KEY `nom_servi` (`nom_servi`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `servicio`
+--
+
+INSERT INTO `servicio` (`id_servicio`, `nom_servi`, `descri_servi`) VALUES
+(1, 'Servicio de Correo', 'Servicio de Correo'),
+(2, 'Servicio de Prueba', 'Servicio de Prueba');
 
 -- --------------------------------------------------------
 
@@ -180,7 +203,15 @@ CREATE TABLE IF NOT EXISTS `status` (
   `id_status` int(11) NOT NULL AUTO_INCREMENT,
   `nom_sta` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_status`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `status`
+--
+
+INSERT INTO `status` (`id_status`, `nom_sta`) VALUES
+(1, 'Aprobado'),
+(2, 'Rechazado');
 
 -- --------------------------------------------------------
 
@@ -219,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   KEY `tipo_usu` (`tipo_usu`),
   KEY `usuario` (`usuario`),
   KEY `usuario_2` (`usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -239,8 +270,8 @@ INSERT INTO `usuarios` (`id_usuario`, `tipo_usu`, `usuario`, `clave`, `correo_us
 -- Filtros para la tabla `em_geren`
 --
 ALTER TABLE `em_geren`
-  ADD CONSTRAINT `em_geren_ibfk_4` FOREIGN KEY (`id_gerente`) REFERENCES `personal` (`id_personal`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `em_geren_ibfk_3` FOREIGN KEY (`id_empleado`) REFERENCES `personal` (`id_personal`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `em_geren_ibfk_3` FOREIGN KEY (`id_empleado`) REFERENCES `personal` (`id_personal`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `em_geren_ibfk_4` FOREIGN KEY (`id_gerente`) REFERENCES `personal` (`id_personal`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `factura`
@@ -261,8 +292,8 @@ ALTER TABLE `personal`
 -- Filtros para la tabla `proye_geren`
 --
 ALTER TABLE `proye_geren`
-  ADD CONSTRAINT `proye_geren_ibfk_6` FOREIGN KEY (`id_gerente`) REFERENCES `personal` (`id_personal`) ON DELETE CASCADE,
-  ADD CONSTRAINT `proye_geren_ibfk_5` FOREIGN KEY (`id_proyecto`) REFERENCES `proyecto` (`id_proyecto`) ON DELETE CASCADE;
+  ADD CONSTRAINT `proye_geren_ibfk_5` FOREIGN KEY (`id_proyecto`) REFERENCES `proyecto` (`id_proyecto`) ON DELETE CASCADE,
+  ADD CONSTRAINT `proye_geren_ibfk_6` FOREIGN KEY (`id_gerente`) REFERENCES `personal` (`id_personal`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `usuarios`

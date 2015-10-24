@@ -9,12 +9,21 @@ import Clases.Datos;
 import Clases.Factura;
 import Clases.Opcion;
 import Clases.Utilidades;
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -299,7 +308,48 @@ public class frmFactura extends javax.swing.JFrame {
                 Double.parseDouble(txtMonto.getText()));
 
         if (datos.agregarFactura(factura)) {
-            JOptionPane.showMessageDialog(this, "Factura agregada Correctamente");
+            try {
+                JOptionPane.showMessageDialog(this, "Factura agregada Correctamente");
+                
+                /* Si la factura se registra exitosamente pasamos armar el pdf*/
+                
+                /* Instanciamos un objeto de tipo Map para pasarle los parametros
+                al reporte */
+                Map parametros = new HashMap();
+                
+                /* con el metodo put se le pasa el parametros al reporte, en este
+                caso el parametro se llama factura */
+                parametros.put("factura", txtIDFactura.getText());
+                
+                /* Obtenemos la direccion del reporte*/
+                String template = frmFactura.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+                
+                File aux = new File(template);
+                
+                /* Aqui comprobamos si el reporte se mando a ejecutar desde un IDE
+                o desde un JAR, si es desde un IDE guardamos la direccion del 
+                reporte con System.getProperty("user.dir") + "/src/Reportes/rptFactura.jrxml"; 
+                y si no es le pasamos la direccion donde se encuentra el jar */
+                if (aux.isDirectory()) {
+                    template =  System.getProperty("user.dir") + "/src/Reportes/rptFactura.jrxml";
+                } else {
+                    template = aux.getParent() + "/rptFactura.jrxml";
+                }
+                
+                /* Le pasamos la direccion del reporte que en este caso es un 
+                archivo jrxml, para que lo compile */
+                JasperReport jasperReport = JasperCompileManager.compileReport(template);
+                
+                /* Una ves compilado se lo pasamos al objeto Jasperprint para que
+                arme las consultas y los datos que contendran el reporte */
+                JasperPrint print = JasperFillManager.fillReport(jasperReport, parametros, datos.getCon());
+                
+                /* Lo hacemos visible en pantalla */
+                JasperViewer.viewReport(print);
+                
+            } catch (JRException ex) {
+                Logger.getLogger(frmFactura.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         } else {
             JOptionPane.showMessageDialog(this, "En estos momentos no es posible"
