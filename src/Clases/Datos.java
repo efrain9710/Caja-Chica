@@ -21,7 +21,7 @@ public class Datos {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost/caja";
-            con = DriverManager.getConnection(url, "root", "11");
+            con = DriverManager.getConnection(url, "victor", "root");
         } catch (Exception ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -206,8 +206,8 @@ public class Datos {
 
            String sql = "INSERT INTO factura VALUES("
                     + factura.getIdFactura()+ ", '"
-                    + factura.getFechaFactura()+ "', '"
-                    + factura.getFechaCarga()+ "', "
+                    + Utilidades.formateDate(factura.getFechaFactura())+ "', '"
+                    + Utilidades.formateDate(factura.getFechaCarga())+ "', "
                     + factura.getIdProveedor()+ ", "
                     + factura.getIdPersonal()+ ", "
                     + factura.getIdServicio()+ ", '"

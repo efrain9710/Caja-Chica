@@ -209,6 +209,18 @@ public class frmPersonal extends javax.swing.JFrame {
 
         txtIDGerente.setEnabled(false);
 
+        txtNomGe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomGeKeyTyped(evt);
+            }
+        });
+
+        txtApeGe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApeGeKeyTyped(evt);
+            }
+        });
+
         labelMetric20.setText("Proyecto:");
 
         btnCancelarGe.setText("Cancelar");
@@ -313,6 +325,12 @@ public class frmPersonal extends javax.swing.JFrame {
         });
 
         txtIDProveedor.setEnabled(false);
+
+        txtNomPro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomProKeyTyped(evt);
+            }
+        });
 
         areaProve.setColumns(20);
         areaProve.setRows(5);
@@ -436,22 +454,17 @@ public class frmPersonal extends javax.swing.JFrame {
                 clave,
                 txtCorreoUsu.getText());
 
-      
-
         /* Instanciamos un objeto de la Clase Proveedor, el cual se lo pasaremos
          a la funcion agregarProveedor, la cual pide como parametro un objeto Proveedor */
         Proveedor proveedor = new Proveedor(
-                Integer.parseInt(txtIDProveedor.getText()), 
+                Integer.parseInt(txtIDProveedor.getText()),
                 txtCedulaProveedor.getText(),
-                txtNomPro.getText(), 
+                txtNomPro.getText(),
                 areaProve.getText());
 
         /* Una ves instanciado y cargado el objeto llamamos a la funcion 
          agregarProveedor, validamos si la funcion retorna true, imprimimos en 
          pantalla un mensaje de aprobacion, si no lo contrario. */
-        
-      
-
         if (datos.agregarProveedor(proveedor)) {
             JOptionPane.showMessageDialog(this, "Proveedor Agregado Correctamente");
 
@@ -459,13 +472,13 @@ public class frmPersonal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "En estos momentos no es posible"
                     + " agregar al Proveedor, intentelo mas tarde");
         }
-        
-          /* LimpitxtIDProveedors  */
+
+        /* LimpitxtIDProveedors  */
         txtIDProveedor.setText("");
         txtCedulaProveedor.setText("");
         txtNomPro.setText("");
         areaProve.setText("");
-        
+
     }//GEN-LAST:event_btnRegistrarProActionPerformed
 
     private void btnCancelarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarUsuarioActionPerformed
@@ -572,7 +585,7 @@ public class frmPersonal extends javax.swing.JFrame {
         txtApeGe.setText("");
         txtTelGe.setText("");
         txtCargoGe.setText("");
-        
+
         setVisible(false);
 
     }//GEN-LAST:event_btnRegistrarGeActionPerformed
@@ -665,7 +678,7 @@ public class frmPersonal extends javax.swing.JFrame {
 
             int idPer = datos.getIdPersonal();
             txtIDGerente.setText("" + idPer);
-            
+
             int idPro = datos.getIdProveedor();
             txtIDProveedor.setText("" + idPro);
 
@@ -728,6 +741,40 @@ public class frmPersonal extends javax.swing.JFrame {
     private void btnCancelarGeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarGeActionPerformed
         setVisible(false);
     }//GEN-LAST:event_btnCancelarGeActionPerformed
+
+    private void txtNomGeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomGeKeyTyped
+
+        /* Validar solo letras */
+        char c = evt.getKeyChar();
+
+        if (Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_txtNomGeKeyTyped
+
+    private void txtApeGeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApeGeKeyTyped
+       
+        /* Validar solo letras */
+        char c = evt.getKeyChar();
+
+        if (Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_txtApeGeKeyTyped
+
+    private void txtNomProKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomProKeyTyped
+        /* Validar solo letras */
+        char c = evt.getKeyChar();
+
+        if (Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNomProKeyTyped
 
     /**
      * @param args the command line arguments

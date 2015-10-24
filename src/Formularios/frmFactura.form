@@ -45,37 +45,10 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="252" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="labelMetric8" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelMetric10" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelMetric15" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelMetric21" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelMetric9" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelMetric13" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelMetric12" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelMetric16" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelMetric14" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cmbEmpleado" linkSize="3" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cmbProveedor" linkSize="3" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtIDFactura" linkSize="3" alignment="0" pref="206" max="32767" attributes="0"/>
-                              <Component id="cmbServicios" linkSize="3" alignment="0" pref="206" max="32767" attributes="0"/>
-                              <Component id="cmbStatus" linkSize="3" alignment="0" pref="206" max="32767" attributes="0"/>
-                              <Component id="txtMonto" linkSize="3" alignment="0" pref="206" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="372" max="-2" attributes="0"/>
                           <Component id="btnRegistrar" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                           <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="383" pref="383" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="383" pref="383" max="-2" attributes="0"/>
@@ -92,6 +65,30 @@
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Component id="labelMetric1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="281" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="252" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="labelMetric8" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelMetric10" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelMetric15" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelMetric21" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelMetric9" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelMetric13" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelMetric12" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelMetric16" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelMetric14" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="cmbEmpleado" linkSize="3" alignment="0" max="32767" attributes="0"/>
+                      <Component id="cmbProveedor" linkSize="3" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtIDFactura" linkSize="3" alignment="0" pref="206" max="32767" attributes="0"/>
+                      <Component id="cmbServicios" linkSize="3" alignment="0" pref="206" max="32767" attributes="0"/>
+                      <Component id="cmbStatus" linkSize="3" alignment="0" pref="206" max="32767" attributes="0"/>
+                      <Component id="txtMonto" linkSize="3" alignment="0" pref="206" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="299" max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -223,6 +220,9 @@
         <Component class="org.edisoncor.gui.comboBox.ComboBoxRound" name="cmbStatus">
         </Component>
         <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtMonto">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtMontoKeyTyped"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>

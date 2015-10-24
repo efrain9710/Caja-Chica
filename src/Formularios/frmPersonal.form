@@ -352,8 +352,14 @@
                   </Properties>
                 </Component>
                 <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtNomGe">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomGeKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtApeGe">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtApeGeKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric20">
                   <Properties>
@@ -490,6 +496,9 @@
                   </Properties>
                 </Component>
                 <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtNomPro">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomProKeyTyped"/>
+                  </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                   <AuxValues>
