@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 24-10-2015 a las 17:30:48
+-- Tiempo de generación: 26-10-2015 a las 01:51:14
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.3.13
 
@@ -19,28 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `caja`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `em_geren`
---
-
-CREATE TABLE IF NOT EXISTS `em_geren` (
-  `id_emge` int(50) NOT NULL AUTO_INCREMENT,
-  `id_empleado` int(50) NOT NULL,
-  `id_gerente` int(50) NOT NULL,
-  PRIMARY KEY (`id_emge`),
-  KEY `id_empleado` (`id_empleado`),
-  KEY `id_gerente` (`id_gerente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
-
---
--- Volcado de datos para la tabla `em_geren`
---
-
-INSERT INTO `em_geren` (`id_emge`, `id_empleado`, `id_gerente`) VALUES
-(1, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -265,13 +243,6 @@ INSERT INTO `usuarios` (`id_usuario`, `tipo_usu`, `usuario`, `clave`, `correo_us
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `em_geren`
---
-ALTER TABLE `em_geren`
-  ADD CONSTRAINT `em_geren_ibfk_3` FOREIGN KEY (`id_empleado`) REFERENCES `personal` (`id_personal`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `em_geren_ibfk_4` FOREIGN KEY (`id_gerente`) REFERENCES `personal` (`id_personal`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `factura`
