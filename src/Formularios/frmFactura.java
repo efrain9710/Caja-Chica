@@ -105,6 +105,8 @@ public class frmFactura extends javax.swing.JFrame {
 
         dchFactura.setEnabled(false);
 
+        txtIDFactura.setEnabled(false);
+
         txtMonto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtMontoKeyTyped(evt);
@@ -310,43 +312,42 @@ public class frmFactura extends javax.swing.JFrame {
         if (datos.agregarFactura(factura)) {
             try {
                 JOptionPane.showMessageDialog(this, "Factura agregada Correctamente");
-                
+
                 /* Si la factura se registra exitosamente pasamos armar el pdf*/
-                
                 /* Instanciamos un objeto de tipo Map para pasarle los parametros
-                al reporte */
+                 al reporte */
                 Map parametros = new HashMap();
-                
+
                 /* con el metodo put se le pasa el parametros al reporte, en este
-                caso el parametro se llama factura */
+                 caso el parametro se llama factura */
                 parametros.put("factura", txtIDFactura.getText());
-                
+
                 /* Obtenemos la direccion del reporte*/
                 String template = frmFactura.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-                
+
                 File aux = new File(template);
-                
+
                 /* Aqui comprobamos si el reporte se mando a ejecutar desde un IDE
-                o desde un JAR, si es desde un IDE guardamos la direccion del 
-                reporte con System.getProperty("user.dir") + "/src/Reportes/rptFactura.jrxml"; 
-                y si no es le pasamos la direccion donde se encuentra el jar */
+                 o desde un JAR, si es desde un IDE guardamos la direccion del 
+                 reporte con System.getProperty("user.dir") + "/src/Reportes/rptFactura.jrxml"; 
+                 y si no es le pasamos la direccion donde se encuentra el jar */
                 if (aux.isDirectory()) {
-                    template =  System.getProperty("user.dir") + "/src/Reportes/rptFactura.jrxml";
+                    template = System.getProperty("user.dir") + "/src/Reportes/rptFactura.jrxml";
                 } else {
                     template = aux.getParent() + "/rptFactura.jrxml";
                 }
-                
+
                 /* Le pasamos la direccion del reporte que en este caso es un 
-                archivo jrxml, para que lo compile */
+                 archivo jrxml, para que lo compile */
                 JasperReport jasperReport = JasperCompileManager.compileReport(template);
-                
+
                 /* Una ves compilado se lo pasamos al objeto Jasperprint para que
-                arme las consultas y los datos que contendran el reporte */
+                 arme las consultas y los datos que contendran el reporte */
                 JasperPrint print = JasperFillManager.fillReport(jasperReport, parametros, datos.getCon());
-                
+
                 /* Lo hacemos visible en pantalla */
                 JasperViewer.viewReport(print);
-                
+
             } catch (JRException ex) {
                 Logger.getLogger(frmFactura.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -504,7 +505,7 @@ public class frmFactura extends javax.swing.JFrame {
         if (Character.isWhitespace(evt.getKeyChar())) {
             evt.consume();
         }
-        
+
     }//GEN-LAST:event_txtMontoKeyTyped
 
     /**

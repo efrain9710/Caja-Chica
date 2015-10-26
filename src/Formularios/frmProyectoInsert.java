@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author sofia
+ * @author Victor Pino
  */
 public class frmProyectoInsert extends javax.swing.JFrame {
 

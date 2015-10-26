@@ -214,6 +214,9 @@
           </Properties>
         </Component>
         <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtIDFactura">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="org.edisoncor.gui.comboBox.ComboBoxRound" name="cmbServicios">
         </Component>

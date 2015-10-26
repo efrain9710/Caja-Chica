@@ -196,25 +196,25 @@ public class Datos {
             return false;
         }
     }
-    
+
     /* Funcion para insertar una Factura a la base de datos , esta recibe como 
-    parametros un Objeto de la clase Factura */
+     parametros un Objeto de la clase Factura */
     public boolean agregarFactura(Factura factura) {
         try {
             /* Definimos el codigo sql que queremos ejecutar. En este caso es un
              insert a la tabla Factura */
 
-           String sql = "INSERT INTO factura VALUES("
-                    + factura.getIdFactura()+ ", '"
-                    + Utilidades.formateDate(factura.getFechaFactura())+ "', '"
-                    + Utilidades.formateDate(factura.getFechaCarga())+ "', "
-                    + factura.getIdProveedor()+ ", "
-                    + factura.getIdPersonal()+ ", "
-                    + factura.getIdServicio()+ ", '"
-                    + factura.getDescripcion()+ "', "
-                    + factura.getIdStatus()+ ", "
-                    + factura.getMonto()+ ")";
-           
+            String sql = "INSERT INTO factura VALUES("
+                    + factura.getIdFactura() + ", '"
+                    + Utilidades.formateDate(factura.getFechaFactura()) + "', '"
+                    + Utilidades.formateDate(factura.getFechaCarga()) + "', "
+                    + factura.getIdProveedor() + ", "
+                    + factura.getIdPersonal() + ", "
+                    + factura.getIdServicio() + ", '"
+                    + factura.getDescripcion() + "', "
+                    + factura.getIdStatus() + ", "
+                    + factura.getMonto() + ")";
+
             /* El createStatement cree un cuadro donde se puede insertar codigo
              sql, el statement se podria decir que es el cuadro en blanco que
              te da el phpmyadmin para insertar codigo sql. */
@@ -229,20 +229,20 @@ public class Datos {
             return false;
         }
     }
-    
+
     /* Funcion para insertar una Proveedor a la base de datos , esta recibe como 
-    parametros un Objeto de la clase Proveedor */
+     parametros un Objeto de la clase Proveedor */
     public boolean agregarProveedor(Proveedor proveedor) {
         try {
             /* Definimos el codigo sql que queremos ejecutar. En este caso es un
              insert a la tabla Proveedor */
 
-           String sql = "INSERT INTO proveedor VALUES("
-                    + proveedor.getIdProveedor()+ ", '"
-                    + proveedor.getRifCed()+ "', '"
-                    + proveedor.getNombre()+ "', '"
-                    + proveedor.getDireccion()+ "')";
-           
+            String sql = "INSERT INTO proveedor VALUES("
+                    + proveedor.getIdProveedor() + ", '"
+                    + proveedor.getRifCed() + "', '"
+                    + proveedor.getNombre() + "', '"
+                    + proveedor.getDireccion() + "')";
+
             /* El createStatement cree un cuadro donde se puede insertar codigo
              sql, el statement se podria decir que es el cuadro en blanco que
              te da el phpmyadmin para insertar codigo sql. */
@@ -323,7 +323,7 @@ public class Datos {
             return 0;
         }
     }
-    
+
     public int getIdProveedor() {
         try {
             String sql = "SELECT MAX(id_proveedor) AS num FROM proveedor";
@@ -354,7 +354,7 @@ public class Datos {
             return null;
         }
     }
-    
+
     public ResultSet getPersonal() {
 
         try {
@@ -527,17 +527,23 @@ public class Datos {
         }
     }
 
-    public ResultSet reporteFactura(String inicial, String ultima) {
-
+    public ResultSet getFacturas() {
         try {
-            String sql = "SELECT factura.idFactura, detalleFactura.idProducto, "
-                    + "detalleFactura.nombre, detalleFactura.costo, detalleFactura.cantidad, "
-                    + " detalleFactura.cantidad * detalleFactura.costo AS Monto "
-                    + " FROM factura "
-                    + " INNER JOIN detallefactura ON factura.idFactura = detalleFactura.idFactura "
-                    + " WHERE fecha >= '" + inicial + "' "
-                    + "AND fecha <= '" + ultima + "' ";
+            String sql = "SELECT * FROM factura";
+            
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
 
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
+    
+    public ResultSet getFacturas(String sql) {
+        try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
 

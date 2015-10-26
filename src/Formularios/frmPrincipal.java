@@ -8,7 +8,6 @@ package Formularios;
  *
  * @author Victor Pino
  */
-
 public class frmPrincipal extends javax.swing.JFrame {
 
     /**
@@ -37,6 +36,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuRecibos = new javax.swing.JMenu();
         mnuRecibosRegistrar = new javax.swing.JMenuItem();
         mnuConsultas = new javax.swing.JMenu();
+        mnuConsultasFactura = new javax.swing.JMenuItem();
         mnuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,10 +91,10 @@ public class frmPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(mnuPersonal);
 
         mnuRecibos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Reporte.png"))); // NOI18N
-        mnuRecibos.setText("Gestion de Recibos");
+        mnuRecibos.setText("Movimientos");
 
         mnuRecibosRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Factura.png"))); // NOI18N
-        mnuRecibosRegistrar.setText("Registrar");
+        mnuRecibosRegistrar.setText("Nueva Factura");
         mnuRecibosRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuRecibosRegistrarActionPerformed(evt);
@@ -106,10 +106,24 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         mnuConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Buscar.png"))); // NOI18N
         mnuConsultas.setText("Consultas");
+
+        mnuConsultasFactura.setText("Reporte de Facturas");
+        mnuConsultasFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuConsultasFacturaActionPerformed(evt);
+            }
+        });
+        mnuConsultas.add(mnuConsultasFactura);
+
         jMenuBar1.add(mnuConsultas);
 
         mnuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
         mnuSalir.setText("Salir");
+        mnuSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnuSalirMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(mnuSalir);
 
         setJMenuBar(jMenuBar1);
@@ -129,7 +143,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnuRecibosRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRecibosRegistrarActionPerformed
-       
+        
         frmFactura fac = new frmFactura();
         fac.setVisible(true);
         fac.setLocationRelativeTo(null);
@@ -150,7 +164,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         updele.setVisible(true);
         updele.setLocationRelativeTo(null);
         
-        
+
     }//GEN-LAST:event_mnuProyectoUpDeleActionPerformed
 
     private void mnuPersonalGestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuPersonalGestionActionPerformed
@@ -158,8 +172,20 @@ public class frmPrincipal extends javax.swing.JFrame {
         frmPersonal personal = new frmPersonal();
         personal.setVisible(true);
         personal.setLocationRelativeTo(null);
-                
+        
     }//GEN-LAST:event_mnuPersonalGestionActionPerformed
+
+    private void mnuConsultasFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConsultasFacturaActionPerformed
+        
+        frmConsultas consul = new frmConsultas();
+        consul.setVisible(true);
+        consul.setLocationRelativeTo(null);
+        
+    }//GEN-LAST:event_mnuConsultasFacturaActionPerformed
+
+    private void mnuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuSalirMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_mnuSalirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -198,6 +224,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu mnuConsultas;
+    private javax.swing.JMenuItem mnuConsultasFactura;
     private javax.swing.JMenu mnuPersonal;
     private javax.swing.JMenuItem mnuPersonalGestion;
     private javax.swing.JMenuItem mnuProyectoRegistrar;
