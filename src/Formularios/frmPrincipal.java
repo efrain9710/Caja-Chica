@@ -26,18 +26,23 @@ public class frmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem3 = new javax.swing.JMenuItem();
         panel1 = new org.edisoncor.gui.panel.Panel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        mnuProyectos = new javax.swing.JMenu();
-        mnuProyectoRegistrar = new javax.swing.JMenuItem();
-        mnuProyectoUpDele = new javax.swing.JMenuItem();
+        mnuHerramientas = new javax.swing.JMenu();
+        mnuHerramientasAddProyecto = new javax.swing.JMenuItem();
+        mnuHerramientasUpdateProyecto = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        mnuHerramientaEmpleado = new javax.swing.JMenuItem();
+        mnuHerramientasUpdateEmpleado = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        mnuHerramientasAddProveedor = new javax.swing.JMenuItem();
+        mnuHerramientasUpdateProveedor = new javax.swing.JMenuItem();
         mnuPersonal = new javax.swing.JMenu();
-        mnuPersonalGestion = new javax.swing.JMenuItem();
         mnuRecibos = new javax.swing.JMenu();
-        mnuRecibosRegistrar = new javax.swing.JMenuItem();
-        mnuConsultas = new javax.swing.JMenu();
-        mnuConsultasFactura = new javax.swing.JMenuItem();
         mnuSalir = new javax.swing.JMenu();
+
+        jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Caja Chica");
@@ -46,76 +51,81 @@ public class frmPrincipal extends javax.swing.JFrame {
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 599, Short.MAX_VALUE)
+            .addGap(0, 712, Short.MAX_VALUE)
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+            .addGap(0, 414, Short.MAX_VALUE)
         );
 
-        mnuProyectos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Archivo.png"))); // NOI18N
-        mnuProyectos.setText("Gestion de Proyectos");
+        mnuHerramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/herra3-48.png"))); // NOI18N
+        mnuHerramientas.setText("Herramientas Administrativas");
 
-        mnuProyectoRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregar.png"))); // NOI18N
-        mnuProyectoRegistrar.setText("Registrar");
-        mnuProyectoRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        mnuHerramientasAddProyecto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proyecto-32.png"))); // NOI18N
+        mnuHerramientasAddProyecto.setText("Registrar Proyecto");
+        mnuHerramientasAddProyecto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuProyectoRegistrarActionPerformed(evt);
+                mnuHerramientasAddProyectoActionPerformed(evt);
             }
         });
-        mnuProyectos.add(mnuProyectoRegistrar);
+        mnuHerramientas.add(mnuHerramientasAddProyecto);
 
-        mnuProyectoUpDele.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Update-32.png"))); // NOI18N
-        mnuProyectoUpDele.setText("Modificar y/o Eliminar");
-        mnuProyectoUpDele.addActionListener(new java.awt.event.ActionListener() {
+        mnuHerramientasUpdateProyecto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/uppro-32.png"))); // NOI18N
+        mnuHerramientasUpdateProyecto.setText("Modificar y/o Eliminar Proyecto");
+        mnuHerramientasUpdateProyecto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuProyectoUpDeleActionPerformed(evt);
+                mnuHerramientasUpdateProyectoActionPerformed(evt);
             }
         });
-        mnuProyectos.add(mnuProyectoUpDele);
+        mnuHerramientas.add(mnuHerramientasUpdateProyecto);
+        mnuHerramientas.add(jSeparator1);
 
-        jMenuBar1.add(mnuProyectos);
-
-        mnuPersonal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Usuarios.png"))); // NOI18N
-        mnuPersonal.setText("Personal");
-
-        mnuPersonalGestion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Gestion-32.png"))); // NOI18N
-        mnuPersonalGestion.setText("Gestion");
-        mnuPersonalGestion.addActionListener(new java.awt.event.ActionListener() {
+        mnuHerramientaEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuarios-32.png"))); // NOI18N
+        mnuHerramientaEmpleado.setText("Registrar Empleado");
+        mnuHerramientaEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuPersonalGestionActionPerformed(evt);
+                mnuHerramientaEmpleadoActionPerformed(evt);
             }
         });
-        mnuPersonal.add(mnuPersonalGestion);
+        mnuHerramientas.add(mnuHerramientaEmpleado);
 
+        mnuHerramientasUpdateEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar-em-32.png"))); // NOI18N
+        mnuHerramientasUpdateEmpleado.setText("Modificar y/o Eliminar Empleado");
+        mnuHerramientasUpdateEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuHerramientasUpdateEmpleadoActionPerformed(evt);
+            }
+        });
+        mnuHerramientas.add(mnuHerramientasUpdateEmpleado);
+        mnuHerramientas.add(jSeparator2);
+
+        mnuHerramientasAddProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedor-32.png"))); // NOI18N
+        mnuHerramientasAddProveedor.setText("Registrar Proveedor");
+        mnuHerramientasAddProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuHerramientasAddProveedorActionPerformed(evt);
+            }
+        });
+        mnuHerramientas.add(mnuHerramientasAddProveedor);
+
+        mnuHerramientasUpdateProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar-up-32.png"))); // NOI18N
+        mnuHerramientasUpdateProveedor.setText("Modificar y/o Eliminar Proveedor");
+        mnuHerramientasUpdateProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuHerramientasUpdateProveedorActionPerformed(evt);
+            }
+        });
+        mnuHerramientas.add(mnuHerramientasUpdateProveedor);
+
+        jMenuBar1.add(mnuHerramientas);
+
+        mnuPersonal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/factura-48.png"))); // NOI18N
+        mnuPersonal.setText("Cargar Factura");
         jMenuBar1.add(mnuPersonal);
 
-        mnuRecibos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Reporte.png"))); // NOI18N
-        mnuRecibos.setText("Movimientos");
-
-        mnuRecibosRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Factura.png"))); // NOI18N
-        mnuRecibosRegistrar.setText("Nueva Factura");
-        mnuRecibosRegistrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuRecibosRegistrarActionPerformed(evt);
-            }
-        });
-        mnuRecibos.add(mnuRecibosRegistrar);
-
+        mnuRecibos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consultas-48.png"))); // NOI18N
+        mnuRecibos.setText("Consultas");
         jMenuBar1.add(mnuRecibos);
-
-        mnuConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Buscar.png"))); // NOI18N
-        mnuConsultas.setText("Consultas");
-
-        mnuConsultasFactura.setText("Reporte de Facturas");
-        mnuConsultasFactura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuConsultasFacturaActionPerformed(evt);
-            }
-        });
-        mnuConsultas.add(mnuConsultasFactura);
-
-        jMenuBar1.add(mnuConsultas);
 
         mnuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
         mnuSalir.setText("Salir");
@@ -142,50 +152,58 @@ public class frmPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mnuRecibosRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRecibosRegistrarActionPerformed
-        
-        frmFactura fac = new frmFactura();
-        fac.setVisible(true);
-        fac.setLocationRelativeTo(null);
-        
-    }//GEN-LAST:event_mnuRecibosRegistrarActionPerformed
+    private void mnuHerramientasAddProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuHerramientasAddProyectoActionPerformed
 
-    private void mnuProyectoRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuProyectoRegistrarActionPerformed
-        
         frmProyectoInsert inser = new frmProyectoInsert();
         inser.setVisible(true);
         inser.setLocationRelativeTo(null);
 
-    }//GEN-LAST:event_mnuProyectoRegistrarActionPerformed
+    }//GEN-LAST:event_mnuHerramientasAddProyectoActionPerformed
 
-    private void mnuProyectoUpDeleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuProyectoUpDeleActionPerformed
-        
+    private void mnuHerramientasUpdateProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuHerramientasUpdateProyectoActionPerformed
+
         frmProyectoUpDele updele = new frmProyectoUpDele();
         updele.setVisible(true);
         updele.setLocationRelativeTo(null);
-        
 
-    }//GEN-LAST:event_mnuProyectoUpDeleActionPerformed
 
-    private void mnuPersonalGestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuPersonalGestionActionPerformed
-        
-        frmPersonal personal = new frmPersonal();
-        personal.setVisible(true);
-        personal.setLocationRelativeTo(null);
-        
-    }//GEN-LAST:event_mnuPersonalGestionActionPerformed
-
-    private void mnuConsultasFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConsultasFacturaActionPerformed
-        
-        frmConsultas consul = new frmConsultas();
-        consul.setVisible(true);
-        consul.setLocationRelativeTo(null);
-        
-    }//GEN-LAST:event_mnuConsultasFacturaActionPerformed
+    }//GEN-LAST:event_mnuHerramientasUpdateProyectoActionPerformed
 
     private void mnuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuSalirMouseClicked
         System.exit(0);
     }//GEN-LAST:event_mnuSalirMouseClicked
+
+    private void mnuHerramientaEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuHerramientaEmpleadoActionPerformed
+
+        frmPersonal personal = new frmPersonal();
+        personal.setVisible(true);
+        personal.setLocationRelativeTo(null);
+
+    }//GEN-LAST:event_mnuHerramientaEmpleadoActionPerformed
+
+    private void mnuHerramientasUpdateEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuHerramientasUpdateEmpleadoActionPerformed
+
+        frmPersonalUpdate up = new frmPersonalUpdate();
+        up.setVisible(true);
+        up.setLocationRelativeTo(null);
+
+    }//GEN-LAST:event_mnuHerramientasUpdateEmpleadoActionPerformed
+
+    private void mnuHerramientasAddProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuHerramientasAddProveedorActionPerformed
+
+        frmProveedor proveedor = new frmProveedor();
+        proveedor.setVisible(true);
+        proveedor.setLocationRelativeTo(null);
+
+    }//GEN-LAST:event_mnuHerramientasAddProveedorActionPerformed
+
+    private void mnuHerramientasUpdateProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuHerramientasUpdateProveedorActionPerformed
+
+        frmProveedorlUpdate up = new frmProveedorlUpdate();
+        up.setVisible(true);
+        up.setLocationRelativeTo(null);
+
+    }//GEN-LAST:event_mnuHerramientasUpdateProveedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,15 +241,18 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu mnuConsultas;
-    private javax.swing.JMenuItem mnuConsultasFactura;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JMenuItem mnuHerramientaEmpleado;
+    private javax.swing.JMenu mnuHerramientas;
+    private javax.swing.JMenuItem mnuHerramientasAddProveedor;
+    private javax.swing.JMenuItem mnuHerramientasAddProyecto;
+    private javax.swing.JMenuItem mnuHerramientasUpdateEmpleado;
+    private javax.swing.JMenuItem mnuHerramientasUpdateProveedor;
+    private javax.swing.JMenuItem mnuHerramientasUpdateProyecto;
     private javax.swing.JMenu mnuPersonal;
-    private javax.swing.JMenuItem mnuPersonalGestion;
-    private javax.swing.JMenuItem mnuProyectoRegistrar;
-    private javax.swing.JMenuItem mnuProyectoUpDele;
-    private javax.swing.JMenu mnuProyectos;
     private javax.swing.JMenu mnuRecibos;
-    private javax.swing.JMenuItem mnuRecibosRegistrar;
     private javax.swing.JMenu mnuSalir;
     private org.edisoncor.gui.panel.Panel panel1;
     // End of variables declaration//GEN-END:variables

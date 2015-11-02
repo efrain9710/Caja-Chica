@@ -32,7 +32,7 @@ public class Datos {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://localhost/Caja";
+            String url = "jdbc:mysql://localhost/caja";
             con = DriverManager.getConnection(url, "victor", "root");
             return con;
         } catch (Exception ex) {
@@ -275,10 +275,79 @@ public class Datos {
         }
     }
 
+    public boolean modificarPersonal(int id, String nombre, String apellido,
+            String telefono, String cargo) {
+
+        try {
+            String sql = "UPDATE personal SET  "
+                    + " nom_per = '" + nombre + "', "
+                    + " ape_per = '" + apellido + "', "
+                    + " tele_per = " + telefono + ", "
+                    + " cargo = '" + cargo + "'"
+                    + " WHERE id_personal = " + id + " ";
+
+            Statement st = con.createStatement();
+            st.executeUpdate(sql);
+
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+     public boolean modificarProveedor(int id, String nombre, String descripcion) {
+
+        try {
+            String sql = "UPDATE proveedor SET  "
+                    + " nom_prove = '" + nombre + "', "
+                    + " direcc_prove = '" + descripcion + "'"
+                    + " WHERE id_proveedor = " + id + " ";
+
+            Statement st = con.createStatement();
+            st.executeUpdate(sql);
+
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
     public boolean eliminarProyecto(int id) {
 
         try {
             String sql = "DELETE FROM proyecto WHERE id_proyecto = " + id + " ";
+
+            Statement st = con.createStatement();
+            st.executeUpdate(sql);
+
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
+    public boolean eliminarPersonal(int id) {
+
+        try {
+            String sql = "DELETE FROM personal WHERE id_personal = " + id + " ";
+
+            Statement st = con.createStatement();
+            st.executeUpdate(sql);
+
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+     public boolean eliminarProveedor(int id) {
+
+        try {
+            String sql = "DELETE FROM proveedor WHERE id_proveedor = " + id + " ";
 
             Statement st = con.createStatement();
             st.executeUpdate(sql);
@@ -419,6 +488,39 @@ public class Datos {
         }
     }
 
+    public ResultSet getPersonalNom(String nombre) {
+
+        try {
+            String sql = "SELECT * FROM personal "
+                    + "WHERE nom_per LIKE  '%" + nombre + "'";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            return rs;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public ResultSet getProveedorNom(String nombre) {
+
+        try {
+            String sql = "SELECT * FROM proveedor "
+                    + "WHERE nom_prove LIKE  '%" + nombre + "'";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            return rs;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+
     /* Funcion que sirve para validar si un proyecto ya esta registrado.
      - La funcion recibe como parametro un String el cual corresponde
      al nombre del proyecto.
@@ -530,7 +632,7 @@ public class Datos {
     public ResultSet getFacturas() {
         try {
             String sql = "SELECT * FROM factura";
-            
+
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
 
@@ -541,7 +643,7 @@ public class Datos {
         }
 
     }
-    
+
     public ResultSet getFacturas(String sql) {
         try {
             Statement st = con.createStatement();

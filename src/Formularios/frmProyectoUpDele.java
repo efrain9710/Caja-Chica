@@ -406,7 +406,7 @@ public class frmProyectoUpDele extends javax.swing.JFrame {
 
         /* Cuando el usuario digite en el campo txt Buscar y tabulee
          llenamos la tabla con la busqueda */
-        llenarTabla(txtNombre.getText());
+        llenarTabla(txtBuscar.getText());
 
     }//GEN-LAST:event_txtBuscarKeyReleased
 

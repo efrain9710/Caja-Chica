@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 26-10-2015 a las 01:51:14
+-- Tiempo de generación: 02-11-2015 a las 02:46:44
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.3.13
 
@@ -41,15 +41,14 @@ CREATE TABLE IF NOT EXISTS `factura` (
   KEY `id_personal` (`id_personal`),
   KEY `id_servicio` (`id_servicio`),
   KEY `id_status` (`id_status`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `factura`
 --
 
 INSERT INTO `factura` (`id_factura`, `fecha_fac`, `fecha_carga`, `id_proveedor`, `id_personal`, `id_servicio`, `descri_fac`, `id_status`, `monto`) VALUES
-(1, '2015-10-23', '2015-10-23', 1, 2, 2, 'PRUEBA	', 1, 200),
-(2, '2015-10-24', '2015-10-24', 1, 3, 1, 'Segunda prueba', 2, 500);
+(3, '2015-10-28', '2015-10-28', 1, 4, 1, 'sdas', 1, 2123);
 
 -- --------------------------------------------------------
 
@@ -78,9 +77,7 @@ CREATE TABLE IF NOT EXISTS `personal` (
 
 INSERT INTO `personal` (`id_personal`, `usuario`, `ci_per`, `nom_per`, `ape_per`, `tele_per`, `cargo`) VALUES
 (1, 'gerente', '22440748', 'prueba', 'ape', 2147483647, 'programador'),
-(2, 'prueba', '19587847', 'Prueba2', 'apellido', 2147483647, 'desarrolador'),
-(3, 'prueba3', '1047878', 'Prueba', 'Perez', 414, 'Desarrolador'),
-(4, 'o', '25', 'o', 'o', 212, '21');
+(4, 'o', '25', 'Juanchoo', 'Tacorta', 412, '21');
 
 -- --------------------------------------------------------
 
@@ -94,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `proveedor` (
   `nom_prove` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `direcc_prove` text COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_proveedor`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `proveedor`
@@ -146,7 +143,6 @@ CREATE TABLE IF NOT EXISTS `proye_geren` (
 
 INSERT INTO `proye_geren` (`id_proge`, `id_proyecto`, `id_gerente`) VALUES
 (1, 1, 1),
-(7, 4, 3),
 (10, 3, 4);
 
 -- --------------------------------------------------------
@@ -248,29 +244,29 @@ INSERT INTO `usuarios` (`id_usuario`, `tipo_usu`, `usuario`, `clave`, `correo_us
 -- Filtros para la tabla `factura`
 --
 ALTER TABLE `factura`
-  ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`),
-  ADD CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`id_personal`) REFERENCES `personal` (`id_personal`),
-  ADD CONSTRAINT `factura_ibfk_3` FOREIGN KEY (`id_servicio`) REFERENCES `servicio` (`id_servicio`),
-  ADD CONSTRAINT `factura_ibfk_4` FOREIGN KEY (`id_status`) REFERENCES `status` (`id_status`);
+  ADD CONSTRAINT `factura_ibfk_8` FOREIGN KEY (`id_status`) REFERENCES `status` (`id_status`) ON DELETE CASCADE,
+  ADD CONSTRAINT `factura_ibfk_5` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`) ON DELETE CASCADE,
+  ADD CONSTRAINT `factura_ibfk_6` FOREIGN KEY (`id_personal`) REFERENCES `personal` (`id_personal`) ON DELETE CASCADE,
+  ADD CONSTRAINT `factura_ibfk_7` FOREIGN KEY (`id_servicio`) REFERENCES `servicio` (`id_servicio`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `personal`
 --
 ALTER TABLE `personal`
-  ADD CONSTRAINT `personal_ibfk_2` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`usuario`) ON DELETE CASCADE;
+  ADD CONSTRAINT `personal_ibfk_6` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `proye_geren`
 --
 ALTER TABLE `proye_geren`
-  ADD CONSTRAINT `proye_geren_ibfk_5` FOREIGN KEY (`id_proyecto`) REFERENCES `proyecto` (`id_proyecto`) ON DELETE CASCADE,
-  ADD CONSTRAINT `proye_geren_ibfk_6` FOREIGN KEY (`id_gerente`) REFERENCES `personal` (`id_personal`) ON DELETE CASCADE;
+  ADD CONSTRAINT `proye_geren_ibfk_8` FOREIGN KEY (`id_gerente`) REFERENCES `personal` (`id_personal`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `proye_geren_ibfk_7` FOREIGN KEY (`id_proyecto`) REFERENCES `proyecto` (`id_proyecto`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_3` FOREIGN KEY (`tipo_usu`) REFERENCES `tipo_usuario` (`id_tipo`) ON DELETE CASCADE;
+  ADD CONSTRAINT `usuarios_ibfk_4` FOREIGN KEY (`tipo_usu`) REFERENCES `tipo_usuario` (`id_tipo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
