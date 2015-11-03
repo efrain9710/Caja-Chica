@@ -27,6 +27,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         panel1 = new org.edisoncor.gui.panel.Panel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuHerramientas = new javax.swing.JMenu();
@@ -38,11 +39,20 @@ public class frmPrincipal extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         mnuHerramientasAddProveedor = new javax.swing.JMenuItem();
         mnuHerramientasUpdateProveedor = new javax.swing.JMenuItem();
-        mnuPersonal = new javax.swing.JMenu();
-        mnuRecibos = new javax.swing.JMenu();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        mnuHerramientasMonto = new javax.swing.JMenuItem();
+        mnuHerramientasMontoUpdate = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        mnuFactura = new javax.swing.JMenu();
+        mnuFacturaAdd = new javax.swing.JMenuItem();
+        mnuConsultas = new javax.swing.JMenu();
+        mnuConsultasFactura = new javax.swing.JMenuItem();
+        mnuConsultasMonto = new javax.swing.JMenuItem();
         mnuSalir = new javax.swing.JMenu();
 
         jMenuItem3.setText("jMenuItem3");
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Caja Chica");
@@ -116,16 +126,65 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
         mnuHerramientas.add(mnuHerramientasUpdateProveedor);
+        mnuHerramientas.add(jSeparator3);
+
+        mnuHerramientasMonto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/monto-add-32.png"))); // NOI18N
+        mnuHerramientasMonto.setText("Registrar Monto");
+        mnuHerramientasMonto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuHerramientasMontoActionPerformed(evt);
+            }
+        });
+        mnuHerramientas.add(mnuHerramientasMonto);
+
+        mnuHerramientasMontoUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/monto-up-32.png"))); // NOI18N
+        mnuHerramientasMontoUpdate.setText("Modificar Monto");
+        mnuHerramientasMontoUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuHerramientasMontoUpdateActionPerformed(evt);
+            }
+        });
+        mnuHerramientas.add(mnuHerramientasMontoUpdate);
+        mnuHerramientas.add(jSeparator4);
 
         jMenuBar1.add(mnuHerramientas);
 
-        mnuPersonal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/factura-48.png"))); // NOI18N
-        mnuPersonal.setText("Cargar Factura");
-        jMenuBar1.add(mnuPersonal);
+        mnuFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/factura-48.png"))); // NOI18N
+        mnuFactura.setText("Cargar Factura");
 
-        mnuRecibos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consultas-48.png"))); // NOI18N
-        mnuRecibos.setText("Consultas");
-        jMenuBar1.add(mnuRecibos);
+        mnuFacturaAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registro-factura2-48.png"))); // NOI18N
+        mnuFacturaAdd.setText("Registrar Factura");
+        mnuFacturaAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuFacturaAddActionPerformed(evt);
+            }
+        });
+        mnuFactura.add(mnuFacturaAdd);
+
+        jMenuBar1.add(mnuFactura);
+
+        mnuConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consultas-48.png"))); // NOI18N
+        mnuConsultas.setText("Consultas");
+
+        mnuConsultasFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reporte2-32.png"))); // NOI18N
+        mnuConsultasFactura.setText("Consultar Factura");
+        mnuConsultasFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuConsultasFacturaActionPerformed(evt);
+            }
+        });
+        mnuConsultas.add(mnuConsultasFactura);
+
+        mnuConsultasMonto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/monto-32.png"))); // NOI18N
+        mnuConsultasMonto.setText("Consultar Monto");
+        mnuConsultasMonto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuConsultasMontoActionPerformed(evt);
+            }
+        });
+        mnuConsultas.add(mnuConsultasMonto);
+
+        jMenuBar1.add(mnuConsultas);
 
         mnuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
         mnuSalir.setText("Salir");
@@ -205,6 +264,40 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_mnuHerramientasUpdateProveedorActionPerformed
 
+    private void mnuFacturaAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFacturaAddActionPerformed
+        frmFactura fac = new frmFactura();
+        fac.setVisible(true);
+        fac.setLocationRelativeTo(null);
+    }//GEN-LAST:event_mnuFacturaAddActionPerformed
+
+    private void mnuConsultasFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConsultasFacturaActionPerformed
+        frmConsultas con = new frmConsultas();
+        con.setVisible(true);
+        con.setLocationRelativeTo(null);
+    }//GEN-LAST:event_mnuConsultasFacturaActionPerformed
+
+    private void mnuHerramientasMontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuHerramientasMontoActionPerformed
+        
+        frmMonto monto = new frmMonto();
+        monto.setVisible(true);
+        monto.setLocationRelativeTo(null);
+        
+    }//GEN-LAST:event_mnuHerramientasMontoActionPerformed
+
+    private void mnuHerramientasMontoUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuHerramientasMontoUpdateActionPerformed
+        frmMontoUpdate update = new frmMontoUpdate();
+        update.setVisible(true);
+        update.setLocationRelativeTo(null);
+    }//GEN-LAST:event_mnuHerramientasMontoUpdateActionPerformed
+
+    private void mnuConsultasMontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConsultasMontoActionPerformed
+        
+        frmMontoActual actual = new frmMontoActual();
+        actual.setVisible(true);
+        actual.setLocationRelativeTo(null);
+        
+    }//GEN-LAST:event_mnuConsultasMontoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -241,18 +334,26 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JMenu mnuConsultas;
+    private javax.swing.JMenuItem mnuConsultasFactura;
+    private javax.swing.JMenuItem mnuConsultasMonto;
+    private javax.swing.JMenu mnuFactura;
+    private javax.swing.JMenuItem mnuFacturaAdd;
     private javax.swing.JMenuItem mnuHerramientaEmpleado;
     private javax.swing.JMenu mnuHerramientas;
     private javax.swing.JMenuItem mnuHerramientasAddProveedor;
     private javax.swing.JMenuItem mnuHerramientasAddProyecto;
+    private javax.swing.JMenuItem mnuHerramientasMonto;
+    private javax.swing.JMenuItem mnuHerramientasMontoUpdate;
     private javax.swing.JMenuItem mnuHerramientasUpdateEmpleado;
     private javax.swing.JMenuItem mnuHerramientasUpdateProveedor;
     private javax.swing.JMenuItem mnuHerramientasUpdateProyecto;
-    private javax.swing.JMenu mnuPersonal;
-    private javax.swing.JMenu mnuRecibos;
     private javax.swing.JMenu mnuSalir;
     private org.edisoncor.gui.panel.Panel panel1;
     // End of variables declaration//GEN-END:variables

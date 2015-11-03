@@ -21,7 +21,7 @@ public class Datos {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost/caja";
-            con = DriverManager.getConnection(url, "victor", "root");
+            con = DriverManager.getConnection(url, "root", "");
         } catch (Exception ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -33,7 +33,7 @@ public class Datos {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost/caja";
-            con = DriverManager.getConnection(url, "victor", "root");
+            con = DriverManager.getConnection(url, "root", "");
             return con;
         } catch (Exception ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
@@ -126,8 +126,8 @@ public class Datos {
                     + personal.getUsuario() + "', '"
                     + personal.getCedula() + "', '"
                     + personal.getNombre() + "', '"
-                    + personal.getApellido() + "', "
-                    + personal.getTelefono() + ", '"
+                    + personal.getApellido() + "', '"
+                    + personal.getTelefono() + "', '"
                     + personal.getCargo() + "')";
 
             /* El createStatement cree un cuadro donde se puede insertar codigo
@@ -258,6 +258,30 @@ public class Datos {
         }
     }
 
+    /* Funcion para insertar una Monto a la base de datos , esta recibe como 
+     parametros una variable tipo Double */
+    public boolean agregarMonto(Double monto) {
+        try {
+            /* Definimos el codigo sql que queremos ejecutar. En este caso es un
+             insert a la tabla monto */
+
+            String sql = "INSERT INTO monto (monto) VALUES(" + monto + ")";
+
+            /* El createStatement cree un cuadro donde se puede insertar codigo
+             sql, el statement se podria decir que es el cuadro en blanco que
+             te da el phpmyadmin para insertar codigo sql. */
+            Statement st = con.createStatement();
+
+            /* Una vez creado el statement el cuadrito mandamos a ejecutar el 
+             codigo sql que definimos en la variable sql. */
+            st.executeUpdate(sql);
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
     public boolean modificarProyecto(int id, String nombre) {
 
         try {
@@ -282,7 +306,7 @@ public class Datos {
             String sql = "UPDATE personal SET  "
                     + " nom_per = '" + nombre + "', "
                     + " ape_per = '" + apellido + "', "
-                    + " tele_per = " + telefono + ", "
+                    + " tele_per = '" + telefono + "', "
                     + " cargo = '" + cargo + "'"
                     + " WHERE id_personal = " + id + " ";
 
@@ -295,14 +319,31 @@ public class Datos {
             return false;
         }
     }
-    
-     public boolean modificarProveedor(int id, String nombre, String descripcion) {
+
+    public boolean modificarProveedor(int id, String nombre, String descripcion) {
 
         try {
             String sql = "UPDATE proveedor SET  "
                     + " nom_prove = '" + nombre + "', "
                     + " direcc_prove = '" + descripcion + "'"
                     + " WHERE id_proveedor = " + id + " ";
+
+            Statement st = con.createStatement();
+            st.executeUpdate(sql);
+
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
+    public boolean modificarMonto(int id, Double monto) {
+
+        try {
+            String sql = "UPDATE monto SET  "
+                    + " monto = " + monto + ""
+                    + " WHERE id_monto = " + id + " ";
 
             Statement st = con.createStatement();
             st.executeUpdate(sql);
@@ -343,8 +384,8 @@ public class Datos {
             return false;
         }
     }
-    
-     public boolean eliminarProveedor(int id) {
+
+    public boolean eliminarProveedor(int id) {
 
         try {
             String sql = "DELETE FROM proveedor WHERE id_proveedor = " + id + " ";
@@ -646,6 +687,21 @@ public class Datos {
 
     public ResultSet getFacturas(String sql) {
         try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
+    
+    public ResultSet getMonto() {
+        try {
+            String sql = "SELECT * FROM monto";
+            
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
 
