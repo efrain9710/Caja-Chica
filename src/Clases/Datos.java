@@ -41,11 +41,11 @@ public class Datos {
         }
     }
 
-    public boolean validarUsuario(String usuario, String clave) {
+    public ResultSet validarUsuario(String usuario, String clave) {
         try {
             /* Definimos la consulta en la base datos
              select 1 significa que si hay registro devuelve 1 si no 0 */
-            String sql = "SELECT (1) FROM usuarios "
+            String sql = "SELECT * FROM usuarios "
                     + "WHERE usuario = '" + usuario + "'"
                     + "AND clave = '" + clave + "'";
 
@@ -53,11 +53,11 @@ public class Datos {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
 
-            return rs.next();
+            return rs;
 
         } catch (SQLException ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+            return null;
         }
 
     }
@@ -205,12 +205,13 @@ public class Datos {
              insert a la tabla Factura */
 
             String sql = "INSERT INTO factura VALUES("
-                    + factura.getIdFactura() + ", '"
+                    + factura.getIdFactura() + ", "
+                    + factura.getnFactura()+ ", '"
                     + Utilidades.formateDate(factura.getFechaFactura()) + "', '"
                     + Utilidades.formateDate(factura.getFechaCarga()) + "', "
                     + factura.getIdProveedor() + ", "
                     + factura.getIdPersonal() + ", "
-                    + factura.getIdServicio() + ", '"
+                    + factura.getIdServicio()+ ", '"
                     + factura.getDescripcion() + "', "
                     + factura.getIdStatus() + ", "
                     + factura.getMonto() + ")";
@@ -240,8 +241,7 @@ public class Datos {
             String sql = "INSERT INTO proveedor VALUES("
                     + proveedor.getIdProveedor() + ", '"
                     + proveedor.getRifCed() + "', '"
-                    + proveedor.getNombre() + "', '"
-                    + proveedor.getDireccion() + "')";
+                    + proveedor.getNombre() + "')";
 
             /* El createStatement cree un cuadro donde se puede insertar codigo
              sql, el statement se podria decir que es el cuadro en blanco que
@@ -320,12 +320,11 @@ public class Datos {
         }
     }
 
-    public boolean modificarProveedor(int id, String nombre, String descripcion) {
+    public boolean modificarProveedor(int id, String nombre) {
 
         try {
             String sql = "UPDATE proveedor SET  "
-                    + " nom_prove = '" + nombre + "', "
-                    + " direcc_prove = '" + descripcion + "'"
+                    + " nom_prove = '" + nombre + "' "
                     + " WHERE id_proveedor = " + id + " ";
 
             Statement st = con.createStatement();
@@ -464,6 +463,20 @@ public class Datos {
             return null;
         }
     }
+    
+     public ResultSet getCargos() {
+
+        try {
+            String sql = "SELECT * FROM cargo ";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 
     public ResultSet getPersonal() {
 
@@ -496,13 +509,29 @@ public class Datos {
         }
     }
 
+    public ResultSet getGerentes(int usuario) {
+
+        try {
+            String sql = "SELECT personal.id_personal,  personal.nom_per, personal.ape_per, personal.cargo "
+                    + "FROM personal "
+                    + "INNER JOIN cargo ON personal.cargo = cargo.cargo "
+                    + "WHERE usuarios.usuario = '" + usuario +"'";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
     public ResultSet getGerentes() {
 
         try {
             String sql = "SELECT personal.id_personal,  personal.nom_per, personal.ape_per "
                     + "FROM personal "
-                    + "INNER JOIN usuarios ON personal.usuario = usuarios.usuario "
-                    + "WHERE usuarios.tipo_usu = 1";
+                    + "WHERE personal.cargo = 'Gerente' ";
 
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);

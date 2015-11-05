@@ -11,10 +11,10 @@ public class Personal {
     private String cedula;
     private String nombre;
     private String apellido;
-    private Integer telefono;
+    private String telefono;
     private String cargo;
 
-    public Personal(Integer idPersonal, String usuario, String cedula, String nombre, String apellido, Integer telefono, String cargo) {
+    public Personal(Integer idPersonal, String usuario, String cedula, String nombre, String apellido, String telefono, String cargo) {
         this.idPersonal = idPersonal;
         this.usuario = usuario;
         this.cedula = cedula;
@@ -64,11 +64,11 @@ public class Personal {
         this.apellido = apellido;
     }
 
-    public Integer getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -79,9 +79,6 @@ public class Personal {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
-
-    
-   
     
     
 }

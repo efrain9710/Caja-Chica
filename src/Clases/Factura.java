@@ -6,27 +6,31 @@ import java.util.Date;
  *
  * @author Victor Pino
  */
-
 public class Factura {
-    
+
     private Integer idFactura;
+    private Integer nFactura;
     private Date fechaFactura;
     private Date fechaCarga;
     private Integer idProveedor;
     private Integer idPersonal;
+    private Integer idGerente;
     private Integer idServicio;
     private String descripcion;
     private Integer idStatus;
     private Double monto;
 
-    public Factura(Integer idFactura, Date fechaFactura, Date fechaCarga, 
-            Integer idProveedor, Integer idPersonal, Integer idServicio, 
-            String descripcion, Integer idStatus, Double monto) {
+    public Factura(Integer idFactura, Integer nFactura, Date fechaFactura, 
+            Date fechaCarga, Integer idProveedor, Integer idPersonal, 
+            Integer idGerente, Integer idServicio, String descripcion, 
+            Integer idStatus, Double monto) {
         this.idFactura = idFactura;
+        this.nFactura = nFactura;
         this.fechaFactura = fechaFactura;
         this.fechaCarga = fechaCarga;
         this.idProveedor = idProveedor;
         this.idPersonal = idPersonal;
+        this.idGerente = idGerente;
         this.idServicio = idServicio;
         this.descripcion = descripcion;
         this.idStatus = idStatus;
@@ -39,6 +43,14 @@ public class Factura {
 
     public void setIdFactura(Integer idFactura) {
         this.idFactura = idFactura;
+    }
+
+    public Integer getnFactura() {
+        return nFactura;
+    }
+
+    public void setnFactura(Integer nFactura) {
+        this.nFactura = nFactura;
     }
 
     public Date getFechaFactura() {
@@ -73,6 +85,14 @@ public class Factura {
         this.idPersonal = idPersonal;
     }
 
+    public Integer getIdGerente() {
+        return idGerente;
+    }
+
+    public void setIdGerente(Integer idGerente) {
+        this.idGerente = idGerente;
+    }
+
     public Integer getIdServicio() {
         return idServicio;
     }
@@ -104,7 +124,7 @@ public class Factura {
     public void setMonto(Double monto) {
         this.monto = monto;
     }
+
     
-    
-    
+
 }

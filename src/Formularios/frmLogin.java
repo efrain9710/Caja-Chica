@@ -7,6 +7,10 @@
 package Formularios;
 
 import Clases.Datos;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -43,7 +47,7 @@ public class frmLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio de Sesion");
 
-        panel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo-Login5.jpg"))); // NOI18N
+        panel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-Login.png"))); // NOI18N
 
         labelMetric1.setText("Usuario:");
         labelMetric1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -73,10 +77,10 @@ public class frmLogin extends javax.swing.JFrame {
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                .addContainerGap(232, Short.MAX_VALUE)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(197, 197, 197)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(labelMetric1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelMetric2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -85,19 +89,19 @@ public class frmLogin extends javax.swing.JFrame {
                             .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(253, 253, 253)
+                        .addGap(56, 56, 56)
                         .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addGap(224, 224, 224))
         );
 
         panel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtClave, txtUsuario});
 
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel1Layout.createSequentialGroup()
-                .addGap(91, 91, 91)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                .addContainerGap(151, Short.MAX_VALUE)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelMetric1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -109,7 +113,7 @@ public class frmLogin extends javax.swing.JFrame {
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addGap(91, 91, 91))
         );
 
         panel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtClave, txtUsuario});
@@ -131,24 +135,28 @@ public class frmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        Datos misDatos = new Datos();
-        
-        String clave = new String(txtClave.getPassword());
-        
-        if(!misDatos.validarUsuario(txtUsuario.getText(), clave)){
+        try {
+            Datos misDatos = new Datos();
+            
+            String clave = new String(txtClave.getPassword());
+            ResultSet rs = misDatos.validarUsuario(txtUsuario.getText(), clave);
+            if(rs.next() == false) {
             JOptionPane.showMessageDialog(rootPane, "Usuario o Clave incorrectos");
             txtUsuario.setText("");
             txtClave.setText("");
             txtUsuario.requestFocusInWindow();
             return;
+            } 
+            frmPrincipal miPrincipal = new frmPrincipal();
+            setVisible(false);
+            miPrincipal.setVisible(true);
+            miPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            miPrincipal.setLocationRelativeTo(null);
+            miPrincipal.setUsuario(txtUsuario.getText(), rs.getInt("tipo_usu"));
+            miPrincipal.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(frmLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        frmPrincipal miPrincipal = new frmPrincipal();
-        setVisible(false);
-        miPrincipal.setVisible(true);
-        miPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        miPrincipal.setLocationRelativeTo(null);
-        miPrincipal.setVisible(true);
         
         
     }//GEN-LAST:event_btnIngresarActionPerformed
