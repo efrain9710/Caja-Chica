@@ -14,15 +14,21 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     public String usuario;
     public Integer perfil;
+    public String cargo;
+    public Integer id;
     
     public frmPrincipal() {
         initComponents();
     }
     
-    public void setUsuario(String usuario, int perfil){
+    public void setUsuario(String usuario, int id, int perfil, String cargo){
         this.usuario = usuario;
+        this.id = id;
         this.perfil = perfil;
+        this.cargo = cargo;
     }
+    
+   
     
 
     
@@ -298,7 +304,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void mnuFacturaAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFacturaAddActionPerformed
         frmFactura fac = new frmFactura();
         dpnEscritorio.add(fac);
-        fac.setUsuario(usuario, perfil);
+        fac.setUsuario(usuario, id, perfil, cargo);
         fac.show();
     }//GEN-LAST:event_mnuFacturaAddActionPerformed
 
@@ -332,9 +338,16 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-        //Establece la imagen de fondo
-        //((DesktopConFondo) dpnEscritorio).setImagen("/Imagenes/fondo-sistema.png");
-
+        if (perfil == 1){
+            mnuHerramientas.setEnabled(true);
+        }
+        
+        
+        if (perfil == 2){
+            mnuHerramientas.setEnabled(false);
+        }
+        
+       this.setTitle(usuario);
     }//GEN-LAST:event_formWindowOpened
 
     /**

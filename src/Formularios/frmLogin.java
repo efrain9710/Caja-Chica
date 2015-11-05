@@ -152,7 +152,8 @@ public class frmLogin extends javax.swing.JFrame {
             miPrincipal.setVisible(true);
             miPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
             miPrincipal.setLocationRelativeTo(null);
-            miPrincipal.setUsuario(txtUsuario.getText(), rs.getInt("tipo_usu"));
+            miPrincipal.setUsuario(txtUsuario.getText(), rs.getInt("id_personal"),
+                    rs.getInt("tipo_usu"), rs.getString("cargo"));
             miPrincipal.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(frmLogin.class.getName()).log(Level.SEVERE, null, ex);

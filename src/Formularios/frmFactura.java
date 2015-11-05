@@ -37,12 +37,16 @@ public class frmFactura extends javax.swing.JInternalFrame {
 
     public String usuario;
     public Integer perfil;
+    public String cargo;
+    public Integer id;
 
-     public void setUsuario(String usuario, int perfil){
+    public void setUsuario(String usuario, int id, int perfil, String cargo) {
         this.usuario = usuario;
+        this.id = id;
         this.perfil = perfil;
+        this.cargo = cargo;
     }
-     
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -158,6 +162,11 @@ public class frmFactura extends javax.swing.JInternalFrame {
 
         labelMetric17.setText("Nº Factura");
 
+        txtNFactura.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNFacturaFocusLost(evt);
+            }
+        });
         txtNFactura.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNFacturaKeyTyped(evt);
@@ -316,6 +325,11 @@ public class frmFactura extends javax.swing.JInternalFrame {
         if (Character.isWhitespace(evt.getKeyChar())) {
             evt.consume();
         }
+
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+
     }//GEN-LAST:event_txtMontoKeyTyped
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -544,64 +558,117 @@ public class frmFactura extends javax.swing.JInternalFrame {
                 cmbStatus.addItem(op3);
             }
 
-            /* Instaciamos un objeto de la clase Opcion para cargar el combo box
-             de los Empleados  */
-            Opcion op4 = new Opcion("0", "Seleccione un Empleado ");
+            if (cargo.equals("Gerente")) {
 
-            /* Añadimos el primer elemento al combo box */
-            cmbEmpleado.addItem(op4);
+                /* Instaciamos un objeto de la clase Opcion para cargar el combo box
+                 de los Empleados  */
+                Opcion op4 = new Opcion("0", "Seleccione un Empleado ");
 
-            /* Llamos a la funcion getPersonal la cual nos devuelve todo el
-             Personal que hay, esos datos los guardamos en un ResultSet para luego
-             llenar el combo box con todos los Empleados */
-            ResultSet rsPer = datos.getPersonal();
-
-            /* Hacemos un while que mientras hallan registros en rs, sobreescrira
-             al objeto de la clase opcion con los datos del objeto rs, y los añada
-             al combo box */
-            while (rsPer.next()) {
-                op4 = new Opcion(
-                        rsPer.getString("id_personal"),
-                        rsPer.getString("nom_per")
-                        + " " + rsPer.getString("ape_per"));
+                /* Añadimos el primer elemento al combo box */
                 cmbEmpleado.addItem(op4);
-            }
-            
-              /* Instaciamos un objeto de la clase Opcion para cargar el combo box
-             de los Empleados  */
-            Opcion op5 = new Opcion("0", "Seleccione un Gerente ");
 
-            /* Añadimos el primer elemento al combo box */
-            cmbGerente.addItem(op5);
+                /* Llamos a la funcion getPersonal la cual nos devuelve todo el
+                 Personal que hay, esos datos los guardamos en un ResultSet para luego
+                 llenar el combo box con todos los Empleados */
+                ResultSet rsPer = datos.getPersonal();
 
-            /* Llamos a la funcion getPersonal la cual nos devuelve todo el
-             Personal que hay, esos datos los guardamos en un ResultSet para luego
-             llenar el combo box con todos los Empleados */
-            ResultSet rsGere = datos.getGerentes();
+                /* Hacemos un while que mientras hallan registros en rs, sobreescrira
+                 al objeto de la clase opcion con los datos del objeto rs, y los añada
+                 al combo box */
+                while (rsPer.next()) {
+                    op4 = new Opcion(
+                            rsPer.getString("id_personal"),
+                            rsPer.getString("nom_per")
+                            + " " + rsPer.getString("ape_per"));
+                    cmbEmpleado.addItem(op4);
+                }
 
-            /* Hacemos un while que mientras hallan registros en rs, sobreescrira
-             al objeto de la clase opcion con los datos del objeto rs, y los añada
-             al combo box */
-            while (rsGere.next()) {
-                op5 = new Opcion(
-                        rsGere.getString("id_personal"),
-                        rsGere.getString("nom_per")
-                        + " " + rsGere.getString("ape_per"));
+                /* Instaciamos un objeto de la clase Opcion para cargar el combo box
+                 de los Empleados  */
+                Opcion op5 = new Opcion("" + id, usuario);
+
+                /* Añadimos el primer elemento al combo box */
                 cmbGerente.addItem(op5);
+
+            } else {
+
+                /* Instaciamos un objeto de la clase Opcion para cargar el combo box
+                 de los Empleados  */
+                Opcion op4 = new Opcion("" + id, usuario);
+
+                /* Añadimos el primer elemento al combo box */
+                cmbEmpleado.addItem(op4);
+
+                /* Instaciamos un objeto de la clase Opcion para cargar el combo box
+                 de los Empleados  */
+                Opcion op5 = new Opcion("0", "Seleccione un Gerente ");
+
+                /* Añadimos el primer elemento al combo box */
+                cmbGerente.addItem(op5);
+
+                /* Llamos a la funcion getPersonal la cual nos devuelve todo el
+                 Personal que hay, esos datos los guardamos en un ResultSet para luego
+                 llenar el combo box con todos los Empleados */
+                ResultSet rsGere = datos.getGerentes();
+
+                /* Hacemos un while que mientras hallan registros en rs, sobreescrira
+                 al objeto de la clase opcion con los datos del objeto rs, y los añada
+                 al combo box */
+                while (rsGere.next()) {
+                    op5 = new Opcion(
+                            rsGere.getString("id_personal"),
+                            rsGere.getString("nom_per")
+                            + " " + rsGere.getString("ape_per"));
+                    cmbGerente.addItem(op5);
+                }
+
             }
-           
 
         } catch (SQLException ex) {
             Logger.getLogger(frmFactura.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
 
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void txtNFacturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNFacturaKeyTyped
-        // TODO add your handling code here:
+        /* Funcion para validar que solo ingresen numeros */
+        char c = evt.getKeyChar();
+
+        if (Character.isLetter(c)) {
+            getToolkit().beep();
+
+            evt.consume();
+        }
+
+        if (Character.isWhitespace(evt.getKeyChar())) {
+            evt.consume();
+        }
+
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+
     }//GEN-LAST:event_txtNFacturaKeyTyped
+
+    private void txtNFacturaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNFacturaFocusLost
+
+        Datos da = new Datos();
+
+        if (!txtNFactura.getText().equals("")) {
+
+            if (da.getNumeroFac(Integer.parseInt(txtNFactura.getText()))) {
+                JOptionPane.showMessageDialog(this, "El numero de la factura ya se "
+                        + "encuentra registrado. ");
+                txtNFactura.setText("");
+                txtNFactura.requestFocusInWindow();
+
+            }
+
+        }
+
+
+    }//GEN-LAST:event_txtNFacturaFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

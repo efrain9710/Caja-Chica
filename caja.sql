@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 03-11-2015 a las 01:18:10
--- Versión del servidor: 5.5.24-log
--- Versión de PHP: 5.3.13
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 05-11-2015 a las 08:26:59
+-- Versión del servidor: 5.6.17
+-- Versión de PHP: 5.5.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -23,11 +23,42 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `cargo`
+--
+
+CREATE TABLE IF NOT EXISTS `cargo` (
+  `id_cargo` int(11) NOT NULL AUTO_INCREMENT,
+  `cargo` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_cargo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+
+--
+-- Volcado de datos para la tabla `cargo`
+--
+
+INSERT INTO `cargo` (`id_cargo`, `cargo`) VALUES
+(1, 'Director'),
+(2, 'Gerente'),
+(3, 'Coordinador de Infraestructura'),
+(4, 'DT'),
+(5, 'Coordinador de desarrollo'),
+(6, 'Coordinador de implementacion'),
+(7, 'Consultor Lider 3'),
+(8, 'Consultor Lider 2'),
+(9, 'Consultor Lider 1'),
+(10, 'Soporte Tecnico 2'),
+(11, 'Servicios Generales'),
+(12, 'Analista RRHH');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `factura`
 --
 
 CREATE TABLE IF NOT EXISTS `factura` (
   `id_factura` int(11) NOT NULL AUTO_INCREMENT,
+  `n_factura` int(11) NOT NULL,
   `fecha_fac` date NOT NULL,
   `fecha_carga` date NOT NULL,
   `id_proveedor` int(11) NOT NULL,
@@ -37,19 +68,22 @@ CREATE TABLE IF NOT EXISTS `factura` (
   `id_status` int(11) NOT NULL,
   `monto` double NOT NULL,
   PRIMARY KEY (`id_factura`),
+  UNIQUE KEY `n_factura_2` (`n_factura`),
   KEY `id_proveedor` (`id_proveedor`),
   KEY `id_personal` (`id_personal`),
   KEY `id_servicio` (`id_servicio`),
-  KEY `id_status` (`id_status`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=5 ;
+  KEY `id_status` (`id_status`),
+  KEY `n_factura` (`n_factura`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `factura`
 --
 
-INSERT INTO `factura` (`id_factura`, `fecha_fac`, `fecha_carga`, `id_proveedor`, `id_personal`, `id_servicio`, `descri_fac`, `id_status`, `monto`) VALUES
-(3, '2015-10-28', '2015-10-28', 1, 4, 1, 'sdas', 1, 2123),
-(4, '2015-11-11', '2015-11-02', 1, 4, 2, 'prueba 3', 1, 300);
+INSERT INTO `factura` (`id_factura`, `n_factura`, `fecha_fac`, `fecha_carga`, `id_proveedor`, `id_personal`, `id_servicio`, `descri_fac`, `id_status`, `monto`) VALUES
+(3, 0, '2015-10-28', '2015-10-28', 1, 4, 1, 'sdas', 1, 2123),
+(4, 1, '2015-11-11', '2015-11-02', 1, 4, 2, 'prueba 3', 1, 300),
+(5, 5, '2015-11-05', '2015-11-05', 1, 1, 1, 'asdas', 1, 23323);
 
 -- --------------------------------------------------------
 
@@ -89,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `personal` (
   KEY `ci_per` (`ci_per`),
   KEY `usuario` (`usuario`),
   KEY `usuario_2` (`usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
 
 --
 -- Volcado de datos para la tabla `personal`
@@ -97,7 +131,9 @@ CREATE TABLE IF NOT EXISTS `personal` (
 
 INSERT INTO `personal` (`id_personal`, `usuario`, `ci_per`, `nom_per`, `ape_per`, `tele_per`, `cargo`) VALUES
 (1, 'gerente', '22440748', 'prueba', 'ape', '2147483647', 'programador'),
-(4, 'o', '25', 'Juanchoo', 'Tacorta', '412', '21');
+(4, 'o', '25', 'Juanchoo', 'Tacorta', '412', '21'),
+(5, '478', '22474787', 'sads', 'sad', '0445', 'asda'),
+(6, 'asdda', 'N-34343', 'sads', 'sads', '41434344', 'Gerente');
 
 -- --------------------------------------------------------
 
@@ -130,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
   `id_proyecto` int(100) NOT NULL AUTO_INCREMENT,
   `nom_pro` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_proyecto`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `proyecto`
@@ -140,7 +176,8 @@ INSERT INTO `proyecto` (`id_proyecto`, `nom_pro`) VALUES
 (1, 'pruebaaa'),
 (2, 'Prueba'),
 (3, 'p3'),
-(4, 'p6');
+(4, 'p6'),
+(5, 'peaa');
 
 -- --------------------------------------------------------
 
@@ -155,7 +192,7 @@ CREATE TABLE IF NOT EXISTS `proye_geren` (
   PRIMARY KEY (`id_proge`),
   KEY `id_proyecto` (`id_proyecto`),
   KEY `id_gerente` (`id_gerente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=14 ;
 
 --
 -- Volcado de datos para la tabla `proye_geren`
@@ -163,7 +200,10 @@ CREATE TABLE IF NOT EXISTS `proye_geren` (
 
 INSERT INTO `proye_geren` (`id_proge`, `id_proyecto`, `id_gerente`) VALUES
 (1, 1, 1),
-(10, 3, 4);
+(10, 3, 4),
+(11, 1, 5),
+(12, 3, 6),
+(13, 4, 6);
 
 -- --------------------------------------------------------
 
@@ -244,7 +284,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   KEY `tipo_usu` (`tipo_usu`),
   KEY `usuario` (`usuario`),
   KEY `usuario_2` (`usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -254,7 +294,9 @@ INSERT INTO `usuarios` (`id_usuario`, `tipo_usu`, `usuario`, `clave`, `correo_us
 (1, 1, 'gerente', '11', 'gerente@gmail.com'),
 (2, 1, 'prueba', '11', 'gerente@gmail.com'),
 (3, 2, 'prueba3', '11', 'prueba@gmail.com'),
-(4, 1, 'o', '11', 'o');
+(4, 1, 'o', '11', 'o'),
+(5, 2, '478', '11', 'sdasda'),
+(6, 2, 'asdda', '11', 'asdas@gmail.com');
 
 --
 -- Restricciones para tablas volcadas

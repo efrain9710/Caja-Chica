@@ -45,9 +45,12 @@ public class Datos {
         try {
             /* Definimos la consulta en la base datos
              select 1 significa que si hay registro devuelve 1 si no 0 */
-            String sql = "SELECT * FROM usuarios "
-                    + "WHERE usuario = '" + usuario + "'"
-                    + "AND clave = '" + clave + "'";
+            String sql = "SELECT personal.id_personal,  personal.nom_per, "
+                    + "personal.ape_per, personal.usuario, personal.cargo, usuarios.tipo_usu "
+                    + "FROM personal "
+                    + "INNER JOIN usuarios ON personal.usuario = usuarios.usuario "
+                    + "WHERE usuarios.usuario = '" + usuario + "'"
+                    + "AND usuarios.clave = '" + clave + "'";
 
             /* Creamos el statement para poder enviarle la sentencia sql */
             Statement st = con.createStatement();
@@ -657,6 +660,20 @@ public class Datos {
         } catch (SQLException ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
+        }
+    }
+    
+    public boolean getNumeroFac(int fac) {
+        try {
+            String sql = "SELECT * FROM factura WHERE n_factura = " + fac + "";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            return rs.next();
+              
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
 
