@@ -9,11 +9,15 @@ public class Proveedor {
     private Integer idProveedor;
     private String rifCed;
     private String nombre;
+    private String telefono;
+    private String descripcion;
 
-    public Proveedor(Integer idProveedor, String rifCed, String nombre) {
+    public Proveedor(Integer idProveedor, String rifCed, String nombre, String telefono, String descripcion) {
         this.idProveedor = idProveedor;
         this.rifCed = rifCed;
         this.nombre = nombre;
+        this.telefono = telefono;
+        this.descripcion = descripcion;
     }
 
     public Integer getIdProveedor() {
@@ -39,5 +43,23 @@ public class Proveedor {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    
     
 }

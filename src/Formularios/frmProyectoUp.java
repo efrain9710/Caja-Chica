@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class frmProyectoUp extends javax.swing.JInternalFrame {
 
     /* Definimos los titulos que llevara la tabla*/
-    public String titulos[] = {"ID Proyecto", "Nombre", "Gerente"};
+    public String titulos[] = {"ID Proyecto", "Nombre"};
 
     public frmProyectoUp() {
         initComponents();
@@ -67,7 +67,6 @@ public class frmProyectoUp extends javax.swing.JInternalFrame {
 
                 registro[0] = rs.getString("id_proyecto");
                 registro[1] = rs.getString("nom_pro");
-                registro[2] = rs.getString("nom_pro");
                 tablaModelo.addRow(registro);
 
             }
@@ -104,7 +103,6 @@ public class frmProyectoUp extends javax.swing.JInternalFrame {
 
                 registro[0] = rs.getString("id_proyecto");
                 registro[1] = rs.getString("nom_pro");
-                registro[2] = rs.getString("nom_pro");
                 tablaModelo.addRow(registro);
 
             }

@@ -16,28 +16,22 @@ public class frmPrincipal extends javax.swing.JFrame {
     public Integer perfil;
     public String cargo;
     public Integer id;
-    
+
     public frmPrincipal() {
         initComponents();
     }
-    
-    public void setUsuario(String usuario, int id, int perfil, String cargo){
+
+    public void setUsuario(String usuario, int id, int perfil, String cargo) {
         this.usuario = usuario;
         this.id = id;
         this.perfil = perfil;
         this.cargo = cargo;
     }
-    
-   
-    
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         dpnEscritorio = new javax.swing.JDesktopPane();
         panel1 = new org.edisoncor.gui.panel.Panel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -54,16 +48,13 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuHerramientasMonto = new javax.swing.JMenuItem();
         mnuHerramientasMontoUpdate = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        mnuHerramientasUsuarioUp = new javax.swing.JMenuItem();
         mnuFactura = new javax.swing.JMenu();
         mnuFacturaAdd = new javax.swing.JMenuItem();
         mnuConsultas = new javax.swing.JMenu();
         mnuConsultasFactura = new javax.swing.JMenuItem();
         mnuConsultasMonto = new javax.swing.JMenuItem();
         mnuSalir = new javax.swing.JMenu();
-
-        jMenuItem3.setText("jMenuItem3");
-
-        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Caja Chica");
@@ -177,6 +168,14 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuHerramientas.add(mnuHerramientasMontoUpdate);
         mnuHerramientas.add(jSeparator4);
 
+        mnuHerramientasUsuarioUp.setText("Modificar y/o Eliminar Usuario");
+        mnuHerramientasUsuarioUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuHerramientasUsuarioUpActionPerformed(evt);
+            }
+        });
+        mnuHerramientas.add(mnuHerramientasUsuarioUp);
+
         jMenuBar1.add(mnuHerramientas);
 
         mnuFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/factura-48.png"))); // NOI18N
@@ -247,7 +246,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         dpnEscritorio.add(inser);
         inser.setUsuario(usuario);
         inser.show();
-        
+
 
     }//GEN-LAST:event_mnuHerramientasAddProyectoActionPerformed
 
@@ -338,17 +337,25 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-        if (perfil == 1){
+        if (perfil == 1) {
             mnuHerramientas.setEnabled(true);
         }
-        
-        
-        if (perfil == 2){
+
+        if (perfil == 2) {
             mnuHerramientas.setEnabled(false);
         }
-        
-       this.setTitle(usuario);
+
+        this.setTitle(usuario);
     }//GEN-LAST:event_formWindowOpened
+
+    private void mnuHerramientasUsuarioUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuHerramientasUsuarioUpActionPerformed
+
+        frmUsuarioUp up = new frmUsuarioUp();
+        dpnEscritorio.add(up);
+        up.setVisible(true);
+        up.show();
+
+    }//GEN-LAST:event_mnuHerramientasUsuarioUpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -387,8 +394,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dpnEscritorio;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
@@ -407,6 +412,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuHerramientasUpdateEmpleado;
     private javax.swing.JMenuItem mnuHerramientasUpdateProveedor;
     private javax.swing.JMenuItem mnuHerramientasUpdateProyecto;
+    private javax.swing.JMenuItem mnuHerramientasUsuarioUp;
     private javax.swing.JMenu mnuSalir;
     private org.edisoncor.gui.panel.Panel panel1;
     // End of variables declaration//GEN-END:variables

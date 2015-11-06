@@ -21,7 +21,7 @@ public class Datos {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost/caja";
-            con = DriverManager.getConnection(url, "root", "");
+            con = DriverManager.getConnection(url, "root", "11");
         } catch (Exception ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -33,7 +33,7 @@ public class Datos {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost/caja";
-            con = DriverManager.getConnection(url, "root", "");
+            con = DriverManager.getConnection(url, "root", "11");
             return con;
         } catch (Exception ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
@@ -356,6 +356,23 @@ public class Datos {
             return false;
         }
     }
+    
+    public boolean modificarUsuario(String usuario, String clave) {
+
+        try {
+            String sql = "UPDATE usuarios SET  "
+                    + " clave = '" + clave + "'"
+                    + " WHERE usuario = '" + usuario + "' ";
+
+            Statement st = con.createStatement();
+            st.executeUpdate(sql);
+
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
 
     public boolean eliminarProyecto(int id) {
 
@@ -391,6 +408,21 @@ public class Datos {
 
         try {
             String sql = "DELETE FROM proveedor WHERE id_proveedor = " + id + " ";
+
+            Statement st = con.createStatement();
+            st.executeUpdate(sql);
+
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+    public boolean eliminarUsuario(String usuario) {
+
+        try {
+            String sql = "DELETE FROM usuarios WHERE usuario = '" + usuario + "' ";
 
             Statement st = con.createStatement();
             st.executeUpdate(sql);
@@ -544,12 +576,26 @@ public class Datos {
             return null;
         }
     }
+    
+    public ResultSet getUsuarios() {
+
+        try {
+            String sql = "SELECT * FROM usuarios";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 
     public ResultSet getProyectoNom(String nombre) {
 
         try {
             String sql = "SELECT * FROM proyecto "
-                    + "WHERE nom_pro LIKE  '%" + nombre + "'";
+                    + "WHERE nom_pro LIKE  '" + nombre + "%'";
 
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -565,7 +611,7 @@ public class Datos {
 
         try {
             String sql = "SELECT * FROM personal "
-                    + "WHERE nom_per LIKE  '%" + nombre + "'";
+                    + "WHERE nom_per LIKE  '" + nombre + "%'";
 
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -581,7 +627,7 @@ public class Datos {
 
         try {
             String sql = "SELECT * FROM proveedor "
-                    + "WHERE nom_prove LIKE  '%" + nombre + "'";
+                    + "WHERE nom_prove LIKE  '" + nombre + "%'";
 
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -593,6 +639,37 @@ public class Datos {
         }
     }
 
+    public ResultSet getUsuariosNom(String nombre) {
+
+        try {
+            String sql = "SELECT * FROM usuarios "
+                    + "WHERE usuario LIKE  '" + nombre + "%'";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            return rs;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public boolean getClaveUsuario(String clave) {
+
+        try {
+            String sql = "SELECT * FROM usuarios "
+                    + "WHERE clave =  '" + clave + "'";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            return rs.next();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
 
     /* Funcion que sirve para validar si un proyecto ya esta registrado.
      - La funcion recibe como parametro un String el cual corresponde

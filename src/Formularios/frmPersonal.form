@@ -191,8 +191,14 @@
                 <Component class="org.edisoncor.gui.comboBox.ComboBoxRound" name="cmbTipo">
                 </Component>
                 <Component class="org.edisoncor.gui.passwordField.PasswordFieldRoundIcon" name="txtClave">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtClaveKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="org.edisoncor.gui.passwordField.PasswordFieldRoundIcon" name="txtConfirmarClave">
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtConfirmarClaveKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtUsuario">
                 </Component>
@@ -228,7 +234,7 @@
                           <EmptySpace pref="200" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="198" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="labelMetric19" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="labelMetric13" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -241,18 +247,18 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="cmbCedula" min="-2" pref="42" max="-2" attributes="0"/>
+                                  <Component id="cmbCedula" min="-2" pref="51" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtCedulaGerente" max="32767" attributes="0"/>
+                                  <Component id="txtCedula" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="txtNomGe" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtApeGe" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="cmbCel" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="txtNombre" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtApellido" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="cmbCel" min="-2" pref="60" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="txtTelGe" min="-2" pref="204" max="-2" attributes="0"/>
+                                  <Component id="txtTelefono" min="-2" pref="204" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="txtCorreoUsu" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtCorreo" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtIDEmpleado" max="32767" attributes="0"/>
                               <Component id="cmbCargo" alignment="0" min="-2" pref="261" max="-2" attributes="0"/>
                           </Group>
@@ -274,21 +280,21 @@
                                   <Component id="labelMetric13" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cmbCedula" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="txtCedulaGerente" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCedula" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelMetric14" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNomGe" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelMetric16" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtApeGe" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtApellido" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="txtTelGe" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtTelefono" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                   <Component id="labelMetric17" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cmbCel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -301,7 +307,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtCorreoUsu" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="labelMetric12" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
@@ -345,14 +351,14 @@
                     <Property name="text" type="java.lang.String" value="Cargo:"/>
                   </Properties>
                 </Component>
-                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCedulaGerente">
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCedula">
                   <Events>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCedulaGerenteKeyTyped"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCedulaKeyTyped"/>
                   </Events>
                 </Component>
-                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtTelGe">
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtTelefono">
                   <Events>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTelGeKeyTyped"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTelefonoKeyTyped"/>
                   </Events>
                 </Component>
                 <Component class="org.edisoncor.gui.button.ButtonAction" name="btnSiguientePer">
@@ -371,14 +377,14 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtNomGe">
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtNombre">
                   <Events>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomGeKeyTyped"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNombreKeyTyped"/>
                   </Events>
                 </Component>
-                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtApeGe">
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtApellido">
                   <Events>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtApeGeKeyTyped"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtApellidoKeyTyped"/>
                   </Events>
                 </Component>
                 <Component class="org.edisoncor.gui.button.ButtonAction" name="btnCancelarGe">
@@ -389,9 +395,9 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarGeActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCorreoUsu">
+                <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCorreo">
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCorreoUsuFocusLost"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCorreoFocusLost"/>
                   </Events>
                 </Component>
                 <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric12">

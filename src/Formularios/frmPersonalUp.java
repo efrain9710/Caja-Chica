@@ -228,6 +228,13 @@ public class frmPersonalUp extends javax.swing.JInternalFrame {
         labelMetric4.setText("Buscar:");
         labelMetric4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 
+        txtCed.setEnabled(false);
+        txtCed.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedKeyTyped(evt);
+            }
+        });
+
         labelMetric13.setText("Cédula:");
 
         labelMetric14.setText("Nombre:");
@@ -243,6 +250,12 @@ public class frmPersonalUp extends javax.swing.JInternalFrame {
         txtApe.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtApeKeyTyped(evt);
+            }
+        });
+
+        txtTel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelKeyTyped(evt);
             }
         });
 
@@ -540,6 +553,46 @@ public class frmPersonalUp extends javax.swing.JInternalFrame {
         txtCargo.setText(Utilidades.objectToString(tablaEmpleados.getValueAt(s, 5)));
         
     }//GEN-LAST:event_tablaEmpleadosMouseClicked
+
+    private void txtTelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelKeyTyped
+    /* Funcion para validar que solo ingresen numeros */
+        char c = evt.getKeyChar();
+
+        if (Character.isLetter(c)) {
+            getToolkit().beep();
+
+            evt.consume();
+        }
+
+        if (Character.isWhitespace(evt.getKeyChar())) {
+            evt.consume();
+        }
+
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_txtTelKeyTyped
+
+    private void txtCedKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedKeyTyped
+            /* Funcion para validar que solo ingresen numeros */
+        char c = evt.getKeyChar();
+
+        if (Character.isLetter(c)) {
+            getToolkit().beep();
+
+            evt.consume();
+        }
+
+        if (Character.isWhitespace(evt.getKeyChar())) {
+            evt.consume();
+        }
+
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_txtCedKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
