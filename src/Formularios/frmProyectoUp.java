@@ -184,6 +184,11 @@ public class frmProyectoUp extends javax.swing.JInternalFrame {
         labelMetric3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreFocusLost(evt);
+            }
+        });
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNombreKeyReleased(evt);
@@ -453,6 +458,22 @@ public class frmProyectoUp extends javax.swing.JInternalFrame {
         /* Cuando el formulario se abra llenamos la tabla */
         llenarTabla();
     }//GEN-LAST:event_formInternalFrameOpened
+
+    private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
+         Datos da = new Datos();
+
+        if (!txtNombre.getText().equals("")) {
+
+            if (da.getProyecto(txtNombre.getText())) {
+                JOptionPane.showMessageDialog(this, "El proyecto ya se "
+                        + "encuentra registrado. ");
+                txtNombre.setText("");
+                txtNombre.requestFocusInWindow();
+
+            }
+
+        }
+    }//GEN-LAST:event_txtNombreFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

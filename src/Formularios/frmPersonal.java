@@ -171,6 +171,12 @@ public class frmPersonal extends javax.swing.JInternalFrame {
             }
         });
 
+        txtUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUsuarioFocusLost(evt);
+            }
+        });
+
         labelMetric21.setText("Usuario:");
 
         javax.swing.GroupLayout UsuarioLayout = new javax.swing.GroupLayout(Usuario);
@@ -947,6 +953,23 @@ public class frmPersonal extends javax.swing.JInternalFrame {
 
         }
     }//GEN-LAST:event_txtConfirmarClaveKeyTyped
+
+    private void txtUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusLost
+        Datos da = new Datos();
+
+        if (!txtUsuario.getText().equals("")) {
+
+            if (da.getUsuario(txtUsuario.getText() )){
+                JOptionPane.showMessageDialog(this, "El nombre de usuario ya se "
+                        + "encuentra registrado. ");
+                txtUsuario.setText("");
+                txtUsuario.requestFocusInWindow();
+
+            }
+
+        }
+
+    }//GEN-LAST:event_txtUsuarioFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

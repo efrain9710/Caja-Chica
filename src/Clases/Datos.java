@@ -21,7 +21,7 @@ public class Datos {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost/caja";
-            con = DriverManager.getConnection(url, "root", "11");
+            con = DriverManager.getConnection(url, "root", "");
         } catch (Exception ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -33,7 +33,7 @@ public class Datos {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost/caja";
-            con = DriverManager.getConnection(url, "root", "11");
+            con = DriverManager.getConnection(url, "root", "");
             return con;
         } catch (Exception ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
@@ -209,12 +209,12 @@ public class Datos {
 
             String sql = "INSERT INTO factura VALUES("
                     + factura.getIdFactura() + ", "
-                    + factura.getnFactura()+ ", '"
+                    + factura.getnFactura() + ", '"
                     + Utilidades.formateDate(factura.getFechaFactura()) + "', '"
                     + Utilidades.formateDate(factura.getFechaCarga()) + "', "
                     + factura.getIdProveedor() + ", "
                     + factura.getIdPersonal() + ", "
-                    + factura.getIdServicio()+ ", '"
+                    + factura.getIdServicio() + ", '"
                     + factura.getDescripcion() + "', "
                     + factura.getIdStatus() + ", "
                     + factura.getMonto() + ")";
@@ -244,7 +244,9 @@ public class Datos {
             String sql = "INSERT INTO proveedor VALUES("
                     + proveedor.getIdProveedor() + ", '"
                     + proveedor.getRifCed() + "', '"
-                    + proveedor.getNombre() + "')";
+                    + proveedor.getNombre() + "', '"
+                    + proveedor.getTelefono() + "', '"
+                    + proveedor.getDescripcion() + "')";
 
             /* El createStatement cree un cuadro donde se puede insertar codigo
              sql, el statement se podria decir que es el cuadro en blanco que
@@ -323,11 +325,14 @@ public class Datos {
         }
     }
 
-    public boolean modificarProveedor(int id, String nombre) {
+    public boolean modificarProveedor(int id, String nombre, String telefono,
+            String descripcion) {
 
         try {
             String sql = "UPDATE proveedor SET  "
-                    + " nom_prove = '" + nombre + "' "
+                    + " nom_prove = '" + nombre + "', "
+                    + " tele_prove = '" + telefono + "', "
+                    + " direcc_prove = '" + descripcion + "' "
                     + " WHERE id_proveedor = " + id + " ";
 
             Statement st = con.createStatement();
@@ -356,7 +361,7 @@ public class Datos {
             return false;
         }
     }
-    
+
     public boolean modificarUsuario(String usuario, String clave) {
 
         try {
@@ -418,7 +423,7 @@ public class Datos {
             return false;
         }
     }
-    
+
     public boolean eliminarUsuario(String usuario) {
 
         try {
@@ -498,8 +503,8 @@ public class Datos {
             return null;
         }
     }
-    
-     public ResultSet getCargos() {
+
+    public ResultSet getCargos() {
 
         try {
             String sql = "SELECT * FROM cargo ";
@@ -550,7 +555,7 @@ public class Datos {
             String sql = "SELECT personal.id_personal,  personal.nom_per, personal.ape_per, personal.cargo "
                     + "FROM personal "
                     + "INNER JOIN cargo ON personal.cargo = cargo.cargo "
-                    + "WHERE usuarios.usuario = '" + usuario +"'";
+                    + "WHERE usuarios.usuario = '" + usuario + "'";
 
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -560,7 +565,7 @@ public class Datos {
             return null;
         }
     }
-    
+
     public ResultSet getGerentes() {
 
         try {
@@ -576,7 +581,7 @@ public class Datos {
             return null;
         }
     }
-    
+
     public ResultSet getUsuarios() {
 
         try {
@@ -654,7 +659,7 @@ public class Datos {
             return null;
         }
     }
-    
+
     public boolean getClaveUsuario(String clave) {
 
         try {
@@ -711,7 +716,7 @@ public class Datos {
 
         try {
             String sql = "SELECT * FROM usuarios "
-                    + "WHERE idUsuario  = '" + usuario + "'";
+                    + "WHERE usuario  = '" + usuario + "'";
 
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -739,7 +744,7 @@ public class Datos {
             return 0;
         }
     }
-    
+
     public boolean getNumeroFac(int fac) {
         try {
             String sql = "SELECT * FROM factura WHERE n_factura = " + fac + "";
@@ -747,7 +752,7 @@ public class Datos {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             return rs.next();
-              
+
         } catch (SQLException ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
             return false;
@@ -820,11 +825,11 @@ public class Datos {
         }
 
     }
-    
+
     public ResultSet getMonto() {
         try {
             String sql = "SELECT * FROM monto";
-            
+
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
 
@@ -835,4 +840,5 @@ public class Datos {
         }
 
     }
+
 }

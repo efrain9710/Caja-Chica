@@ -6,6 +6,7 @@
 package Formularios;
 
 import Clases.Datos;
+import Clases.Opcion;
 import Clases.Utilidades;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class frmProveedorUp extends javax.swing.JInternalFrame {
 
     /* Definimos los titulos que llevara la tabla*/
-    public String titulos[] = {"ID", "Rif-Cedula", "Nombre", "Descripcion"};
+    public String titulos[] = {"ID", "Rif-Cedula", "Nombre", "Telefono", "Descripcion"};
 
     public frmProveedorUp() {
         initComponents();
@@ -68,6 +69,8 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
                 registro[0] = rs.getString("id_proveedor");
                 registro[1] = rs.getString("rif_cedula");
                 registro[2] = rs.getString("nom_prove");
+                registro[3] = rs.getString("tele_prove");
+                registro[4] = rs.getString("direcc_prove");
                 tablaModelo.addRow(registro);
 
             }
@@ -105,6 +108,8 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
                 registro[0] = rs.getString("id_proveedor");
                 registro[1] = rs.getString("rif_cedula");
                 registro[2] = rs.getString("nom_prove");
+                registro[3] = rs.getString("tele_prove");
+                registro[4] = rs.getString("direcc_prove");
                 tablaModelo.addRow(registro);
 
             }
@@ -220,6 +225,8 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
 
         txtIDProveedor.setEnabled(false);
 
+        txtCedulaProveedor.setEnabled(false);
+
         labelMetric3.setText("Rif-Cédula:");
 
         labelMetric5.setText("Nombre:");
@@ -300,8 +307,7 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
                                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(panel1Layout.createSequentialGroup()
                                                 .addComponent(labelMetric6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(254, 254, 254)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(317, 317, 317))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -385,12 +391,27 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
             txtNomPro.requestFocusInWindow();
             return;
         }
+        
+        if (txtTelefono.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Debe ingresar un telefono ");
+            txtTelefono.requestFocusInWindow();
+            return;
+        }
+
+        if (areaDescripcion.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Debe ingresar una descripcion ");
+            areaDescripcion.requestFocusInWindow();
+            return;
+        }
+        
 
         /* Llamamos a la funcion modificarProyecto la cual recibe como parametro
          un Integer que es el ID del proyecto y un String que seria el nombre
          del proyecto */
         if (datos.modificarProveedor(Integer.parseInt(txtIDProveedor.getText()),
-                txtNomPro.getText())) {
+                txtNomPro.getText(),
+                txtTelefono.getText(),
+                areaDescripcion.getText())) {
 
             JOptionPane.showMessageDialog(rootPane, "El Proveedor ha sido "
                     + "modificado correctamente ");
@@ -404,6 +425,8 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
         txtIDProveedor.setText("");
         txtCedulaProveedor.setText("");
         txtNomPro.setText("");
+        txtTelefono.setText("");
+        areaDescripcion.setText("");
 
         tablaModelo.setRowCount(0);
         llenarTabla();
@@ -465,6 +488,31 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         /* Cuando el formulario se abra llenamos la tabla */
         llenarTabla();
+
+        Opcion op = new Opcion("1", "414");
+
+        cmbCel.addItem(op);
+
+        op = new Opcion("2", "416");
+
+        cmbCel.addItem(op);
+
+        op = new Opcion("3", "426");
+
+        cmbCel.addItem(op);
+
+        op = new Opcion("4", "412");
+
+        cmbCel.addItem(op);
+
+        op = new Opcion("5", "424");
+
+        cmbCel.addItem(op);
+
+        op = new Opcion("5", "212");
+
+        cmbCel.addItem(op);
+
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void tablaProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaProveedoresMouseClicked
@@ -497,6 +545,8 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
         txtIDProveedor.setText(Utilidades.objectToString(tablaProveedores.getValueAt(s, 0)));
         txtCedulaProveedor.setText(Utilidades.objectToString(tablaProveedores.getValueAt(s, 1)));
         txtNomPro.setText(Utilidades.objectToString(tablaProveedores.getValueAt(s, 2)));
+        txtTelefono.setText(Utilidades.objectToString(tablaProveedores.getValueAt(s, 3)));
+        areaDescripcion.setText(Utilidades.objectToString(tablaProveedores.getValueAt(s, 4)));
 
     }//GEN-LAST:event_tablaProveedoresMouseClicked
 

@@ -1,6 +1,6 @@
 package Clases;
 
-import Formularios.frmLogin;
+import Formularios.frmSplash;
 
 /**
  *
@@ -11,9 +11,9 @@ public class Caja {
     
     public static void main(String[] args) {
        
-        frmLogin login = new frmLogin();
-        login.setVisible(true);
-        login.setLocationRelativeTo(null);
+        frmSplash splash = new frmSplash();
+        splash.setVisible(true);
+        splash.setLocationRelativeTo(null);
         
     }
 }

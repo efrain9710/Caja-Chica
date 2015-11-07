@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.12deb2
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Nov 06, 2015 at 04:37 PM
--- Server version: 5.5.43-0+deb8u1
--- PHP Version: 5.6.7-1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 07-11-2015 a las 06:26:14
+-- Versión del servidor: 5.6.17
+-- Versión de PHP: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,22 +17,23 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `caja`
+-- Base de datos: `caja`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cargo`
+-- Estructura de tabla para la tabla `cargo`
 --
 
 CREATE TABLE IF NOT EXISTS `cargo` (
-`id_cargo` int(11) NOT NULL,
-  `cargo` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+  `id_cargo` int(11) NOT NULL AUTO_INCREMENT,
+  `cargo` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_cargo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
--- Dumping data for table `cargo`
+-- Volcado de datos para la tabla `cargo`
 --
 
 INSERT INTO `cargo` (`id_cargo`, `cargo`) VALUES
@@ -52,11 +53,11 @@ INSERT INTO `cargo` (`id_cargo`, `cargo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `factura`
+-- Estructura de tabla para la tabla `factura`
 --
 
 CREATE TABLE IF NOT EXISTS `factura` (
-`id_factura` int(11) NOT NULL,
+  `id_factura` int(11) NOT NULL AUTO_INCREMENT,
   `n_factura` int(11) NOT NULL,
   `fecha_fac` date NOT NULL,
   `fecha_carga` date NOT NULL,
@@ -65,11 +66,18 @@ CREATE TABLE IF NOT EXISTS `factura` (
   `id_servicio` int(11) NOT NULL,
   `descri_fac` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
   `id_status` int(11) NOT NULL,
-  `monto` double NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `monto` double NOT NULL,
+  PRIMARY KEY (`id_factura`),
+  UNIQUE KEY `n_factura_2` (`n_factura`),
+  KEY `id_proveedor` (`id_proveedor`),
+  KEY `id_personal` (`id_personal`),
+  KEY `id_servicio` (`id_servicio`),
+  KEY `id_status` (`id_status`),
+  KEY `n_factura` (`n_factura`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `factura`
+-- Volcado de datos para la tabla `factura`
 --
 
 INSERT INTO `factura` (`id_factura`, `n_factura`, `fecha_fac`, `fecha_carga`, `id_proveedor`, `id_personal`, `id_servicio`, `descri_fac`, `id_status`, `monto`) VALUES
@@ -78,16 +86,17 @@ INSERT INTO `factura` (`id_factura`, `n_factura`, `fecha_fac`, `fecha_carga`, `i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `monto`
+-- Estructura de tabla para la tabla `monto`
 --
 
 CREATE TABLE IF NOT EXISTS `monto` (
-`id_monto` int(11) NOT NULL,
-  `monto` double NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `id_monto` int(11) NOT NULL AUTO_INCREMENT,
+  `monto` double NOT NULL,
+  PRIMARY KEY (`id_monto`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `monto`
+-- Volcado de datos para la tabla `monto`
 --
 
 INSERT INTO `monto` (`id_monto`, `monto`) VALUES
@@ -96,21 +105,26 @@ INSERT INTO `monto` (`id_monto`, `monto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `personal`
+-- Estructura de tabla para la tabla `personal`
 --
 
 CREATE TABLE IF NOT EXISTS `personal` (
-`id_personal` int(11) NOT NULL,
+  `id_personal` int(11) NOT NULL AUTO_INCREMENT,
   `usuario` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `ci_per` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `nom_per` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `ape_per` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `tele_per` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `cargo` varchar(255) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `cargo` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_personal`),
+  UNIQUE KEY `ci_per_2` (`ci_per`),
+  KEY `ci_per` (`ci_per`),
+  KEY `usuario` (`usuario`),
+  KEY `usuario_2` (`usuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `personal`
+-- Volcado de datos para la tabla `personal`
 --
 
 INSERT INTO `personal` (`id_personal`, `usuario`, `ci_per`, `nom_per`, `ape_per`, `tele_per`, `cargo`) VALUES
@@ -119,37 +133,40 @@ INSERT INTO `personal` (`id_personal`, `usuario`, `ci_per`, `nom_per`, `ape_per`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `proveedor`
+-- Estructura de tabla para la tabla `proveedor`
 --
 
 CREATE TABLE IF NOT EXISTS `proveedor` (
-`id_proveedor` int(11) NOT NULL,
+  `id_proveedor` int(11) NOT NULL AUTO_INCREMENT,
   `rif_cedula` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `nom_prove` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `tele_prove` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `direcc_prove` text COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `direcc_prove` text COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_proveedor`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `proveedor`
+-- Volcado de datos para la tabla `proveedor`
 --
 
 INSERT INTO `proveedor` (`id_proveedor`, `rif_cedula`, `nom_prove`, `tele_prove`, `direcc_prove`) VALUES
-(1, '22447878', 'Victor', '', 'Proveedor del CNTI');
+(1, '22447878', 'Victor', '12321234', 'Proveedor del CNTI'),
+(2, '1231231', 'sadsas', '14547412', 'Por ahi');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `proyecto`
+-- Estructura de tabla para la tabla `proyecto`
 --
 
 CREATE TABLE IF NOT EXISTS `proyecto` (
-`id_proyecto` int(100) NOT NULL,
-  `nom_pro` varchar(255) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `id_proyecto` int(100) NOT NULL AUTO_INCREMENT,
+  `nom_pro` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_proyecto`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `proyecto`
+-- Volcado de datos para la tabla `proyecto`
 --
 
 INSERT INTO `proyecto` (`id_proyecto`, `nom_pro`) VALUES
@@ -162,17 +179,20 @@ INSERT INTO `proyecto` (`id_proyecto`, `nom_pro`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `proye_geren`
+-- Estructura de tabla para la tabla `proye_geren`
 --
 
 CREATE TABLE IF NOT EXISTS `proye_geren` (
-`id_proge` int(50) NOT NULL,
+  `id_proge` int(50) NOT NULL AUTO_INCREMENT,
   `id_proyecto` int(50) NOT NULL,
-  `id_gerente` int(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `id_gerente` int(50) NOT NULL,
+  PRIMARY KEY (`id_proge`),
+  KEY `id_proyecto` (`id_proyecto`),
+  KEY `id_gerente` (`id_gerente`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=22 ;
 
 --
--- Dumping data for table `proye_geren`
+-- Volcado de datos para la tabla `proye_geren`
 --
 
 INSERT INTO `proye_geren` (`id_proge`, `id_proyecto`, `id_gerente`) VALUES
@@ -181,17 +201,19 @@ INSERT INTO `proye_geren` (`id_proge`, `id_proyecto`, `id_gerente`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `servicio`
+-- Estructura de tabla para la tabla `servicio`
 --
 
 CREATE TABLE IF NOT EXISTS `servicio` (
-`id_servicio` int(100) NOT NULL,
+  `id_servicio` int(100) NOT NULL AUTO_INCREMENT,
   `nom_servi` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `descri_servi` text COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `descri_servi` text COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_servicio`),
+  KEY `nom_servi` (`nom_servi`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `servicio`
+-- Volcado de datos para la tabla `servicio`
 --
 
 INSERT INTO `servicio` (`id_servicio`, `nom_servi`, `descri_servi`) VALUES
@@ -201,16 +223,17 @@ INSERT INTO `servicio` (`id_servicio`, `nom_servi`, `descri_servi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status`
+-- Estructura de tabla para la tabla `status`
 --
 
 CREATE TABLE IF NOT EXISTS `status` (
-`id_status` int(11) NOT NULL,
-  `nom_sta` varchar(255) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `id_status` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_sta` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_status`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `status`
+-- Volcado de datos para la tabla `status`
 --
 
 INSERT INTO `status` (`id_status`, `nom_sta`) VALUES
@@ -220,16 +243,17 @@ INSERT INTO `status` (`id_status`, `nom_sta`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tipo_usuario`
+-- Estructura de tabla para la tabla `tipo_usuario`
 --
 
 CREATE TABLE IF NOT EXISTS `tipo_usuario` (
-`id_tipo` int(11) NOT NULL,
-  `nom_tipo` varchar(255) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `id_tipo` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_tipo` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_tipo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `tipo_usuario`
+-- Volcado de datos para la tabla `tipo_usuario`
 --
 
 INSERT INTO `tipo_usuario` (`id_tipo`, `nom_tipo`) VALUES
@@ -239,184 +263,60 @@ INSERT INTO `tipo_usuario` (`id_tipo`, `nom_tipo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
-`id_usuario` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `tipo_usu` int(11) NOT NULL,
   `usuario` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `clave` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `correo_usu` varchar(255) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `correo_usu` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_usuario`),
+  UNIQUE KEY `id_per` (`usuario`),
+  KEY `tipo_usu` (`tipo_usu`),
+  KEY `usuario` (`usuario`),
+  KEY `usuario_2` (`usuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `tipo_usu`, `usuario`, `clave`, `correo_usu`) VALUES
 (1, 1, 'gerente', '11', 'gerente@gmail.com');
 
 --
--- Indexes for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Indexes for table `cargo`
---
-ALTER TABLE `cargo`
- ADD PRIMARY KEY (`id_cargo`);
-
---
--- Indexes for table `factura`
+-- Filtros para la tabla `factura`
 --
 ALTER TABLE `factura`
- ADD PRIMARY KEY (`id_factura`), ADD UNIQUE KEY `n_factura_2` (`n_factura`), ADD KEY `id_proveedor` (`id_proveedor`), ADD KEY `id_personal` (`id_personal`), ADD KEY `id_servicio` (`id_servicio`), ADD KEY `id_status` (`id_status`), ADD KEY `n_factura` (`n_factura`);
+  ADD CONSTRAINT `factura_ibfk_5` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`) ON DELETE CASCADE,
+  ADD CONSTRAINT `factura_ibfk_6` FOREIGN KEY (`id_personal`) REFERENCES `personal` (`id_personal`) ON DELETE CASCADE,
+  ADD CONSTRAINT `factura_ibfk_7` FOREIGN KEY (`id_servicio`) REFERENCES `servicio` (`id_servicio`) ON DELETE CASCADE,
+  ADD CONSTRAINT `factura_ibfk_8` FOREIGN KEY (`id_status`) REFERENCES `status` (`id_status`) ON DELETE CASCADE;
 
 --
--- Indexes for table `monto`
---
-ALTER TABLE `monto`
- ADD PRIMARY KEY (`id_monto`);
-
---
--- Indexes for table `personal`
+-- Filtros para la tabla `personal`
 --
 ALTER TABLE `personal`
- ADD PRIMARY KEY (`id_personal`), ADD UNIQUE KEY `ci_per_2` (`ci_per`), ADD KEY `ci_per` (`ci_per`), ADD KEY `usuario` (`usuario`), ADD KEY `usuario_2` (`usuario`);
+  ADD CONSTRAINT `personal_ibfk_6` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Indexes for table `proveedor`
---
-ALTER TABLE `proveedor`
- ADD PRIMARY KEY (`id_proveedor`);
-
---
--- Indexes for table `proyecto`
---
-ALTER TABLE `proyecto`
- ADD PRIMARY KEY (`id_proyecto`);
-
---
--- Indexes for table `proye_geren`
+-- Filtros para la tabla `proye_geren`
 --
 ALTER TABLE `proye_geren`
- ADD PRIMARY KEY (`id_proge`), ADD KEY `id_proyecto` (`id_proyecto`), ADD KEY `id_gerente` (`id_gerente`);
+  ADD CONSTRAINT `proye_geren_ibfk_7` FOREIGN KEY (`id_proyecto`) REFERENCES `proyecto` (`id_proyecto`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `proye_geren_ibfk_8` FOREIGN KEY (`id_gerente`) REFERENCES `personal` (`id_personal`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Indexes for table `servicio`
---
-ALTER TABLE `servicio`
- ADD PRIMARY KEY (`id_servicio`), ADD KEY `nom_servi` (`nom_servi`);
-
---
--- Indexes for table `status`
---
-ALTER TABLE `status`
- ADD PRIMARY KEY (`id_status`);
-
---
--- Indexes for table `tipo_usuario`
---
-ALTER TABLE `tipo_usuario`
- ADD PRIMARY KEY (`id_tipo`);
-
---
--- Indexes for table `usuarios`
+-- Filtros para la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
- ADD PRIMARY KEY (`id_usuario`), ADD UNIQUE KEY `id_per` (`usuario`), ADD KEY `tipo_usu` (`tipo_usu`), ADD KEY `usuario` (`usuario`), ADD KEY `usuario_2` (`usuario`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `cargo`
---
-ALTER TABLE `cargo`
-MODIFY `id_cargo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT for table `factura`
---
-ALTER TABLE `factura`
-MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `monto`
---
-ALTER TABLE `monto`
-MODIFY `id_monto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `personal`
---
-ALTER TABLE `personal`
-MODIFY `id_personal` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `proveedor`
---
-ALTER TABLE `proveedor`
-MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `proyecto`
---
-ALTER TABLE `proyecto`
-MODIFY `id_proyecto` int(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `proye_geren`
---
-ALTER TABLE `proye_geren`
-MODIFY `id_proge` int(50) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
---
--- AUTO_INCREMENT for table `servicio`
---
-ALTER TABLE `servicio`
-MODIFY `id_servicio` int(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `status`
---
-ALTER TABLE `status`
-MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `tipo_usuario`
---
-ALTER TABLE `tipo_usuario`
-MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `usuarios`
---
-ALTER TABLE `usuarios`
-MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `factura`
---
-ALTER TABLE `factura`
-ADD CONSTRAINT `factura_ibfk_5` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`) ON DELETE CASCADE,
-ADD CONSTRAINT `factura_ibfk_6` FOREIGN KEY (`id_personal`) REFERENCES `personal` (`id_personal`) ON DELETE CASCADE,
-ADD CONSTRAINT `factura_ibfk_7` FOREIGN KEY (`id_servicio`) REFERENCES `servicio` (`id_servicio`) ON DELETE CASCADE,
-ADD CONSTRAINT `factura_ibfk_8` FOREIGN KEY (`id_status`) REFERENCES `status` (`id_status`) ON DELETE CASCADE;
-
---
--- Constraints for table `personal`
---
-ALTER TABLE `personal`
-ADD CONSTRAINT `personal_ibfk_6` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `proye_geren`
---
-ALTER TABLE `proye_geren`
-ADD CONSTRAINT `proye_geren_ibfk_7` FOREIGN KEY (`id_proyecto`) REFERENCES `proyecto` (`id_proyecto`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `proye_geren_ibfk_8` FOREIGN KEY (`id_gerente`) REFERENCES `personal` (`id_personal`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `usuarios`
---
-ALTER TABLE `usuarios`
-ADD CONSTRAINT `usuarios_ibfk_4` FOREIGN KEY (`tipo_usu`) REFERENCES `tipo_usuario` (`id_tipo`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `usuarios_ibfk_4` FOREIGN KEY (`tipo_usu`) REFERENCES `tipo_usuario` (`id_tipo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -262,13 +262,12 @@ public class frmProveedor extends javax.swing.JInternalFrame {
             txtTelefono.requestFocusInWindow();
             return;
         }
-        
+
         if (areaDescripcion.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar una descripcion ");
             areaDescripcion.requestFocusInWindow();
             return;
         }
-
         
         /* Instanciamos un objeto de la Clase Proveedor, el cual se lo pasaremos
          a la funcion agregarProveedor, la cual pide como parametro un objeto Proveedor */
@@ -315,6 +314,30 @@ public class frmProveedor extends javax.swing.JInternalFrame {
         /* Cargamos los ID en los formularios */
         int idPro = datos.getIdProveedor();
         txtIDProveedor.setText("" + idPro);
+
+        Opcion op = new Opcion("1", "414");
+
+        cmbCel.addItem(op);
+
+        op = new Opcion("2", "416");
+
+        cmbCel.addItem(op);
+
+        op = new Opcion("3", "426");
+
+        cmbCel.addItem(op);
+
+        op = new Opcion("4", "412");
+
+        cmbCel.addItem(op);
+
+        op = new Opcion("5", "424");
+
+        cmbCel.addItem(op);
+
+        op = new Opcion("5", "212");
+
+        cmbCel.addItem(op);
 
     }//GEN-LAST:event_formInternalFrameOpened
 

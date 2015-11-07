@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Formularios;
 
 import Clases.Datos;
@@ -24,11 +23,11 @@ public class frmProyectoAdd extends javax.swing.JInternalFrame {
     }
 
     public String usuario;
-    
-    public void setUsuario(String usuario){
+
+    public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -81,9 +80,9 @@ public class frmProyectoAdd extends javax.swing.JInternalFrame {
         labelMetric3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtNombreKeyReleased(evt);
+        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreFocusLost(evt);
             }
         });
 
@@ -160,21 +159,6 @@ public class frmProyectoAdd extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
-
-        /* Instanciamos el objetos Datos */
-        Datos datos = new Datos();
-
-        /*Llamamos al metro getProyecto para validar si el proyecto esta registrado */
-        if (datos.getProyecto(txtNombre.getText())) {
-            JOptionPane.showMessageDialog(rootPane, "El nombre del proyecto ya"
-                + " existe, por favor introduzca uno diferente");
-            txtNombre.setText("");
-            txtNombre.requestFocusInWindow();
-            return;
-        }
-    }//GEN-LAST:event_txtNombreKeyReleased
-
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
 
         /* Instanciamos el objetos Datos */
@@ -196,17 +180,17 @@ public class frmProyectoAdd extends javax.swing.JInternalFrame {
         }
 
         /* Instanciamos un obejto de la Clase Proyecto, para luego pasarselo
-        a la funcion agregarProyecto. */
+         a la funcion agregarProyecto. */
         Proyecto proyecto = new Proyecto(
-            Integer.parseInt(txtIdProyecto.getText()),
-            txtNombre.getText());
+                Integer.parseInt(txtIdProyecto.getText()),
+                txtNombre.getText());
 
         if (datos.agregarProyecto(proyecto)) {
             JOptionPane.showMessageDialog(rootPane, "El Proyecto ha sido "
-                + "registrado correctamente ");
+                    + "registrado correctamente ");
         } else {
             JOptionPane.showMessageDialog(rootPane, "No se ha podido registrar el"
-                + "Proyecto, por favor intentelo mas tarde ");
+                    + "Proyecto, por favor intentelo mas tarde ");
 
         }
 
@@ -232,6 +216,22 @@ public class frmProyectoAdd extends javax.swing.JInternalFrame {
         int idPro = datos.getIdProyecto();
         txtIdProyecto.setText("" + idPro);
     }//GEN-LAST:event_formInternalFrameOpened
+
+    private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
+        Datos da = new Datos();
+
+        if (!txtNombre.getText().equals("")) {
+
+            if (da.getProyecto(txtNombre.getText())) {
+                JOptionPane.showMessageDialog(this, "El proyecto ya se "
+                        + "encuentra registrado. ");
+                txtNombre.setText("");
+                txtNombre.requestFocusInWindow();
+
+            }
+
+        }
+    }//GEN-LAST:event_txtNombreFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
