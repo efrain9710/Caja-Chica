@@ -141,6 +141,7 @@ public class frmUsuarioUp extends javax.swing.JInternalFrame {
         labelMetric10 = new org.edisoncor.gui.label.LabelMetric();
         txtNuevaClave = new org.edisoncor.gui.passwordField.PasswordFieldRoundIcon();
 
+        setClosable(true);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }

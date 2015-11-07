@@ -379,6 +379,23 @@ public class Datos {
         }
     }
 
+    public boolean modificarFactura(int factura, int status) {
+
+        try {
+            String sql = "UPDATE factura SET  "
+                    + " id_status = " + status + ""
+                    + " WHERE n_factura = " + factura + " ";
+
+            Statement st = con.createStatement();
+            st.executeUpdate(sql);
+
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
     public boolean eliminarProyecto(int id) {
 
         try {
@@ -785,6 +802,19 @@ public class Datos {
         }
     }
 
+    public boolean getStatus(String status) {
+        try {
+            String sql = "SELECT * FROM status WHERE nom_sta = '" + status + "'";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            return rs.next();
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
     public ResultSet getServicios() {
         try {
             String sql = "SELECT * FROM servicio";
@@ -829,6 +859,123 @@ public class Datos {
     public ResultSet getMonto() {
         try {
             String sql = "SELECT * FROM monto";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
+
+    public ResultSet getFacturasReporte() {
+        try {
+            String sql = "SELECT factura.id_factura AS factura, factura.n_factura, "
+                    + "factura.fecha_fac AS fecha, "
+                    + "factura.fecha_carga AS carga, "
+                    + "CONCAT( proveedor.rif_cedula, '-', proveedor.nom_prove) AS proveedor, "
+                    + "CONCAT( personal.nom_per, ' ', personal.ape_per) AS empleado, "
+                    + "servicio.nom_servi AS servicio, "
+                    + "status.nom_sta AS status, "
+                    + "factura.descri_fac AS descripcion, "
+                    + "factura.monto AS monto "
+                    + "FROM factura "
+                    + "INNER JOIN proveedor ON factura.id_proveedor = proveedor.id_proveedor "
+                    + "INNER JOIN personal ON factura.id_personal = personal.id_personal "
+                    + "INNER JOIN servicio ON factura.id_servicio = servicio.id_servicio "
+                    + "INNER JOIN status ON factura.id_status = status.id_status ";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
+
+    public ResultSet getFacturasReporteId(int n) {
+        try {
+            String sql = "SELECT factura.id_factura AS factura, factura.n_factura, "
+                    + "factura.fecha_fac AS fecha, "
+                    + "factura.fecha_carga AS carga, "
+                    + "CONCAT( proveedor.rif_cedula, '-', proveedor.nom_prove) AS proveedor, "
+                    + "CONCAT( personal.nom_per, ' ', personal.ape_per) AS empleado, "
+                    + "servicio.nom_servi AS servicio, "
+                    + "status.nom_sta AS status, "
+                    + "factura.descri_fac AS descripcion, "
+                    + "factura.monto AS monto "
+                    + "FROM factura "
+                    + "INNER JOIN proveedor ON factura.id_proveedor = proveedor.id_proveedor "
+                    + "INNER JOIN personal ON factura.id_personal = personal.id_personal "
+                    + "INNER JOIN servicio ON factura.id_servicio = servicio.id_servicio "
+                    + "INNER JOIN status ON factura.id_status = status.id_status "
+                    + "WHERE factura.n_factura = " + n + "";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
+
+    public ResultSet getSumaMontoAprobadas() {
+        try {
+            String sql = "SELECT factura.id_factura AS factura, factura.n_factura, "
+                    + "factura.fecha_fac AS fecha, "
+                    + "factura.fecha_carga AS carga, "
+                    + "CONCAT( proveedor.rif_cedula, '-', proveedor.nom_prove) AS proveedor, "
+                    + "CONCAT( personal.nom_per, ' ', personal.ape_per) AS empleado, "
+                    + "servicio.nom_servi AS servicio, "
+                    + "status.nom_sta AS status, "
+                    + "factura.descri_fac AS descripcion, "
+                    + "factura.monto AS monto, "
+                    + "SUM(factura.monto) as total "
+                    + "FROM factura "
+                    + "INNER JOIN proveedor ON factura.id_proveedor = proveedor.id_proveedor "
+                    + "INNER JOIN personal ON factura.id_personal = personal.id_personal "
+                    + "INNER JOIN servicio ON factura.id_servicio = servicio.id_servicio "
+                    + "INNER JOIN status ON factura.id_status = status.id_status "
+                    + "WHERE status.id_status = 1 ";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
+
+    public ResultSet getSumaMontoRechazadas() {
+        try {
+            String sql = "SELECT factura.id_factura AS factura, factura.n_factura, "
+                    + "factura.fecha_fac AS fecha, "
+                    + "factura.fecha_carga AS carga, "
+                    + "CONCAT( proveedor.rif_cedula, '-', proveedor.nom_prove) AS proveedor, "
+                    + "CONCAT( personal.nom_per, ' ', personal.ape_per) AS empleado, "
+                    + "servicio.nom_servi AS servicio, "
+                    + "status.nom_sta AS status, "
+                    + "factura.descri_fac AS descripcion, "
+                    + "factura.monto AS monto, "
+                    + "SUM(factura.monto) as total "
+                    + "FROM factura "
+                    + "INNER JOIN proveedor ON factura.id_proveedor = proveedor.id_proveedor "
+                    + "INNER JOIN personal ON factura.id_personal = personal.id_personal "
+                    + "INNER JOIN servicio ON factura.id_servicio = servicio.id_servicio "
+                    + "INNER JOIN status ON factura.id_status = status.id_status "
+                    + "WHERE status.id_status = 2 ";
 
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);

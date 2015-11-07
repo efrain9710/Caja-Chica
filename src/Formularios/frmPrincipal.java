@@ -4,8 +4,6 @@
  */
 package Formularios;
 
-import Clases.DesktopConFondo;
-
 /**
  *
  * @author Victor Pino
@@ -45,15 +43,15 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuHerramientasAddProveedor = new javax.swing.JMenuItem();
         mnuHerramientasUpdateProveedor = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        mnuHerramientasMonto = new javax.swing.JMenuItem();
         mnuHerramientasMontoUpdate = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         mnuHerramientasUsuarioUp = new javax.swing.JMenuItem();
         mnuFactura = new javax.swing.JMenu();
         mnuFacturaAdd = new javax.swing.JMenuItem();
+        mnuFacturaUp = new javax.swing.JMenuItem();
         mnuConsultas = new javax.swing.JMenu();
         mnuConsultasFactura = new javax.swing.JMenuItem();
-        mnuConsultasMonto = new javax.swing.JMenuItem();
+        mnuConsultasReserva = new javax.swing.JMenuItem();
         mnuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -149,17 +147,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuHerramientas.add(mnuHerramientasUpdateProveedor);
         mnuHerramientas.add(jSeparator3);
 
-        mnuHerramientasMonto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/monto-add-32.png"))); // NOI18N
-        mnuHerramientasMonto.setText("Registrar Monto");
-        mnuHerramientasMonto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuHerramientasMontoActionPerformed(evt);
-            }
-        });
-        mnuHerramientas.add(mnuHerramientasMonto);
-
         mnuHerramientasMontoUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/monto-up-32.png"))); // NOI18N
-        mnuHerramientasMontoUpdate.setText("Modificar Monto");
+        mnuHerramientasMontoUpdate.setText(" Reserva");
         mnuHerramientasMontoUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuHerramientasMontoUpdateActionPerformed(evt);
@@ -190,6 +179,14 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
         mnuFactura.add(mnuFacturaAdd);
 
+        mnuFacturaUp.setText("Modificar Factura");
+        mnuFacturaUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuFacturaUpActionPerformed(evt);
+            }
+        });
+        mnuFactura.add(mnuFacturaUp);
+
         jMenuBar1.add(mnuFactura);
 
         mnuConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consultas-48.png"))); // NOI18N
@@ -204,14 +201,14 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
         mnuConsultas.add(mnuConsultasFactura);
 
-        mnuConsultasMonto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/monto-32.png"))); // NOI18N
-        mnuConsultasMonto.setText("Consultar Monto");
-        mnuConsultasMonto.addActionListener(new java.awt.event.ActionListener() {
+        mnuConsultasReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/monto-32.png"))); // NOI18N
+        mnuConsultasReserva.setText("Consultar Reserva");
+        mnuConsultasReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuConsultasMontoActionPerformed(evt);
+                mnuConsultasReservaActionPerformed(evt);
             }
         });
-        mnuConsultas.add(mnuConsultasMonto);
+        mnuConsultas.add(mnuConsultasReserva);
 
         jMenuBar1.add(mnuConsultas);
 
@@ -308,32 +305,27 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuFacturaAddActionPerformed
 
     private void mnuConsultasFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConsultasFacturaActionPerformed
-        frmConsultas con = new frmConsultas();
+        frmConsultarFacturas con = new frmConsultarFacturas();
+        dpnEscritorio.add(con);
         con.setVisible(true);
-        con.setLocationRelativeTo(null);
+        con.show();
     }//GEN-LAST:event_mnuConsultasFacturaActionPerformed
 
-    private void mnuHerramientasMontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuHerramientasMontoActionPerformed
-
-        frmMonto monto = new frmMonto();
-        monto.setVisible(true);
-        monto.setLocationRelativeTo(null);
-
-    }//GEN-LAST:event_mnuHerramientasMontoActionPerformed
-
     private void mnuHerramientasMontoUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuHerramientasMontoUpdateActionPerformed
-        frmMontoUpdate update = new frmMontoUpdate();
+        frmReserva update = new frmReserva();
+        dpnEscritorio.add(update);
         update.setVisible(true);
-        update.setLocationRelativeTo(null);
+        update.show();
     }//GEN-LAST:event_mnuHerramientasMontoUpdateActionPerformed
 
-    private void mnuConsultasMontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConsultasMontoActionPerformed
+    private void mnuConsultasReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConsultasReservaActionPerformed
+        
+        frmConsultaReserva reser = new frmConsultaReserva();
+        dpnEscritorio.add(reser);
+        reser.setVisible(true);
+        reser.show();
 
-        frmMontoActual actual = new frmMontoActual();
-        actual.setVisible(true);
-        actual.setLocationRelativeTo(null);
-
-    }//GEN-LAST:event_mnuConsultasMontoActionPerformed
+    }//GEN-LAST:event_mnuConsultasReservaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
@@ -356,6 +348,15 @@ public class frmPrincipal extends javax.swing.JFrame {
         up.show();
 
     }//GEN-LAST:event_mnuHerramientasUsuarioUpActionPerformed
+
+    private void mnuFacturaUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFacturaUpActionPerformed
+        
+        frmFacturaUp factura = new frmFacturaUp();
+        dpnEscritorio.add(factura);
+        factura.setVisible(true);
+        factura.show();
+        
+    }//GEN-LAST:event_mnuFacturaUpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -400,14 +401,14 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JMenu mnuConsultas;
     private javax.swing.JMenuItem mnuConsultasFactura;
-    private javax.swing.JMenuItem mnuConsultasMonto;
+    private javax.swing.JMenuItem mnuConsultasReserva;
     private javax.swing.JMenu mnuFactura;
     private javax.swing.JMenuItem mnuFacturaAdd;
+    private javax.swing.JMenuItem mnuFacturaUp;
     private javax.swing.JMenuItem mnuHerramientaEmpleado;
     private javax.swing.JMenu mnuHerramientas;
     private javax.swing.JMenuItem mnuHerramientasAddProveedor;
     private javax.swing.JMenuItem mnuHerramientasAddProyecto;
-    private javax.swing.JMenuItem mnuHerramientasMonto;
     private javax.swing.JMenuItem mnuHerramientasMontoUpdate;
     private javax.swing.JMenuItem mnuHerramientasUpdateEmpleado;
     private javax.swing.JMenuItem mnuHerramientasUpdateProveedor;
