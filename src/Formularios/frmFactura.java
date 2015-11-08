@@ -9,6 +9,7 @@ import Clases.Datos;
 import Clases.Factura;
 import Clases.Opcion;
 import Clases.Utilidades;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,6 +47,8 @@ public class frmFactura extends javax.swing.JInternalFrame {
         this.perfil = perfil;
         this.cargo = cargo;
     }
+    
+   
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -123,6 +126,12 @@ public class frmFactura extends javax.swing.JInternalFrame {
         labelMetric16.setText("Monto:");
 
         dchCarga.setEnabled(false);
+
+        dchFactura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                dchFacturaKeyTyped(evt);
+            }
+        });
 
         txtIDFactura.setEnabled(false);
 
@@ -327,6 +336,10 @@ public class frmFactura extends javax.swing.JInternalFrame {
         }
 
         if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+
+        if (txtMonto.getText().length() >= 6) {
             evt.consume();
         }
 
@@ -538,26 +551,25 @@ public class frmFactura extends javax.swing.JInternalFrame {
 
             /* Instaciamos un objeto de la clase Opcion para cargar el combo box
              de los Status  */
-            Opcion op3 = new Opcion("0", "Seleccione un Status ");
+            Opcion op3 = new Opcion("3", "En proceso");
 
             /* Añadimos el primer elemento al combo box */
             cmbStatus.addItem(op3);
 
             /* Llamos a la funcion getStatus la cual nos devuelve todos los
              Status que hay, esos datos los guardamos en un ResultSet para luego
-             llenar el combo box con todos los Status */
-            ResultSet rsSta = datos.getStatus();
+             llenar el combo box con todos los Status
+             ResultSet rsSta = datos.getStatus();
 
-            /* Hacemos un while que mientras hallan registros en rs, sobreescrira
+             Hacemos un while que mientras hallan registros en rs, sobreescrira
              al objeto de la clase opcion con los datos del objeto rs, y los añada
-             al combo box */
-            while (rsSta.next()) {
-                op3 = new Opcion(
-                        rsSta.getString("id_status"),
-                        rsSta.getString("nom_sta"));
-                cmbStatus.addItem(op3);
-            }
-
+             al combo box 
+             while (rsSta.next()) {
+             op3 = new Opcion(
+             rsSta.getString("id_status"),
+             rsSta.getString("nom_sta"));
+             cmbStatus.addItem(op3);
+             } */
             if (cargo.equals("Gerente")) {
 
                 /* Instaciamos un objeto de la clase Opcion para cargar el combo box
@@ -623,7 +635,28 @@ public class frmFactura extends javax.swing.JInternalFrame {
                 }
 
             }
+            dchFactura.addKeyListener(new java.awt.event.KeyListener() {
 
+                @Override
+                public void keyTyped(KeyEvent ke) {
+                    ke.consume();
+                }
+
+                @Override
+                public void keyPressed(KeyEvent ke) {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
+
+                @Override
+                public void keyReleased(KeyEvent ke) {
+                    throw new UnsupportedOperationException("Not supported yet.");
+                }
+                
+            });
+  
+             
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(frmFactura.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -669,6 +702,11 @@ public class frmFactura extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_txtNFacturaFocusLost
+
+    private void dchFacturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dchFacturaKeyTyped
+
+       evt.consume();
+    }//GEN-LAST:event_dchFacturaKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

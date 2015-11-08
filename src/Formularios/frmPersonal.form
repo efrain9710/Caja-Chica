@@ -257,7 +257,7 @@
                               <Component id="txtNombre" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtApellido" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="cmbCel" min="-2" pref="60" max="-2" attributes="0"/>
+                                  <Component id="cmbTelefono" min="-2" pref="60" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="txtTelefono" min="-2" pref="204" max="-2" attributes="0"/>
                               </Group>
@@ -300,7 +300,7 @@
                               <Component id="txtTelefono" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                   <Component id="labelMetric17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cmbCel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cmbTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
@@ -356,6 +356,7 @@
                 </Component>
                 <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCedula">
                   <Events>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCedulaFocusLost"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCedulaKeyTyped"/>
                   </Events>
                 </Component>
@@ -401,6 +402,7 @@
                 <Component class="org.edisoncor.gui.textField.TextFieldRoundIcon" name="txtCorreo">
                   <Events>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCorreoFocusLost"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCorreoKeyTyped"/>
                   </Events>
                 </Component>
                 <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric12">
@@ -410,7 +412,7 @@
                 </Component>
                 <Component class="org.edisoncor.gui.comboBox.ComboBoxRound" name="cmbCedula">
                 </Component>
-                <Component class="org.edisoncor.gui.comboBox.ComboBoxRound" name="cmbCel">
+                <Component class="org.edisoncor.gui.comboBox.ComboBoxRound" name="cmbTelefono">
                 </Component>
                 <Component class="org.edisoncor.gui.comboBox.ComboBoxRound" name="cmbCargo">
                 </Component>

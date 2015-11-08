@@ -48,12 +48,13 @@ public class frmProveedor extends javax.swing.JInternalFrame {
         btnRegistrarPro = new org.edisoncor.gui.button.ButtonAction();
         btnCancelarPro = new org.edisoncor.gui.button.ButtonAction();
         labelMetric5 = new org.edisoncor.gui.label.LabelMetric();
-        cmbCel = new org.edisoncor.gui.comboBox.ComboBoxRound();
+        cmbTelefono = new org.edisoncor.gui.comboBox.ComboBoxRound();
         txtTelefono = new org.edisoncor.gui.textField.TextFieldRoundIcon();
         labelMetric17 = new org.edisoncor.gui.label.LabelMetric();
         labelMetric4 = new org.edisoncor.gui.label.LabelMetric();
         jScrollPane1 = new javax.swing.JScrollPane();
         areaDescripcion = new javax.swing.JTextArea();
+        cmbCedula = new org.edisoncor.gui.comboBox.ComboBoxRound();
 
         setClosable(true);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
@@ -80,7 +81,18 @@ public class frmProveedor extends javax.swing.JInternalFrame {
 
         txtIDProveedor.setEnabled(false);
 
-        labelMetric2.setText("Rif-Cédula:");
+        labelMetric2.setText("Cédula:");
+
+        txtCedulaProveedor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCedulaProveedorFocusLost(evt);
+            }
+        });
+        txtCedulaProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedulaProveedorKeyTyped(evt);
+            }
+        });
 
         txtNomPro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -126,52 +138,52 @@ public class frmProveedor extends javax.swing.JInternalFrame {
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel1Layout.createSequentialGroup()
-                .addGap(257, 257, 257)
-                .addComponent(btnRegistrarPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(99, 99, 99)
-                .addComponent(btnCancelarPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(257, 257, 257)
+                        .addComponent(btnRegistrarPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(99, 99, 99)
+                        .addComponent(btnCancelarPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panel1Layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                                        .addComponent(labelMetric1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                                        .addComponent(labelMetric4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(21, 21, 21))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(labelMetric3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panel1Layout.createSequentialGroup()
+                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtNomPro, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                                    .addComponent(txtIDProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelMetric17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelMetric2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panel1Layout.createSequentialGroup()
+                                        .addComponent(cmbTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+                                    .addGroup(panel1Layout.createSequentialGroup()
+                                        .addComponent(cmbCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtCedulaProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelMetric5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(222, 222, 222))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                                .addComponent(labelMetric1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                                .addComponent(labelMetric4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(labelMetric3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtNomPro, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                            .addComponent(txtIDProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(labelMetric2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCedulaProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(labelMetric17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmbCel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(32, 32, 32))
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,26 +199,27 @@ public class frmProveedor extends javax.swing.JInternalFrame {
                         .addGap(2, 2, 2)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelMetric2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCedulaProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtCedulaProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(42, 42, 42)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelMetric3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNomPro, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelMetric17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbCel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelMetric4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelarPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegistrarPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
         );
 
-        panel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmbCel, txtTelefono});
+        panel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmbTelefono, txtTelefono});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -230,6 +243,11 @@ public class frmProveedor extends javax.swing.JInternalFrame {
             getToolkit().beep();
             evt.consume();
         }
+
+        if (txtNomPro.getText().length() >= 40) {
+            evt.consume();
+        }
+
     }//GEN-LAST:event_txtNomProKeyTyped
 
     private void btnRegistrarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarProActionPerformed
@@ -268,14 +286,14 @@ public class frmProveedor extends javax.swing.JInternalFrame {
             areaDescripcion.requestFocusInWindow();
             return;
         }
-        
+
         /* Instanciamos un objeto de la Clase Proveedor, el cual se lo pasaremos
          a la funcion agregarProveedor, la cual pide como parametro un objeto Proveedor */
         Proveedor proveedor = new Proveedor(
                 Integer.parseInt(txtIDProveedor.getText()),
-                txtCedulaProveedor.getText(),
+                ((Opcion) cmbCedula.getSelectedItem()).getDescripcion() + "" + txtCedulaProveedor.getText(),
                 txtNomPro.getText(),
-                ((Opcion) cmbCel.getSelectedItem()).getDescripcion() + "" + txtTelefono.getText(),
+                ((Opcion) cmbTelefono.getSelectedItem()).getDescripcion() + "" + txtTelefono.getText(),
                 areaDescripcion.getText());
 
         /* Una ves instanciado y cargado el objeto llamamos a la funcion
@@ -317,27 +335,39 @@ public class frmProveedor extends javax.swing.JInternalFrame {
 
         Opcion op = new Opcion("1", "414");
 
-        cmbCel.addItem(op);
+        cmbTelefono.addItem(op);
 
         op = new Opcion("2", "416");
 
-        cmbCel.addItem(op);
+        cmbTelefono.addItem(op);
 
         op = new Opcion("3", "426");
 
-        cmbCel.addItem(op);
+        cmbTelefono.addItem(op);
 
         op = new Opcion("4", "412");
 
-        cmbCel.addItem(op);
+        cmbTelefono.addItem(op);
 
         op = new Opcion("5", "424");
 
-        cmbCel.addItem(op);
+        cmbTelefono.addItem(op);
 
         op = new Opcion("5", "212");
 
-        cmbCel.addItem(op);
+        cmbTelefono.addItem(op);
+
+        Opcion op2 = new Opcion("1", "N-");
+
+        cmbCedula.addItem(op2);
+
+        op2 = new Opcion("2", "E-");
+
+        cmbCedula.addItem(op2);
+
+        op2 = new Opcion("3", "J-");
+
+        cmbCedula.addItem(op2);
 
     }//GEN-LAST:event_formInternalFrameOpened
 
@@ -359,17 +389,107 @@ public class frmProveedor extends javax.swing.JInternalFrame {
             evt.consume();
         }
 
-        if (txtTelefono.getText().length() >= 8) {
+        if (txtTelefono.getText().length() >= 7) {
             evt.consume();
         }
     }//GEN-LAST:event_txtTelefonoKeyTyped
+
+    private void txtCedulaProveedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaProveedorKeyTyped
+        char c = evt.getKeyChar();
+
+        if (cmbCedula.getSelectedIndex() == 0 || cmbCedula.getSelectedIndex() == 1) {
+
+            if (!Character.isDigit(evt.getKeyChar())) {
+                evt.consume();
+
+            }
+
+            if (txtCedulaProveedor.getText().length() >= 8) {
+                evt.consume();
+            }
+
+        } else {
+
+            if (txtCedulaProveedor.getText().length() == 8) {
+
+                if (evt.getKeyChar() == '-') {
+                    return;
+                } else {
+                    evt.consume();
+                }
+
+            }
+
+            if (!Character.isDigit(evt.getKeyChar())) {
+                evt.consume();
+
+            }
+
+            if (txtCedulaProveedor.getText().length() >= 10) {
+                evt.consume();
+            }
+
+        }
+    }//GEN-LAST:event_txtCedulaProveedorKeyTyped
+
+    private void txtCedulaProveedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCedulaProveedorFocusLost
+        
+        if (cmbCedula.getSelectedIndex() == 0 || cmbCedula.getSelectedIndex() == 1) {
+
+            if (txtCedulaProveedor.getText().length() < 8) {
+
+                JOptionPane.showMessageDialog(this, "Debe digitar una Cedula valida");
+                txtCedulaProveedor.setText("");
+                txtCedulaProveedor.requestFocusInWindow();
+                return;
+
+            }
+
+        } else {
+
+            if (txtCedulaProveedor.getText().length() < 10) {
+
+                JOptionPane.showMessageDialog(this, "Debe digitar una Cedula valida");
+                txtCedulaProveedor.setText("");
+                txtCedulaProveedor.requestFocusInWindow();
+                return;
+
+            }
+
+        }
+        if (cmbCedula.getSelectedIndex() == 0 || cmbCedula.getSelectedIndex() == 1) {
+
+            if (txtCedulaProveedor.getText().length() < 8) {
+
+                JOptionPane.showMessageDialog(this, "Debe digitar una Cedula valida");
+                txtCedulaProveedor.setText("");
+                txtCedulaProveedor.requestFocusInWindow();
+                return;
+
+            }
+
+        } else {
+
+            if (txtCedulaProveedor.getText().length() < 10) {
+
+                JOptionPane.showMessageDialog(this, "Debe digitar una Cedula valida");
+                txtCedulaProveedor.setText("");
+                txtCedulaProveedor.requestFocusInWindow();
+                return;
+
+            }
+
+        }
+
+    }//GEN-LAST:event_txtCedulaProveedorFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaDescripcion;
     private org.edisoncor.gui.button.ButtonAction btnCancelarPro;
     private org.edisoncor.gui.button.ButtonAction btnRegistrarPro;
-    private org.edisoncor.gui.comboBox.ComboBoxRound cmbCel;
+    private org.edisoncor.gui.comboBox.ComboBoxRound cmbCedula;
+    private org.edisoncor.gui.comboBox.ComboBoxRound cmbTelefono;
     private javax.swing.JScrollPane jScrollPane1;
     private org.edisoncor.gui.label.LabelMetric labelMetric1;
     private org.edisoncor.gui.label.LabelMetric labelMetric17;

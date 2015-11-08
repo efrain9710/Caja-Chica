@@ -101,7 +101,7 @@ public class frmPersonal extends javax.swing.JInternalFrame {
         txtCorreo = new org.edisoncor.gui.textField.TextFieldRoundIcon();
         labelMetric12 = new org.edisoncor.gui.label.LabelMetric();
         cmbCedula = new org.edisoncor.gui.comboBox.ComboBoxRound();
-        cmbCel = new org.edisoncor.gui.comboBox.ComboBoxRound();
+        cmbTelefono = new org.edisoncor.gui.comboBox.ComboBoxRound();
         cmbCargo = new org.edisoncor.gui.comboBox.ComboBoxRound();
         Proyecto = new org.edisoncor.gui.panel.Panel();
         cmbProyecto = new org.edisoncor.gui.comboBox.ComboBoxRound();
@@ -253,6 +253,11 @@ public class frmPersonal extends javax.swing.JInternalFrame {
 
         labelMetric19.setText("Cargo:");
 
+        txtCedula.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCedulaFocusLost(evt);
+            }
+        });
         txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCedulaKeyTyped(evt);
@@ -299,6 +304,11 @@ public class frmPersonal extends javax.swing.JInternalFrame {
                 txtCorreoFocusLost(evt);
             }
         });
+        txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCorreoKeyTyped(evt);
+            }
+        });
 
         labelMetric12.setText("Correo:");
 
@@ -331,7 +341,7 @@ public class frmPersonal extends javax.swing.JInternalFrame {
                     .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PersonalLayout.createSequentialGroup()
-                        .addComponent(cmbCel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtCorreo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -365,7 +375,7 @@ public class frmPersonal extends javax.swing.JInternalFrame {
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelMetric17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cmbCel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cmbTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(34, 34, 34)
                 .addGroup(PersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelMetric19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -755,27 +765,27 @@ public class frmPersonal extends javax.swing.JInternalFrame {
 
             Opcion op5 = new Opcion("1", "414");
 
-            cmbCel.addItem(op5);
+            cmbTelefono.addItem(op5);
 
             op5 = new Opcion("2", "416");
 
-            cmbCel.addItem(op5);
+            cmbTelefono.addItem(op5);
 
             op5 = new Opcion("3", "426");
 
-            cmbCel.addItem(op5);
+            cmbTelefono.addItem(op5);
 
             op5 = new Opcion("4", "412");
 
-            cmbCel.addItem(op5);
+            cmbTelefono.addItem(op5);
 
             op5 = new Opcion("5", "424");
 
-            cmbCel.addItem(op5);
+            cmbTelefono.addItem(op5);
 
             op5 = new Opcion("5", "212");
 
-            cmbCel.addItem(op5);
+            cmbTelefono.addItem(op5);
 
             tablaProyecto.setModel(tablaModelo);
 
@@ -830,7 +840,7 @@ public class frmPersonal extends javax.swing.JInternalFrame {
                 ((Opcion) cmbCedula.getSelectedItem()).getDescripcion() + "" + txtCedula.getText(),
                 txtNombre.getText(),
                 txtApellido.getText(),
-                ((Opcion) cmbCel.getSelectedItem()).getDescripcion() + "" + txtTelefono.getText(),
+                ((Opcion) cmbTelefono.getSelectedItem()).getDescripcion() + "" + txtTelefono.getText(),
                 ((Opcion) cmbCargo.getSelectedItem()).getDescripcion());
 
         /* Una ves instanciado y cargado el objeto llamamos a la funcion
@@ -893,23 +903,49 @@ public class frmPersonal extends javax.swing.JInternalFrame {
         /* Funcion para validar que solo ingresen numeros */
         char c = evt.getKeyChar();
 
-        if (Character.isLetter(c)) {
-            getToolkit().beep();
+        if (cmbCedula.getSelectedIndex() == 0) {
 
-            evt.consume();
+            if (!Character.isDigit(evt.getKeyChar())) {
+                evt.consume();
+
+            }
+
+            if (txtCedula.getText().length() >= 8) {
+                evt.consume();
+            }
+
+        } else {
+
+            if (txtCedula.getText().length() == 8) {
+
+                if (evt.getKeyChar() == '-') {
+                    return;
+                } else {
+                    evt.consume();
+                }
+
+            }
+
+            if (!Character.isDigit(evt.getKeyChar())) {
+                evt.consume();
+
+            }
+
+            if (txtCedula.getText().length() >= 10) {
+                evt.consume();
+            }
+
         }
 
-        if (Character.isWhitespace(evt.getKeyChar())) {
-            evt.consume();
-        }
+        /* if (Character.isLetter(c)) {
+         getToolkit().beep();
 
-        if (!Character.isDigit(evt.getKeyChar())) {
-            evt.consume();
-        }
+         evt.consume();
+         }
 
-        if (txtCedula.getText().length() >= 9) {
-            evt.consume();
-        }
+         if (Character.isWhitespace(evt.getKeyChar())) {
+         evt.consume();
+         } */
 
     }//GEN-LAST:event_txtCedulaKeyTyped
 
@@ -959,7 +995,7 @@ public class frmPersonal extends javax.swing.JInternalFrame {
 
         if (!txtUsuario.getText().equals("")) {
 
-            if (da.getUsuario(txtUsuario.getText() )){
+            if (da.getUsuario(txtUsuario.getText())) {
                 JOptionPane.showMessageDialog(this, "El nombre de usuario ya se "
                         + "encuentra registrado. ");
                 txtUsuario.setText("");
@@ -970,6 +1006,41 @@ public class frmPersonal extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_txtUsuarioFocusLost
+
+    private void txtCedulaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCedulaFocusLost
+
+        if (cmbCedula.getSelectedIndex() == 0) {
+
+            if (txtCedula.getText().length() < 8) {
+
+                JOptionPane.showMessageDialog(this, "Debe digitar una Cedula valida");
+                txtCedula.setText("");
+                txtCedula.requestFocusInWindow();
+                return;
+
+            }
+
+        } else {
+
+            if (txtCedula.getText().length() < 10) {
+
+                JOptionPane.showMessageDialog(this, "Debe digitar una Cedula valida");
+                txtCedula.setText("");
+                txtCedula.requestFocusInWindow();
+                return;
+
+            }
+
+        }
+
+
+    }//GEN-LAST:event_txtCedulaFocusLost
+
+    private void txtCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyTyped
+         if (txtCorreo.getText().length() >= 40) {
+                evt.consume();
+            }
+    }//GEN-LAST:event_txtCorreoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -987,8 +1058,8 @@ public class frmPersonal extends javax.swing.JInternalFrame {
     private org.edisoncor.gui.button.ButtonAction btnSiguientePer;
     private org.edisoncor.gui.comboBox.ComboBoxRound cmbCargo;
     private org.edisoncor.gui.comboBox.ComboBoxRound cmbCedula;
-    private org.edisoncor.gui.comboBox.ComboBoxRound cmbCel;
     private org.edisoncor.gui.comboBox.ComboBoxRound cmbProyecto;
+    private org.edisoncor.gui.comboBox.ComboBoxRound cmbTelefono;
     private org.edisoncor.gui.comboBox.ComboBoxRound cmbTipo;
     private javax.swing.JScrollPane jScrollPane1;
     private org.edisoncor.gui.label.LabelMetric labelMetric10;

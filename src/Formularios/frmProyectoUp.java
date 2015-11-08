@@ -383,6 +383,18 @@ public class frmProyectoUp extends javax.swing.JInternalFrame {
             return;
         }
 
+        if (!txtNombre.getText().equals("")) {
+
+            if (datos.getProyecto(txtNombre.getText())) {
+                JOptionPane.showMessageDialog(this, "El proyecto ya se "
+                        + "encuentra registrado. ");
+                txtNombre.setText("");
+                txtNombre.requestFocusInWindow();
+
+            }
+
+        }
+
         /* Llamamos a la funcion modificarProyecto la cual recibe como parametro
          un Integer que es el ID del proyecto y un String que seria el nombre
          del proyecto */
@@ -460,7 +472,7 @@ public class frmProyectoUp extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
-         Datos da = new Datos();
+        Datos da = new Datos();
 
         if (!txtNombre.getText().equals("")) {
 

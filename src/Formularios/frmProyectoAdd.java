@@ -178,6 +178,18 @@ public class frmProyectoAdd extends javax.swing.JInternalFrame {
             txtNombre.requestFocusInWindow();
             return;
         }
+        
+        if (!txtNombre.getText().equals("")) {
+
+            if (datos.getProyecto(txtNombre.getText())) {
+                JOptionPane.showMessageDialog(this, "El proyecto ya se "
+                        + "encuentra registrado. ");
+                txtNombre.setText("");
+                txtNombre.requestFocusInWindow();
+
+            }
+
+        }
 
         /* Instanciamos un obejto de la Clase Proyecto, para luego pasarselo
          a la funcion agregarProyecto. */
