@@ -418,8 +418,6 @@ public class frmFactura extends javax.swing.JInternalFrame {
         int ready = JOptionPane.showConfirmDialog(this, "Verifique que sus datos sean correctos, "
                 + "Si lo son presione el boton de si");
         
-        JOptionPane.showMessageDialog(this, "" + ready);
-        
         if(ready == 1 || ready == 2){
             return;
         }
@@ -450,7 +448,7 @@ public class frmFactura extends javax.swing.JInternalFrame {
 
                 /* con el metodo put se le pasa el parametros al reporte, en este
                  caso el parametro se llama factura */
-                parametros.put("factura", txtIDFactura.getText());
+                parametros.put("numero", txtNFactura.getText());
 
                 /* Obtenemos la direccion del reporte*/
                 String template = frmFactura.class.getProtectionDomain().getCodeSource().getLocation().getPath();
@@ -463,9 +461,9 @@ public class frmFactura extends javax.swing.JInternalFrame {
                  reporte con System.getProperty("user.dir") + "/src/Reportes/rptFactura.jrxml";
                  y si no es le pasamos la direccion donde se encuentra el jar */
                 if (aux.isDirectory()) {
-                    template = System.getProperty("user.dir") + "/src/Reportes/rptFactura.jrxml";
+                    template = System.getProperty("user.dir") + "/src/Reportes/rptFinal.jrxml";
                 } else {
-                    template = aux.getParent() + "/rptFactura.jrxml";
+                    template = aux.getParent() + "/rptFinal.jrxml";
                 }
 
                 /* Le pasamos la direccion del reporte que en este caso es un

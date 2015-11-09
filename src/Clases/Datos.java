@@ -1016,5 +1016,39 @@ public class Datos {
         }
 
     }
+    
+    public String getMontoTotal() {
+        try {
+            String sql = "SELECT factura.id_factura AS factura, factura.n_factura, "
+                    + "factura.fecha_fac AS fecha, "
+                    + "factura.fecha_carga AS carga, "
+                    + "CONCAT( proveedor.rif_cedula, '-', proveedor.nom_prove) AS proveedor, "
+                    + "CONCAT( personal.nom_per, ' ', personal.ape_per) AS empleado, "
+                    + "servicio.nom_servi AS servicio, "
+                    + "status.nom_sta AS status, "
+                    + "factura.descri_fac AS descripcion, "
+                    + "factura.monto AS monto, "
+                    + "SUM(factura.monto) as total "
+                    + "FROM factura "
+                    + "INNER JOIN proveedor ON factura.id_proveedor = proveedor.id_proveedor "
+                    + "INNER JOIN personal ON factura.id_personal = personal.id_personal "
+                    + "INNER JOIN servicio ON factura.id_servicio = servicio.id_servicio "
+                    + "INNER JOIN status ON factura.id_status = status.id_status ";
+
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()){
+                
+                return rs.getString("total");
+                
+            }
+            return null;
+        } catch (SQLException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
 
 }

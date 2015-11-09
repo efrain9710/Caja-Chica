@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2015 a las 23:09:51
+-- Tiempo de generación: 09-11-2015 a las 08:00:53
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -74,15 +74,20 @@ CREATE TABLE IF NOT EXISTS `factura` (
   KEY `id_servicio` (`id_servicio`),
   KEY `id_status` (`id_status`),
   KEY `n_factura` (`n_factura`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=12 ;
 
 --
 -- Volcado de datos para la tabla `factura`
 --
 
 INSERT INTO `factura` (`id_factura`, `n_factura`, `fecha_fac`, `fecha_carga`, `id_proveedor`, `id_personal`, `id_servicio`, `descri_fac`, `id_status`, `monto`) VALUES
-(5, 5, '2015-11-05', '2015-11-05', 1, 1, 1, 'asdas', 2, 23323),
-(6, 1, '2015-11-06', '2015-11-07', 2, 1, 1, 'sdasa', 1, 11212);
+(5, 5, '2015-11-05', '2015-11-05', 1, 1, 1, 'asdas', 1, 23323),
+(6, 1, '2015-11-06', '2015-11-07', 2, 1, 1, 'sdasa', 1, 11212),
+(7, 6, '2015-11-06', '2015-11-08', 3, 2, 2, 'sdas', 3, 100),
+(8, 2, '2015-11-06', '2015-11-08', 2, 2, 2, 'sads', 3, 2000),
+(9, 8, '2015-11-08', '2015-11-08', 3, 1, 2, 'sda', 1, 300),
+(10, 6767, '2015-11-04', '2015-11-08', 3, 2, 2, 'dasdas', 3, 12),
+(11, 9, '2015-11-09', '2015-11-09', 3, 1, 1, 'asdsda', 3, 400);
 
 -- --------------------------------------------------------
 
@@ -122,14 +127,15 @@ CREATE TABLE IF NOT EXISTS `personal` (
   KEY `ci_per` (`ci_per`),
   KEY `usuario` (`usuario`),
   KEY `usuario_2` (`usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `personal`
 --
 
 INSERT INTO `personal` (`id_personal`, `usuario`, `ci_per`, `nom_per`, `ape_per`, `tele_per`, `cargo`) VALUES
-(1, 'gerente', '22440748', 'prueba', 'ape', '2147483647', 'Gerente');
+(1, 'gerente', '22440748', 'prueba', 'ape', '414231232', 'Gerente'),
+(2, 'victor', 'J-21212121-1', 'sdsads', 'sdasda', '4267228558', 'Coordinador de Infraestructura');
 
 -- --------------------------------------------------------
 
@@ -144,15 +150,16 @@ CREATE TABLE IF NOT EXISTS `proveedor` (
   `tele_prove` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `direcc_prove` text COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_proveedor`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `proveedor`
 --
 
 INSERT INTO `proveedor` (`id_proveedor`, `rif_cedula`, `nom_prove`, `tele_prove`, `direcc_prove`) VALUES
-(1, '22447878', 'Victor', '12321234', 'Proveedor del CNTI'),
-(2, '1231231', 'sadsas', '14547412', 'Por ahi');
+(1, '22447878', 'ds', '3212312', 'Proveedor del CNTI'),
+(2, '1231231', 'sadsas', '4141477477', 'Por ahi'),
+(3, 'J-12132132-1', 'Sotfwarsito', '4142312312', 'sdasdas');
 
 -- --------------------------------------------------------
 
@@ -164,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
   `id_proyecto` int(100) NOT NULL AUTO_INCREMENT,
   `nom_pro` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_proyecto`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `proyecto`
@@ -175,7 +182,8 @@ INSERT INTO `proyecto` (`id_proyecto`, `nom_pro`) VALUES
 (2, 'Prueba'),
 (3, 'p3'),
 (4, 'p6'),
-(5, 'peaa');
+(5, 'peaa'),
+(6, '21');
 
 -- --------------------------------------------------------
 
@@ -190,14 +198,17 @@ CREATE TABLE IF NOT EXISTS `proye_geren` (
   PRIMARY KEY (`id_proge`),
   KEY `id_proyecto` (`id_proyecto`),
   KEY `id_gerente` (`id_gerente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `proye_geren`
 --
 
 INSERT INTO `proye_geren` (`id_proge`, `id_proyecto`, `id_gerente`) VALUES
-(1, 1, 1);
+(1, 1, 1),
+(2, 4, 2),
+(3, 6, 2),
+(4, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -279,14 +290,15 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   KEY `tipo_usu` (`tipo_usu`),
   KEY `usuario` (`usuario`),
   KEY `usuario_2` (`usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `tipo_usu`, `usuario`, `clave`, `correo_usu`) VALUES
-(1, 1, 'gerente', '11', 'gerente@gmail.com');
+(1, 1, 'gerente', '11', 'gerente@gmail.com'),
+(2, 1, 'victor', '22', 'sda@sads.com');
 
 --
 -- Restricciones para tablas volcadas

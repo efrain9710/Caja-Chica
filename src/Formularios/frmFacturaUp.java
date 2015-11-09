@@ -321,12 +321,38 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
 
             if (datos.modificarFactura(id, idsta)) {
 
-                JOptionPane.showMessageDialog(this, "El stauts ha sido modificado"
-                        + "correctamente");
-
-                /* Limpiamos la tabla */
-                tablaModelo.setRowCount(0);
-                llenarTabla();
+                try {
+                    JOptionPane.showMessageDialog(this, "El stauts ha sido modificado"
+                            + " correctamente");
+                    /* Limpiamos la tabla */
+                    tablaModelo.setRowCount(0);
+                    llenarTabla();
+                    
+                    double reserva = 0, aprobadas = 0, supera =0;
+                    
+                    ResultSet rs = datos.getMonto();
+                    
+                    while (rs.next()) {
+                        reserva = rs.getDouble("monto");
+                    }
+                    
+                    ResultSet rsApro = datos.getSumaMontoAprobadas();
+                    while (rsApro.next()) {
+                        aprobadas = rsApro.getDouble("total");
+                    }
+                    
+                    if(aprobadas > reserva){
+                        
+                        supera = aprobadas - reserva;
+                        JOptionPane.showMessageDialog(this, "La reserva es de " + reserva
+                                + "ha sido superada  por la cantidad de: " + supera);
+                        
+                    }
+                    
+                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(frmFacturaUp.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             } else {
 

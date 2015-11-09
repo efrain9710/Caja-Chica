@@ -11,6 +11,8 @@ import Clases.Utilidades;
 import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -39,7 +41,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
 
         if (rbtTodo.isSelected()) {
             /* Bloqueamos los radio button */
-            
+
             rbtFecha.setEnabled(false);
             rbtFactura.setEnabled(false);
             rbtEmpleado.setEnabled(false);
@@ -566,8 +568,10 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
 
         try {
 
-            String sql = " SELECT factura.id_factura AS factura, factura.n_factura"
+            String sql = " SELECT factura.id_factura AS factura, "
+                    + "factura.n_factura AS numero, "
                     + "factura.fecha_fac AS fecha, "
+                    + "factura.fecha_carga AS carga, "
                     + "CONCAT( proveedor.rif_cedula, '-', proveedor.nom_prove) AS proveedor, "
                     + "CONCAT( personal.nom_per, ' ', personal.ape_per) AS empleado, "
                     + "servicio.nom_servi AS servicio, "
@@ -614,7 +618,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
                         return;
                     }
 
-                    filtro = "WHERE factura.id_factura >= "
+                    filtro = "WHERE factura.n_factura >= "
                             + ((Opcion) cmbNumero.getSelectedItem()).getValor();
 
                 }
@@ -664,6 +668,17 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
              la funcion getFactura para obtener los datos de la factura */
             JRResultSetDataSource data = new JRResultSetDataSource(datos.getFacturas(sql));
 
+            if(datos.getFacturas(sql) == null){
+                JOptionPane.showMessageDialog(this, "No se encontraron facturas con la consulta proporcionada.");
+                return;
+            }
+            
+            Map parametros = new HashMap();
+
+            /* con el metodo put se le pasa el parametros al reporte, en este
+             caso el parametro se llama factura */
+            parametros.put("total", datos.getMontoTotal());
+            
             /* Obtenemos la direccion del reporte*/
             String template = frmFactura.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 
@@ -674,9 +689,9 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
              reporte con System.getProperty("user.dir") + "/src/Reportes/rptFactura.jrxml";
              y si no es le pasamos la direccion donde se encuentra el jar */
             if (aux.isDirectory()) {
-                template = System.getProperty("user.dir") + "/src/Reportes/rptConsulta.jrxml";
+                template = System.getProperty("user.dir") + "/src/Reportes/rptFinal_1.jrxml";
             } else {
-                template = aux.getParent() + "/rptConsulta.jrxml";
+                template = aux.getParent() + "/rptFinal_1.jrxml";
             }
 
             /* Le pasamos la direccion del reporte que en este caso es un
@@ -692,7 +707,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
              ResultSet con lo datos.
 
              En este caso le pasamos un JRResultSetDataSource con los datos*/
-            JasperPrint print = JasperFillManager.fillReport(jasperReport, null, data);
+            JasperPrint print = JasperFillManager.fillReport(jasperReport, parametros, data);
 
             /* Lo hacemos visible en pantalla */
             JasperViewer.viewReport(print);
@@ -739,14 +754,13 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
 
             grupo1.add(rbtTodo);
             grupo1.add(rbtSeleccion);
-            
+
             grupo2.add(rbtFecha);
             grupo2.add(rbtFactura);
             grupo2.add(rbtEmpleado);
             grupo2.add(rbtServicio);
             grupo2.add(rbtProveedor);
-            
-            
+
             cmbNumero.setEnabled(false);
             dchFechaInicial.setEnabled(false);
             dchFechaFinal.setEnabled(false);
