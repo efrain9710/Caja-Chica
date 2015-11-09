@@ -29,7 +29,7 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
 
     /* Definimos los titulos que llevara la tabla*/
     public String titulos[] = {"Nº", "Fecha", "Fecha Carga", "Proveedor", "Empleado",
-        "Status", "Monto"};
+        "Servicio", "Descripcion", "Status", "Monto"};
 
     public String usuario;
 
@@ -39,15 +39,7 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
 
     Datos datos = new Datos();
 
-    /* Definimos una tabla modelo y sobreeescribimos el metodo isCellEditable
-     para que las columnas y filas de la tabla no se puedan editar*/
-    DefaultTableModel tablaModelo = new DefaultTableModel(null, titulos) {
-        @Override
-        public boolean isCellEditable(int row, int col) {
-            return false;
-        }
-
-    };
+    DefaultTableModel tablaModelo = new DefaultTableModel(null, titulos);
 
     /* Funcion para llenar la tabla cuando abre el formulario */
     public void llenarTabla() {
@@ -63,7 +55,7 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
 
             /* Instaciamos un obejto vector tipo string, el cual nos servira
              para guardar las filas de la tabla. */
-            String registro[] = new String[8];
+            String registro[] = new String[10];
 
             /* Hacemos un while que mientras en rs hallan datos el ira agregando
              filas a la tabla. */
@@ -74,8 +66,10 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
                 registro[2] = rs.getString("carga");
                 registro[3] = rs.getString("proveedor");
                 registro[4] = rs.getString("empleado");
-                registro[5] = rs.getString("status");
-                registro[6] = rs.getString("monto");
+                registro[5] = rs.getString("servicio");
+                registro[6] = rs.getString("descripcion");
+                registro[7] = rs.getString("status");
+                registro[8] = rs.getString("monto");
 
                 tablaModelo.addRow(registro);
 
@@ -90,7 +84,7 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
 
     /* Funcion para llenar la tabla cuando se busque un usuario en especifico
      por el nombre */
-    public void llenarTabla(int n) {
+    public void llenarTabla(String nombre) {
 
         try {
             /* Limpiamos la tabla */
@@ -103,9 +97,9 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
              llenar la tabla con los registros.
             
              */
-            ResultSet rs = datos.getFacturasReporteId(n);
+            ResultSet rs = datos.getFacturasReporteEmpleado(nombre);
 
-            String registro[] = new String[8];
+            String registro[] = new String[10];
 
             /* Hacemos un while que mientras en rs hallan datos el ira agregando
              filas a la tabla. */
@@ -116,8 +110,10 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
                 registro[2] = rs.getString("carga");
                 registro[3] = rs.getString("proveedor");
                 registro[4] = rs.getString("empleado");
-                registro[5] = rs.getString("status");
-                registro[6] = rs.getString("monto");
+                registro[5] = rs.getString("servicio");
+                registro[6] = rs.getString("descripcion");
+                registro[7] = rs.getString("status");
+                registro[8] = rs.getString("monto");
 
                 tablaModelo.addRow(registro);
 
@@ -138,6 +134,8 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
         tablaFacturas = new javax.swing.JTable();
         txtBuscar = new org.edisoncor.gui.textField.TextFieldRoundIcon();
         labelMetric8 = new org.edisoncor.gui.label.LabelMetric();
+        btnModificar = new org.edisoncor.gui.button.ButtonAction();
+        btnCancelar = new org.edisoncor.gui.button.ButtonAction();
 
         setClosable(true);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
@@ -191,39 +189,69 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
         labelMetric8.setText("Buscar:");
         labelMetric8.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                .addContainerGap(56, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 979, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
             .addGroup(panel1Layout.createSequentialGroup()
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(332, 332, 332)
-                        .addComponent(labelMetric3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(414, 414, 414)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
+                        .addGap(325, 325, 325)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 794, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panel1Layout.createSequentialGroup()
-                                .addGap(166, 166, 166)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                                .addComponent(labelMetric3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
                                 .addComponent(labelMetric8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        panel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCancelar, btnModificar});
+
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap()
                 .addComponent(labelMetric3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelMetric8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelMetric8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
         );
+
+        panel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCancelar, btnModificar});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -245,7 +273,7 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
          llenamos la tabla con la busqueda */
         if (!txtBuscar.getText().equals("")) {
 
-            llenarTabla(Integer.parseInt(txtBuscar.getText()));
+            llenarTabla(txtBuscar.getText());
 
         } else {
             /* Limpiamos la tabla */
@@ -262,6 +290,11 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void tablaFacturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaFacturasMouseClicked
+
+
+    }//GEN-LAST:event_tablaFacturasMouseClicked
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         /* Variable que contendra el ID de la fila seleccionada */
         int s = 0, idsta = 0;
 
@@ -270,17 +303,17 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
 
         /* Validamos que hallan seleccionado */
         if (s < 0) {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar un proyecto");
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una factura ");
             return;
         }
 
-        String status = JOptionPane.showInputDialog("Ingrese el nuevo Status de la factura");
+        String status = (Utilidades.objectToString(tablaFacturas.getValueAt(s, 7)));
 
         int id = (Utilidades.objectToInt(tablaFacturas.getValueAt(s, 0)));
 
         if (datos.getStatus(status)) {
 
-            if (status.equals("Aprovado")) {
+            if (status.equals("Aprobado")) {
                 idsta = 1;
             } else {
                 idsta = 2;
@@ -290,15 +323,16 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
 
                 JOptionPane.showMessageDialog(this, "El stauts ha sido modificado"
                         + "correctamente");
-               
+
                 /* Limpiamos la tabla */
                 tablaModelo.setRowCount(0);
                 llenarTabla();
-                
+
             } else {
 
                 JOptionPane.showMessageDialog(this, "No se ha podifo modificar el"
                         + "stauts, pro favor intentelo mas tarde");
+                return;
 
             }
 
@@ -308,11 +342,16 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
             return;
         }
 
+    }//GEN-LAST:event_btnModificarActionPerformed
 
-    }//GEN-LAST:event_tablaFacturasMouseClicked
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.edisoncor.gui.button.ButtonAction btnCancelar;
+    private org.edisoncor.gui.button.ButtonAction btnModificar;
     private javax.swing.JScrollPane jScrollPane1;
     private org.edisoncor.gui.label.LabelMetric labelMetric3;
     private org.edisoncor.gui.label.LabelMetric labelMetric8;

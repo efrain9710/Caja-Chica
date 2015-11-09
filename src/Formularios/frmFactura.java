@@ -47,8 +47,6 @@ public class frmFactura extends javax.swing.JInternalFrame {
         this.perfil = perfil;
         this.cargo = cargo;
     }
-    
-   
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -196,8 +194,8 @@ public class frmFactura extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
                                 .addGap(0, 34, Short.MAX_VALUE)
                                 .addComponent(labelMetric12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(76, 76, 76)
                                 .addComponent(labelMetric16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panel1Layout.createSequentialGroup()
@@ -321,20 +319,7 @@ public class frmFactura extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtMontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoKeyTyped
-
         /* Funcion para validar que solo ingresen numeros */
-        char c = evt.getKeyChar();
-
-        if (Character.isLetter(c)) {
-            getToolkit().beep();
-
-            evt.consume();
-        }
-
-        if (Character.isWhitespace(evt.getKeyChar())) {
-            evt.consume();
-        }
-
         if (!Character.isDigit(evt.getKeyChar())) {
             evt.consume();
         }
@@ -358,8 +343,14 @@ public class frmFactura extends javax.swing.JInternalFrame {
             return;
         }
 
-        if (Utilidades.formateDate(dchFactura.getDate()).equals("")) {
+        if (dchFactura.getDate() == null) {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar la fecha de la factura");
+            dchFactura.requestFocusInWindow();
+            return;
+        }
+        
+        if (dchFactura.getDate().after(dchCarga.getDate())) {
+            JOptionPane.showMessageDialog(rootPane, "La fecha no puede ser mayor a la de hoy");
             dchFactura.requestFocusInWindow();
             return;
         }
@@ -370,15 +361,27 @@ public class frmFactura extends javax.swing.JInternalFrame {
             return;
         }
 
-        if (cmbProveedor.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Debe Seleccionar un proveedor");
-            cmbProveedor.requestFocusInWindow();
+        if (txtNFactura.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Debe digitar el Numero de la factura");
+            txtNFactura.requestFocusInWindow();
             return;
         }
+        
+        if (!txtNFactura.getText().equals("")) {
 
-        if (cmbEmpleado.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Debe Seleccionar un Empleado");
-            cmbEmpleado.requestFocusInWindow();
+            if (datos.getNumeroFac(Integer.parseInt(txtNFactura.getText()))) {
+                JOptionPane.showMessageDialog(this, "El numero de la factura ya se "
+                        + "encuentra registrado. ");
+                txtNFactura.setText("");
+                txtNFactura.requestFocusInWindow();
+                return;
+            }
+
+        }
+
+        if (((Opcion) cmbGerente.getSelectedItem()).getDescripcion().equals("Seleccione un Gerente")) {
+            JOptionPane.showMessageDialog(rootPane, "Debe Seleccionar un Gerente");
+            cmbGerente.requestFocusInWindow();
             return;
         }
 
@@ -388,9 +391,21 @@ public class frmFactura extends javax.swing.JInternalFrame {
             return;
         }
 
-        if (cmbStatus.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Debe Seleccionar un Status");
-            cmbStatus.requestFocusInWindow();
+        if (cmbProveedor.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Debe Seleccionar un proveedor");
+            cmbProveedor.requestFocusInWindow();
+            return;
+        }
+
+        if (((Opcion) cmbEmpleado.getSelectedItem()).getDescripcion().equals("Seleccione un Empleado")) {
+            JOptionPane.showMessageDialog(rootPane, "Debe Seleccionar un Empleado");
+            cmbEmpleado.requestFocusInWindow();
+            return;
+        }
+
+        if (areaDescrip.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Debe ingresar una descripcion ");
+            areaDescrip.requestFocusInWindow();
             return;
         }
 
@@ -399,10 +414,13 @@ public class frmFactura extends javax.swing.JInternalFrame {
             txtMonto.requestFocusInWindow();
             return;
         }
-
-        if (areaDescrip.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Debe ingresar una descripcion ");
-            areaDescrip.requestFocusInWindow();
+        
+        int ready = JOptionPane.showConfirmDialog(this, "Verifique que sus datos sean correctos, "
+                + "Si lo son presione el boton de si");
+        
+        JOptionPane.showMessageDialog(this, "" + ready);
+        
+        if(ready == 1 || ready == 2){
             return;
         }
 
@@ -472,6 +490,7 @@ public class frmFactura extends javax.swing.JInternalFrame {
 
         txtIDFactura.setText("");
         dchCarga.setDate(null);
+        txtNFactura.setText("");
         cmbProveedor.setSelectedIndex(0);
         cmbEmpleado.setSelectedIndex(0);
         cmbServicios.setSelectedIndex(0);
@@ -485,7 +504,6 @@ public class frmFactura extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-
         setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
@@ -574,7 +592,7 @@ public class frmFactura extends javax.swing.JInternalFrame {
 
                 /* Instaciamos un objeto de la clase Opcion para cargar el combo box
                  de los Empleados  */
-                Opcion op4 = new Opcion("0", "Seleccione un Empleado ");
+                Opcion op4 = new Opcion("0", "Seleccione un Empleado");
 
                 /* Añadimos el primer elemento al combo box */
                 cmbEmpleado.addItem(op4);
@@ -613,7 +631,7 @@ public class frmFactura extends javax.swing.JInternalFrame {
 
                 /* Instaciamos un objeto de la clase Opcion para cargar el combo box
                  de los Empleados  */
-                Opcion op5 = new Opcion("0", "Seleccione un Gerente ");
+                Opcion op5 = new Opcion("0", "Seleccione un Gerente");
 
                 /* Añadimos el primer elemento al combo box */
                 cmbGerente.addItem(op5);
@@ -651,12 +669,9 @@ public class frmFactura extends javax.swing.JInternalFrame {
                 public void keyReleased(KeyEvent ke) {
                     throw new UnsupportedOperationException("Not supported yet.");
                 }
-                
+
             });
-  
-             
-            
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(frmFactura.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -695,7 +710,7 @@ public class frmFactura extends javax.swing.JInternalFrame {
                         + "encuentra registrado. ");
                 txtNFactura.setText("");
                 txtNFactura.requestFocusInWindow();
-
+                return;
             }
 
         }
@@ -705,7 +720,7 @@ public class frmFactura extends javax.swing.JInternalFrame {
 
     private void dchFacturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dchFacturaKeyTyped
 
-       evt.consume();
+        evt.consume();
     }//GEN-LAST:event_dchFacturaKeyTyped
 
 

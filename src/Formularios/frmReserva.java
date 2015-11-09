@@ -153,21 +153,15 @@ public class frmReserva extends javax.swing.JInternalFrame {
 
     private void txtMontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoKeyTyped
         /* Funcion para validar que solo ingresen numeros */
-        char c = evt.getKeyChar();
-
-        if (Character.isLetter(c)) {
-            getToolkit().beep();
-
-            evt.consume();
-        }
-
-        if (Character.isWhitespace(evt.getKeyChar())) {
-            evt.consume();
-        }
-
+       
         if (!Character.isDigit(evt.getKeyChar())) {
             evt.consume();
         }
+        
+        if (txtMonto.getText().length() >= 6) {
+            evt.consume();
+        }
+        
     }//GEN-LAST:event_txtMontoKeyTyped
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -238,21 +232,14 @@ public class frmReserva extends javax.swing.JInternalFrame {
 
     private void txtNuevoMontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNuevoMontoKeyTyped
         /* Funcion para validar que solo ingresen numeros */
-        char c = evt.getKeyChar();
-
-        if (Character.isLetter(c)) {
-            getToolkit().beep();
-
-            evt.consume();
-        }
-
-        if (Character.isWhitespace(evt.getKeyChar())) {
-            evt.consume();
-        }
-
         if (!Character.isDigit(evt.getKeyChar())) {
             evt.consume();
         }
+        
+        if (txtMonto.getText().length() >= 6) {
+            evt.consume();
+        }
+        
     }//GEN-LAST:event_txtNuevoMontoKeyTyped
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened

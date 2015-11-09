@@ -299,11 +299,6 @@ public class frmPersonal extends javax.swing.JInternalFrame {
             }
         });
 
-        txtCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCorreoFocusLost(evt);
-            }
-        });
         txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCorreoKeyTyped(evt);
@@ -533,6 +528,9 @@ public class frmPersonal extends javax.swing.JInternalFrame {
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
 
+        /* Instanciamos un objeto de la Clase Datos */
+        Datos datos = new Datos();
+
         /* Validaciones */
         if (txtIdUsuario.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe digitar el ID del usuario");
@@ -550,6 +548,18 @@ public class frmPersonal extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar un nombre de usuario");
             txtUsuario.requestFocusInWindow();
             return;
+        }
+
+        if (!txtUsuario.getText().equals("")) {
+
+            if (datos.getUsuario(txtUsuario.getText())) {
+                JOptionPane.showMessageDialog(this, "El nombre de usuario ya se "
+                        + "encuentra registrado. ");
+                txtUsuario.setText("");
+                txtUsuario.requestFocusInWindow();
+                return;
+            }
+
         }
 
         /* Como el cambo passwordfield nos devuelve un array, hay que transformarlo
@@ -602,6 +612,30 @@ public class frmPersonal extends javax.swing.JInternalFrame {
             return;
         }
 
+        if (cmbCedula.getSelectedIndex() == 0) {
+
+            if (txtCedula.getText().length() < 8) {
+
+                JOptionPane.showMessageDialog(this, "Debe digitar una Cedula valida");
+                txtCedula.setText("");
+                txtCedula.requestFocusInWindow();
+                return;
+
+            }
+
+        } else {
+
+            if (txtCedula.getText().length() < 10) {
+
+                JOptionPane.showMessageDialog(this, "Debe digitar una Cedula valida");
+                txtCedula.setText("");
+                txtCedula.requestFocusInWindow();
+                return;
+
+            }
+
+        }
+
         if (txtNombre.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar un nombre ");
             txtNombre.requestFocusInWindow();
@@ -620,6 +654,15 @@ public class frmPersonal extends javax.swing.JInternalFrame {
             return;
         }
 
+        if (txtTelefono.getText().length() < 7) {
+
+            JOptionPane.showMessageDialog(this, "Debe digitar un telefono valido");
+            txtTelefono.setText("");
+            txtTelefono.requestFocusInWindow();
+            return;
+
+        }
+
         if (cmbCargo.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Debe seleccionar un cargo");
             cmbCargo.requestFocusInWindow();
@@ -627,6 +670,14 @@ public class frmPersonal extends javax.swing.JInternalFrame {
         }
         if (txtCorreo.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar un correo ");
+            txtCorreo.requestFocusInWindow();
+            return;
+        }
+
+        /* Llamamos a la funcion validar email  */
+        if (!validarEmail(txtCorreo.getText())) {
+            JOptionPane.showMessageDialog(this, "Correo invalido");
+            txtCorreo.setText("");
             txtCorreo.requestFocusInWindow();
             return;
         }
@@ -794,17 +845,6 @@ public class frmPersonal extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_formInternalFrameOpened
 
-    private void txtCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusLost
-
-        /* Llamamos a la funcion validar email  */
-        if (!validarEmail(txtCorreo.getText())) {
-            JOptionPane.showMessageDialog(this, "Correo invalido");
-            txtCorreo.setText("");
-            txtCorreo.requestFocusInWindow();
-        }
-
-    }//GEN-LAST:event_txtCorreoFocusLost
-
     private void btnCancelarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarProActionPerformed
         setVisible(false);
     }//GEN-LAST:event_btnCancelarProActionPerformed
@@ -821,6 +861,18 @@ public class frmPersonal extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar un Proyecto");
             cmbProyecto.requestFocusInWindow();
             return;
+        }
+
+        if (!txtUsuario.getText().equals("")) {
+
+            if (datos.getUsuario(txtUsuario.getText())) {
+                JOptionPane.showMessageDialog(this, "El nombre de usuario ya se "
+                        + "encuentra registrado. ");
+                txtUsuario.setText("");
+                txtUsuario.requestFocusInWindow();
+
+            }
+
         }
 
         String clave = new String(txtClave.getPassword());
@@ -880,6 +932,24 @@ public class frmPersonal extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Debe seleccionar un Proyecto");
             cmbProyecto.requestFocusInWindow();
             return;
+        }
+
+        int filas = tablaProyecto.getRowCount();
+
+        if (filas > 2) {
+            JOptionPane.showMessageDialog(rootPane, "No puede agregar mas proyecto, el limite es 3");
+            cmbProyecto.requestFocusInWindow();
+            return;
+        }
+        
+        for (int i = 0; i < filas; i++) {
+
+            if (((Opcion) cmbProyecto.getSelectedItem()).
+                    getValor().equals(Utilidades.objectToString(tablaProyecto.getValueAt(i, 0)))) {
+                JOptionPane.showMessageDialog(rootPane, "El Proyecto ya ha sido agregado");
+                cmbProyecto.requestFocusInWindow();
+                return;
+            }
         }
 
         String registro[] = new String[3];
@@ -967,7 +1037,7 @@ public class frmPersonal extends javax.swing.JInternalFrame {
             evt.consume();
         }
 
-        if (txtTelefono.getText().length() >= 8) {
+        if (txtTelefono.getText().length() >= 7) {
             evt.consume();
         }
     }//GEN-LAST:event_txtTelefonoKeyTyped
@@ -1000,7 +1070,7 @@ public class frmPersonal extends javax.swing.JInternalFrame {
                         + "encuentra registrado. ");
                 txtUsuario.setText("");
                 txtUsuario.requestFocusInWindow();
-
+                return;
             }
 
         }
@@ -1009,37 +1079,13 @@ public class frmPersonal extends javax.swing.JInternalFrame {
 
     private void txtCedulaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCedulaFocusLost
 
-        if (cmbCedula.getSelectedIndex() == 0) {
-
-            if (txtCedula.getText().length() < 8) {
-
-                JOptionPane.showMessageDialog(this, "Debe digitar una Cedula valida");
-                txtCedula.setText("");
-                txtCedula.requestFocusInWindow();
-                return;
-
-            }
-
-        } else {
-
-            if (txtCedula.getText().length() < 10) {
-
-                JOptionPane.showMessageDialog(this, "Debe digitar una Cedula valida");
-                txtCedula.setText("");
-                txtCedula.requestFocusInWindow();
-                return;
-
-            }
-
-        }
-
 
     }//GEN-LAST:event_txtCedulaFocusLost
 
     private void txtCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyTyped
-         if (txtCorreo.getText().length() >= 40) {
-                evt.consume();
-            }
+        if (txtCorreo.getText().length() >= 40) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtCorreoKeyTyped
 
 

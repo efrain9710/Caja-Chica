@@ -269,6 +269,30 @@ public class frmProveedor extends javax.swing.JInternalFrame {
             return;
         }
 
+        if (cmbCedula.getSelectedIndex() == 0 || cmbCedula.getSelectedIndex() == 1) {
+
+            if (txtCedulaProveedor.getText().length() < 8) {
+
+                JOptionPane.showMessageDialog(this, "Debe digitar una Cedula valida");
+                txtCedulaProveedor.setText("");
+                txtCedulaProveedor.requestFocusInWindow();
+                return;
+
+            }
+
+        } else {
+
+            if (txtCedulaProveedor.getText().length() < 10) {
+
+                JOptionPane.showMessageDialog(this, "Debe digitar una Cedula valida");
+                txtCedulaProveedor.setText("");
+                txtCedulaProveedor.requestFocusInWindow();
+                return;
+
+            }
+
+        }
+        
         if (txtNomPro.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar un nombre ");
             txtNomPro.requestFocusInWindow();
@@ -279,6 +303,15 @@ public class frmProveedor extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar un telefono ");
             txtTelefono.requestFocusInWindow();
             return;
+        }
+
+        if (txtTelefono.getText().length() < 7) {
+
+            JOptionPane.showMessageDialog(this, "Debe digitar un telefono valido");
+            txtTelefono.setText("");
+            txtTelefono.requestFocusInWindow();
+            return;
+
         }
 
         if (areaDescripcion.getText().equals("")) {
@@ -433,53 +466,7 @@ public class frmProveedor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCedulaProveedorKeyTyped
 
     private void txtCedulaProveedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCedulaProveedorFocusLost
-        
-        if (cmbCedula.getSelectedIndex() == 0 || cmbCedula.getSelectedIndex() == 1) {
 
-            if (txtCedulaProveedor.getText().length() < 8) {
-
-                JOptionPane.showMessageDialog(this, "Debe digitar una Cedula valida");
-                txtCedulaProveedor.setText("");
-                txtCedulaProveedor.requestFocusInWindow();
-                return;
-
-            }
-
-        } else {
-
-            if (txtCedulaProveedor.getText().length() < 10) {
-
-                JOptionPane.showMessageDialog(this, "Debe digitar una Cedula valida");
-                txtCedulaProveedor.setText("");
-                txtCedulaProveedor.requestFocusInWindow();
-                return;
-
-            }
-
-        }
-        if (cmbCedula.getSelectedIndex() == 0 || cmbCedula.getSelectedIndex() == 1) {
-
-            if (txtCedulaProveedor.getText().length() < 8) {
-
-                JOptionPane.showMessageDialog(this, "Debe digitar una Cedula valida");
-                txtCedulaProveedor.setText("");
-                txtCedulaProveedor.requestFocusInWindow();
-                return;
-
-            }
-
-        } else {
-
-            if (txtCedulaProveedor.getText().length() < 10) {
-
-                JOptionPane.showMessageDialog(this, "Debe digitar una Cedula valida");
-                txtCedulaProveedor.setText("");
-                txtCedulaProveedor.requestFocusInWindow();
-                return;
-
-            }
-
-        }
 
     }//GEN-LAST:event_txtCedulaProveedorFocusLost
 

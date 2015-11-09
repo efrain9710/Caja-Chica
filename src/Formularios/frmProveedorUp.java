@@ -140,7 +140,7 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
         labelMetric3 = new org.edisoncor.gui.label.LabelMetric();
         labelMetric5 = new org.edisoncor.gui.label.LabelMetric();
         txtNomPro = new org.edisoncor.gui.textField.TextFieldRoundIcon();
-        cmbCel = new org.edisoncor.gui.comboBox.ComboBoxRound();
+        cmbTelefono = new org.edisoncor.gui.comboBox.ComboBoxRound();
         txtTelefono = new org.edisoncor.gui.textField.TextFieldRoundIcon();
         labelMetric17 = new org.edisoncor.gui.label.LabelMetric();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -261,51 +261,52 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
                         .addComponent(labelMetric1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(351, 351, 351))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel1Layout.createSequentialGroup()
-                                .addComponent(labelMetric4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(506, 506, 506))
-                            .addGroup(panel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
-                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(panel1Layout.createSequentialGroup()
-                                            .addComponent(labelMetric3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(txtCedulaProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(panel1Layout.createSequentialGroup()
-                                            .addComponent(labelMetric2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(txtIDProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(panel1Layout.createSequentialGroup()
-                                            .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(labelMetric17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(labelMetric5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(18, 18, 18)
-                                            .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(txtNomPro, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(panel1Layout.createSequentialGroup()
-                                                    .addComponent(cmbCel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel1Layout.createSequentialGroup()
+                            .addComponent(labelMetric4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(540, 540, 540))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(39, 39, 39)
+                            .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(panel1Layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(labelMetric2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtIDProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panel1Layout.createSequentialGroup()
+                                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(panel1Layout.createSequentialGroup()
-                                                .addComponent(labelMetric6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(317, 317, 317))
-                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(bntCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                        .addGap(34, 34, 34))))
+                                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(labelMetric17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(labelMetric5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18))
+                                            .addGroup(panel1Layout.createSequentialGroup()
+                                                .addComponent(labelMetric3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtCedulaProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtNomPro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGroup(panel1Layout.createSequentialGroup()
+                                                .addComponent(cmbTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(panel1Layout.createSequentialGroup()
+                                    .addGap(20, 20, 20)
+                                    .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(panel1Layout.createSequentialGroup()
+                                            .addComponent(labelMetric6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(317, 317, 317))
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                                            .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(bntCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGap(34, 34, 34)))))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,7 +335,7 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelMetric17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbCel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -345,7 +346,7 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
                             .addComponent(bntCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -385,11 +386,20 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
             txtNomPro.requestFocusInWindow();
             return;
         }
-        
+
         if (txtTelefono.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar un telefono ");
             txtTelefono.requestFocusInWindow();
             return;
+        }
+
+        if (txtTelefono.getText().length() < 7) {
+
+            JOptionPane.showMessageDialog(this, "Debe digitar un telefono valido");
+            txtTelefono.setText("");
+            txtTelefono.requestFocusInWindow();
+            return;
+
         }
 
         if (areaDescripcion.getText().equals("")) {
@@ -397,14 +407,14 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
             areaDescripcion.requestFocusInWindow();
             return;
         }
-        
+
 
         /* Llamamos a la funcion modificarProyecto la cual recibe como parametro
          un Integer que es el ID del proyecto y un String que seria el nombre
          del proyecto */
         if (datos.modificarProveedor(Integer.parseInt(txtIDProveedor.getText()),
                 txtNomPro.getText(),
-                txtTelefono.getText(),
+                ((Opcion) cmbTelefono.getSelectedItem()).getDescripcion() + "" + txtTelefono.getText(),
                 areaDescripcion.getText())) {
 
             JOptionPane.showMessageDialog(rootPane, "El Proveedor ha sido "
@@ -457,6 +467,8 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
         txtIDProveedor.setText("");
         txtCedulaProveedor.setText("");
         txtNomPro.setText("");
+        txtTelefono.setText("");
+        areaDescripcion.setText("");
 
         /* Limpiamos la tabla */
         tablaModelo.setRowCount(0);
@@ -477,6 +489,11 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
             getToolkit().beep();
             evt.consume();
         }
+        
+        if (txtNomPro.getText().length() >= 40) {
+            evt.consume();
+        }
+        
     }//GEN-LAST:event_txtNomProKeyTyped
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
@@ -485,27 +502,27 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
 
         Opcion op = new Opcion("1", "414");
 
-        cmbCel.addItem(op);
+        cmbTelefono.addItem(op);
 
         op = new Opcion("2", "416");
 
-        cmbCel.addItem(op);
+        cmbTelefono.addItem(op);
 
         op = new Opcion("3", "426");
 
-        cmbCel.addItem(op);
+        cmbTelefono.addItem(op);
 
         op = new Opcion("4", "412");
 
-        cmbCel.addItem(op);
+        cmbTelefono.addItem(op);
 
         op = new Opcion("5", "424");
 
-        cmbCel.addItem(op);
+        cmbTelefono.addItem(op);
 
         op = new Opcion("5", "212");
 
-        cmbCel.addItem(op);
+        cmbTelefono.addItem(op);
 
     }//GEN-LAST:event_formInternalFrameOpened
 
@@ -527,6 +544,17 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
             return;
         }
 
+        String telefono = Utilidades.objectToString(tablaProveedores.getValueAt(s, 3));
+
+        char[] tele = telefono.toCharArray();
+        
+        telefono = "";
+        
+        for (int x=3; x < tele.length; x++){
+            telefono += "" + tele[x];
+            
+        }
+        
         /* Llenamos el campo IDProveedor con el ID de la fila seleccionada
 
          - Como la funcion getValueAt recibe como parametro, el numero de la fila
@@ -539,7 +567,7 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
         txtIDProveedor.setText(Utilidades.objectToString(tablaProveedores.getValueAt(s, 0)));
         txtCedulaProveedor.setText(Utilidades.objectToString(tablaProveedores.getValueAt(s, 1)));
         txtNomPro.setText(Utilidades.objectToString(tablaProveedores.getValueAt(s, 2)));
-        txtTelefono.setText(Utilidades.objectToString(tablaProveedores.getValueAt(s, 3)));
+        txtTelefono.setText(telefono);
         areaDescripcion.setText(Utilidades.objectToString(tablaProveedores.getValueAt(s, 4)));
 
     }//GEN-LAST:event_tablaProveedoresMouseClicked
@@ -562,9 +590,10 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
             evt.consume();
         }
 
-        if (txtTelefono.getText().length() >= 8) {
+        if (txtTelefono.getText().length() >= 7) {
             evt.consume();
         }
+        
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
 
@@ -573,7 +602,7 @@ public class frmProveedorUp extends javax.swing.JInternalFrame {
     private org.edisoncor.gui.button.ButtonAction bntCancelar;
     private org.edisoncor.gui.button.ButtonAction btnEliminar;
     private org.edisoncor.gui.button.ButtonAction btnModificar;
-    private org.edisoncor.gui.comboBox.ComboBoxRound cmbCel;
+    private org.edisoncor.gui.comboBox.ComboBoxRound cmbTelefono;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private org.edisoncor.gui.label.LabelMetric labelMetric1;

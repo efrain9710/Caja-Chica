@@ -39,6 +39,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
 
         if (rbtTodo.isSelected()) {
             /* Bloqueamos los radio button */
+            
             rbtFecha.setEnabled(false);
             rbtFactura.setEnabled(false);
             rbtEmpleado.setEnabled(false);
@@ -97,7 +98,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
                 cmbNumero.setEnabled(false);
                 dchFechaInicial.setEnabled(false);
                 dchFechaFinal.setEnabled(false);
-                cmbEmpleado.setEnabled(true);
+                cmbEmpleado.setEnabled(false);
                 cmbServicio.setEnabled(true);
                 cmbProveedor.setEnabled(false);
 
@@ -180,7 +181,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
 
     /* Funcion para llenar la tabla cuando se busque un usuario en especifico
      por el nombre */
-    public void llenarTabla(int n) {
+    public void llenarTabla(String nombre) {
 
         try {
             /* Limpiamos la tabla */
@@ -193,7 +194,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
              llenar la tabla con los registros.
             
              */
-            ResultSet rs = datos.getFacturasReporteId(n);
+            ResultSet rs = datos.getFacturasReporteEmpleado(nombre);
 
             String registro[] = new String[8];
 
@@ -224,6 +225,8 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupo1 = new javax.swing.ButtonGroup();
+        grupo2 = new javax.swing.ButtonGroup();
         panel1 = new org.edisoncor.gui.panel.Panel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaFacturas = new javax.swing.JTable();
@@ -734,6 +737,16 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
 
             llenarTabla();
 
+            grupo1.add(rbtTodo);
+            grupo1.add(rbtSeleccion);
+            
+            grupo2.add(rbtFecha);
+            grupo2.add(rbtFactura);
+            grupo2.add(rbtEmpleado);
+            grupo2.add(rbtServicio);
+            grupo2.add(rbtProveedor);
+            
+            
             cmbNumero.setEnabled(false);
             dchFechaInicial.setEnabled(false);
             dchFechaFinal.setEnabled(false);
@@ -846,7 +859,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
          llenamos la tabla con la busqueda */
         if (!txtBuscar.getText().equals("")) {
 
-            llenarTabla(Integer.parseInt(txtBuscar.getText()));
+            llenarTabla(txtBuscar.getText());
 
         } else {
             /* Limpiamos la tabla */
@@ -868,6 +881,8 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
     private org.edisoncor.gui.comboBox.ComboBoxRound cmbServicio;
     private com.toedter.calendar.JDateChooser dchFechaFinal;
     private com.toedter.calendar.JDateChooser dchFechaInicial;
+    private javax.swing.ButtonGroup grupo1;
+    private javax.swing.ButtonGroup grupo2;
     private javax.swing.JScrollPane jScrollPane1;
     private org.edisoncor.gui.label.LabelMetric labelMetric1;
     private org.edisoncor.gui.label.LabelMetric labelMetric2;

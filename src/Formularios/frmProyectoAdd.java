@@ -186,7 +186,7 @@ public class frmProyectoAdd extends javax.swing.JInternalFrame {
                         + "encuentra registrado. ");
                 txtNombre.setText("");
                 txtNombre.requestFocusInWindow();
-
+                return;
             }
 
         }

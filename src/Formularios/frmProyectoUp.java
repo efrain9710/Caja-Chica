@@ -390,7 +390,7 @@ public class frmProyectoUp extends javax.swing.JInternalFrame {
                         + "encuentra registrado. ");
                 txtNombre.setText("");
                 txtNombre.requestFocusInWindow();
-
+                return;
             }
 
         }
@@ -430,13 +430,6 @@ public class frmProyectoUp extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar el id del proyecto");
             txtIdProyecto.setText("");
             txtIdProyecto.requestFocusInWindow();
-            return;
-        }
-
-        if (txtNombre.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Debe ingresar el nombre del proyecto");
-            txtNombre.setText("");
-            txtNombre.requestFocusInWindow();
             return;
         }
 

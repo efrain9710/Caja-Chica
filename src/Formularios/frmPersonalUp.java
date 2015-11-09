@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Formularios;
 
 import Clases.Datos;
+import Clases.Opcion;
 import Clases.Utilidades;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,20 +21,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmPersonalUp extends javax.swing.JInternalFrame {
 
- 
     public frmPersonalUp() {
         initComponents();
     }
-    
+
     public String usuario;
-    
-    public void setUsuario(String usuario){
+
+    public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
-    
+
     /* Definimos los titulos que llevara la tabla*/
     public String titulos[] = {"ID", "Cedula", "Nombre", "Apellido", "Telefono", "Cargo"};
-
 
     Datos datos = new Datos();
 
@@ -124,6 +122,7 @@ public class frmPersonalUp extends javax.swing.JInternalFrame {
         }
 
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -154,6 +153,7 @@ public class frmPersonalUp extends javax.swing.JInternalFrame {
         txtCargo = new org.edisoncor.gui.textField.TextFieldRoundIcon();
         labelMetric11 = new org.edisoncor.gui.label.LabelMetric();
         txtIDPersonal = new org.edisoncor.gui.textField.TextFieldRoundIcon();
+        cmbTelefono = new org.edisoncor.gui.comboBox.ComboBoxRound();
 
         setClosable(true);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
@@ -285,7 +285,7 @@ public class frmPersonalUp extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(panel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
                                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -304,12 +304,15 @@ public class frmPersonalUp extends javax.swing.JInternalFrame {
                                     .addComponent(labelMetric19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtTel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtCargo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtApe, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtNom, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtIDPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtCed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(txtCed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(panel1Layout.createSequentialGroup()
+                                        .addComponent(cmbTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(72, 72, 72))))))
         );
         panel1Layout.setVerticalGroup(
@@ -342,7 +345,8 @@ public class frmPersonalUp extends javax.swing.JInternalFrame {
                         .addGap(26, 26, 26)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelMetric17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelMetric17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelMetric19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -353,7 +357,7 @@ public class frmPersonalUp extends javax.swing.JInternalFrame {
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bntCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -406,6 +410,15 @@ public class frmPersonalUp extends javax.swing.JInternalFrame {
             return;
         }
 
+        if (txtTel.getText().length() < 7) {
+
+            JOptionPane.showMessageDialog(this, "Debe digitar un telefono valido");
+            txtTel.setText("");
+            txtTel.requestFocusInWindow();
+            return;
+
+        }
+
         if (txtCargo.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe especificar el cargo ");
             txtCargo.requestFocusInWindow();
@@ -413,19 +426,19 @@ public class frmPersonalUp extends javax.swing.JInternalFrame {
         }
 
         /* Llamamos a la funcion modificarProyecto la cual recibe como parametro
-        un Integer que es el ID del proyecto y un String que seria el nombre
-        del proyecto */
+         un Integer que es el ID del proyecto y un String que seria el nombre
+         del proyecto */
         if (datos.modificarPersonal(Integer.parseInt(txtIDPersonal.getText()),
-            txtNom.getText(),
-            txtApe.getText(),
-            txtTel.getText(),
-            txtCargo.getText())) {
+                txtNom.getText(),
+                txtApe.getText(),
+                ((Opcion) cmbTelefono.getSelectedItem()).getDescripcion() + "" + txtTel.getText(),
+                txtCargo.getText())) {
 
-        JOptionPane.showMessageDialog(rootPane, "El Empleado ha sido "
-            + "modificado correctamente ");
+            JOptionPane.showMessageDialog(rootPane, "El Empleado ha sido "
+                    + "modificado correctamente ");
         } else {
             JOptionPane.showMessageDialog(rootPane, "No se ha podido modificar a el"
-                + "Empleado, por favor intentelo mas tarde ");
+                    + "Empleado, por favor intentelo mas tarde ");
 
         }
 
@@ -459,13 +472,13 @@ public class frmPersonalUp extends javax.swing.JInternalFrame {
         }
 
         /* Llamamos a la funcion ElinarProyecto la cual recibe como parametro
-        un Integer que es el ID del proyecto  */
+         un Integer que es el ID del proyecto  */
         if (datos.eliminarPersonal(Integer.parseInt(txtIDPersonal.getText()))) {
             JOptionPane.showMessageDialog(rootPane, "El Empleado ha sido "
-                + "eliminado correctamente ");
+                    + "eliminado correctamente ");
         } else {
             JOptionPane.showMessageDialog(rootPane, "No se ha podido eliminar el"
-                + "Empleado, por favor intentelo mas tarde ");
+                    + "Empleado, por favor intentelo mas tarde ");
 
         }
 
@@ -483,7 +496,7 @@ public class frmPersonalUp extends javax.swing.JInternalFrame {
 
     private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
         /* Cuando el usuario digite en el campo txt Buscar y tabulee
-        llenamos la tabla con la busqueda */
+         llenamos la tabla con la busqueda */
         llenarTabla(txtBuscar.getText());
     }//GEN-LAST:event_txtBuscarKeyTyped
 
@@ -510,12 +523,37 @@ public class frmPersonalUp extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtApeKeyTyped
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
-         /* Cuando el formulario se abra llenamos la tabla */
+        /* Cuando el formulario se abra llenamos la tabla */
         llenarTabla();
+
+        Opcion op = new Opcion("1", "414");
+
+        cmbTelefono.addItem(op);
+
+        op = new Opcion("2", "416");
+
+        cmbTelefono.addItem(op);
+
+        op = new Opcion("3", "426");
+
+        cmbTelefono.addItem(op);
+
+        op = new Opcion("4", "412");
+
+        cmbTelefono.addItem(op);
+
+        op = new Opcion("5", "424");
+
+        cmbTelefono.addItem(op);
+
+        op = new Opcion("5", "212");
+
+        cmbTelefono.addItem(op);
+
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void tablaEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaEmpleadosMouseClicked
-        
+
         /* Variable que contendra el ID de la fila seleccionada */
         int s = 0;
 
@@ -536,26 +574,38 @@ public class frmPersonalUp extends javax.swing.JInternalFrame {
             return;
         }
 
+        String telefono = Utilidades.objectToString(tablaEmpleados.getValueAt(s, 4));
+
+        char[] tele = telefono.toCharArray();
+        
+        telefono = "";
+        
+        for (int x=3; x < tele.length; x++){
+            telefono += "" + tele[x];
+            
+        }
+            
+        
         /* Llenamos el campo IDProyecto con el ID de la fila seleccionada
 
-        - Como la funcion getValueAt recibe como parametro, el numero de la fila
-        y el numero de la columna y devuelve como parametro un Objeto y el campo
-        txt recibe es un String, hay que hacer la conversion de objeto a String.
-        Para eso utilizamos el metodo de la clase Utilidades objetoToString
-        que me transforma un objeto a String.
+         - Como la funcion getValueAt recibe como parametro, el numero de la fila
+         y el numero de la columna y devuelve como parametro un Objeto y el campo
+         txt recibe es un String, hay que hacer la conversion de objeto a String.
+         Para eso utilizamos el metodo de la clase Utilidades objetoToString
+         que me transforma un objeto a String.
 
-        */
+         */
         txtIDPersonal.setText(Utilidades.objectToString(tablaEmpleados.getValueAt(s, 0)));
         txtCed.setText(Utilidades.objectToString(tablaEmpleados.getValueAt(s, 1)));
         txtNom.setText(Utilidades.objectToString(tablaEmpleados.getValueAt(s, 2)));
         txtApe.setText(Utilidades.objectToString(tablaEmpleados.getValueAt(s, 3)));
-        txtTel.setText(Utilidades.objectToString(tablaEmpleados.getValueAt(s, 4)));
+        txtTel.setText(telefono);
         txtCargo.setText(Utilidades.objectToString(tablaEmpleados.getValueAt(s, 5)));
-        
+
     }//GEN-LAST:event_tablaEmpleadosMouseClicked
 
     private void txtTelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelKeyTyped
-    /* Funcion para validar que solo ingresen numeros */
+        /* Funcion para validar que solo ingresen numeros */
         char c = evt.getKeyChar();
 
         if (Character.isLetter(c)) {
@@ -571,11 +621,15 @@ public class frmPersonalUp extends javax.swing.JInternalFrame {
         if (!Character.isDigit(evt.getKeyChar())) {
             evt.consume();
         }
-        
+
+        if (txtTel.getText().length() >= 7) {
+            evt.consume();
+        }
+
     }//GEN-LAST:event_txtTelKeyTyped
 
     private void txtCedKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedKeyTyped
-            /* Funcion para validar que solo ingresen numeros */
+        /* Funcion para validar que solo ingresen numeros */
         char c = evt.getKeyChar();
 
         if (Character.isLetter(c)) {
@@ -599,6 +653,7 @@ public class frmPersonalUp extends javax.swing.JInternalFrame {
     private org.edisoncor.gui.button.ButtonAction bntCancelar;
     private org.edisoncor.gui.button.ButtonAction btnEliminar;
     private org.edisoncor.gui.button.ButtonAction btnModificar;
+    private org.edisoncor.gui.comboBox.ComboBoxRound cmbTelefono;
     private javax.swing.JScrollPane jScrollPane1;
     private org.edisoncor.gui.label.LabelMetric labelMetric1;
     private org.edisoncor.gui.label.LabelMetric labelMetric11;

@@ -157,6 +157,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuHerramientas.add(mnuHerramientasMontoUpdate);
         mnuHerramientas.add(jSeparator4);
 
+        mnuHerramientasUsuarioUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Usuario-up-32.png"))); // NOI18N
         mnuHerramientasUsuarioUp.setText("Modificar y/o Eliminar Usuario");
         mnuHerramientasUsuarioUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,6 +180,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
         mnuFactura.add(mnuFacturaAdd);
 
+        mnuFacturaUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EditDocument-48.png"))); // NOI18N
         mnuFacturaUp.setText("Modificar Factura");
         mnuFacturaUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,7 +214,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(mnuConsultas);
 
-        mnuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+        mnuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit-48.png"))); // NOI18N
         mnuSalir.setText("Salir");
         mnuSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
