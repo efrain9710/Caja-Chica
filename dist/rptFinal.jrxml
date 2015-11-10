@@ -47,12 +47,8 @@
 					<pen lineWidth="4.0" lineColor="#359EE4"/>
 				</graphicElement>
 			</rectangle>
-			<image>
-				<reportElement uuid="39d9754e-efef-42c7-a9bb-a5811c2b84f5" x="0" y="0" width="200" height="100"/>
-				<imageExpression><![CDATA["C:\\Users\\sofia\\Desktop\\imagenes_del_sistema_\\Logo.png"]]></imageExpression>
-			</image>
 			<staticText>
-				<reportElement uuid="50db257c-babd-4ccf-879b-ce2a83140ced" x="332" y="23" width="172" height="54"/>
+				<reportElement uuid="50db257c-babd-4ccf-879b-ce2a83140ced" x="200" y="21" width="172" height="54"/>
 				<textElement textAlignment="Center">
 					<font size="36"/>
 				</textElement>

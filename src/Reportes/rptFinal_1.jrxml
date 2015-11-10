@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="577f6f9d-139b-4020-af97-750ef1212ff5">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="147"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="total" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT factura.id_factura AS factura,
@@ -21,8 +21,7 @@
      INNER JOIN proveedor ON factura.id_proveedor = proveedor.id_proveedor
      INNER JOIN personal ON factura.id_personal = personal.id_personal
      INNER JOIN servicio ON factura.id_servicio = servicio.id_servicio
-     INNER JOIN status ON factura.id_status = status.id_status
-     ]]>
+     INNER JOIN status ON factura.id_status = status.id_status]]>
 	</queryString>
 	<field name="factura" class="java.lang.Integer"/>
 	<field name="numero" class="java.lang.Integer"/>
@@ -48,12 +47,8 @@
 					<pen lineWidth="4.0" lineColor="#359EE4"/>
 				</graphicElement>
 			</rectangle>
-			<image>
-				<reportElement uuid="39d9754e-efef-42c7-a9bb-a5811c2b84f5" x="0" y="0" width="200" height="100"/>
-				<imageExpression><![CDATA["C:\\Users\\sofia\\Desktop\\imagenes_del_sistema_\\Logo.png"]]></imageExpression>
-			</image>
 			<staticText>
-				<reportElement uuid="50db257c-babd-4ccf-879b-ce2a83140ced" x="332" y="23" width="172" height="54"/>
+				<reportElement uuid="50db257c-babd-4ccf-879b-ce2a83140ced" x="204" y="24" width="172" height="54"/>
 				<textElement textAlignment="Center">
 					<font size="36"/>
 				</textElement>

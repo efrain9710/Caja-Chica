@@ -125,11 +125,19 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
         "Status", "Monto"};
 
     public String usuario;
+    public Integer perfil;
+    public String cargo;
+    public Integer id;
+    public String nombre;
 
-    public void setUsuario(String usuario) {
+    public void setUsuario(String usuario, int id, int perfil, String cargo, String nombre) {
         this.usuario = usuario;
+        this.id = id;
+        this.perfil = perfil;
+        this.cargo = cargo;
+        this.nombre = nombre;
     }
-
+    
     Datos datos = new Datos();
 
     /* Definimos una tabla modelo y sobreeescribimos el metodo isCellEditable
@@ -750,7 +758,12 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
         try {
             /* Evento cuando el formulario se abra */
 
-            llenarTabla();
+            if(!cargo.equals("Director") || !cargo.equals("Gerente")){
+                llenarTabla(nombre);
+            } else {
+                
+                llenarTabla();
+            }
 
             grupo1.add(rbtTodo);
             grupo1.add(rbtSeleccion);
@@ -873,7 +886,13 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
          llenamos la tabla con la busqueda */
         if (!txtBuscar.getText().equals("")) {
 
-            llenarTabla(txtBuscar.getText());
+            if(!cargo.equals("Director") || !cargo.equals("Gerente")){
+                llenarTabla(nombre);
+            } else {
+                
+                llenarTabla(txtBuscar.getText());
+            }
+            
 
         } else {
             /* Limpiamos la tabla */

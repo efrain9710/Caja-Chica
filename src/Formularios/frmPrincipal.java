@@ -4,6 +4,8 @@
  */
 package Formularios;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Victor Pino
@@ -14,16 +16,18 @@ public class frmPrincipal extends javax.swing.JFrame {
     public Integer perfil;
     public String cargo;
     public Integer id;
+    public String nombre;
 
     public frmPrincipal() {
         initComponents();
     }
 
-    public void setUsuario(String usuario, int id, int perfil, String cargo) {
+    public void setUsuario(String usuario, int id, int perfil, String cargo, String nombre) {
         this.usuario = usuario;
         this.id = id;
         this.perfil = perfil;
         this.cargo = cargo;
+        this.nombre = nombre;
     }
 
     @SuppressWarnings("unchecked")
@@ -181,7 +185,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuFactura.add(mnuFacturaAdd);
 
         mnuFacturaUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EditDocument-48.png"))); // NOI18N
-        mnuFacturaUp.setText("Modificar Factura");
+        mnuFacturaUp.setText("Cambio de Status de Factura");
         mnuFacturaUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuFacturaUpActionPerformed(evt);
@@ -309,6 +313,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void mnuConsultasFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConsultasFacturaActionPerformed
         frmConsultarFacturas con = new frmConsultarFacturas();
         dpnEscritorio.add(con);
+        con.setUsuario(usuario, id, perfil, cargo, nombre);
         con.setVisible(true);
         con.show();
     }//GEN-LAST:event_mnuConsultasFacturaActionPerformed
@@ -321,7 +326,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuHerramientasMontoUpdateActionPerformed
 
     private void mnuConsultasReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConsultasReservaActionPerformed
-        
+
         frmConsultaReserva reser = new frmConsultaReserva();
         dpnEscritorio.add(reser);
         reser.setVisible(true);
@@ -333,10 +338,39 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         if (perfil == 1) {
             mnuHerramientas.setEnabled(true);
+            mnuFacturaUp.setEnabled(false);
         }
 
         if (perfil == 2) {
-            mnuHerramientas.setEnabled(false);
+
+         
+            if (cargo.equals("Director")) {
+                mnuFacturaUp.setEnabled(true);
+                mnuHerramientas.setEnabled(true);
+            } else {
+                mnuFacturaUp.setEnabled(false);
+                mnuHerramientaEmpleado.setEnabled(false);
+                mnuHerramientasAddProveedor.setEnabled(false);
+                mnuHerramientasAddProyecto.setEnabled(false);
+                mnuHerramientasMontoUpdate.setEnabled(false);
+                mnuHerramientasUpdateEmpleado.setEnabled(false);
+                mnuHerramientasUpdateProveedor.setEnabled(false);
+                mnuHerramientasUpdateProyecto.setEnabled(false);
+                mnuHerramientasUsuarioUp.setEnabled(true);
+            }
+
+            if (cargo.equals("Gerente")) {
+                mnuHerramientaEmpleado.setEnabled(true);
+                mnuHerramientasAddProveedor.setEnabled(true);
+                mnuHerramientasAddProyecto.setEnabled(true);
+                mnuHerramientasMontoUpdate.setEnabled(true);
+                mnuHerramientasUpdateEmpleado.setEnabled(true);
+                mnuHerramientasUpdateProveedor.setEnabled(true);
+                mnuHerramientasUpdateProyecto.setEnabled(true);
+                mnuHerramientasUsuarioUp.setEnabled(true);
+                mnuFacturaUp.setEnabled(false);
+            }
+
         }
 
         this.setTitle(usuario);
@@ -352,12 +386,12 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuHerramientasUsuarioUpActionPerformed
 
     private void mnuFacturaUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFacturaUpActionPerformed
-        
+
         frmFacturaUp factura = new frmFacturaUp();
         dpnEscritorio.add(factura);
         factura.setVisible(true);
         factura.show();
-        
+
     }//GEN-LAST:event_mnuFacturaUpActionPerformed
 
     /**

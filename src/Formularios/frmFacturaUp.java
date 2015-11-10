@@ -28,7 +28,7 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
     }
 
     /* Definimos los titulos que llevara la tabla*/
-    public String titulos[] = {"Nº", "Fecha", "Fecha Carga", "Proveedor", "Empleado",
+    public String titulos[] = {"Nº", "Fecha", "Fecha Carga", "Proveedor", "Rif-Ced", "Empleado",
         "Servicio", "Descripcion", "Status", "Monto"};
 
     public String usuario;
@@ -39,7 +39,18 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
 
     Datos datos = new Datos();
 
-    DefaultTableModel tablaModelo = new DefaultTableModel(null, titulos);
+    DefaultTableModel tablaModelo = new DefaultTableModel(null, titulos) {
+        @Override
+        public boolean isCellEditable(int row, int col) {
+
+            if (col == 7) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+    };
 
     /* Funcion para llenar la tabla cuando abre el formulario */
     public void llenarTabla() {
@@ -55,7 +66,7 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
 
             /* Instaciamos un obejto vector tipo string, el cual nos servira
              para guardar las filas de la tabla. */
-            String registro[] = new String[10];
+            String registro[] = new String[11];
 
             /* Hacemos un while que mientras en rs hallan datos el ira agregando
              filas a la tabla. */
@@ -64,20 +75,23 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
                 registro[0] = rs.getString("n_factura");
                 registro[1] = rs.getString("fecha");
                 registro[2] = rs.getString("carga");
-                registro[3] = rs.getString("proveedor");
-                registro[4] = rs.getString("empleado");
-                registro[5] = rs.getString("servicio");
-                registro[6] = rs.getString("descripcion");
-                registro[7] = rs.getString("status");
-                registro[8] = rs.getString("monto");
+                registro[3] = rs.getString("nom_prove");
+                registro[4] = rs.getString("rif_cedula");
+                registro[5] = rs.getString("empleado");
+                registro[6] = rs.getString("servicio");
+                registro[7] = rs.getString("descripcion");
+                registro[8] = rs.getString("status");
+                registro[9] = rs.getString("monto");
 
                 tablaModelo.addRow(registro);
 
             }
 
             tablaFacturas.setModel(tablaModelo);
+
         } catch (SQLException ex) {
-            Logger.getLogger(frmProyectoUp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(frmProyectoUp.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -108,20 +122,23 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
                 registro[0] = rs.getString("n_factura");
                 registro[1] = rs.getString("fecha");
                 registro[2] = rs.getString("carga");
-                registro[3] = rs.getString("proveedor");
-                registro[4] = rs.getString("empleado");
-                registro[5] = rs.getString("servicio");
-                registro[6] = rs.getString("descripcion");
-                registro[7] = rs.getString("status");
-                registro[8] = rs.getString("monto");
+                registro[3] = rs.getString("nom_prove");
+                registro[4] = rs.getString("rif_cedula");
+                registro[5] = rs.getString("empleado");
+                registro[6] = rs.getString("servicio");
+                registro[7] = rs.getString("descripcion");
+                registro[8] = rs.getString("status");
+                registro[9] = rs.getString("monto");
 
                 tablaModelo.addRow(registro);
 
             }
 
             tablaFacturas.setModel(tablaModelo);
+
         } catch (SQLException ex) {
-            Logger.getLogger(frmFacturaUp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(frmFacturaUp.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -327,31 +344,31 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
                     /* Limpiamos la tabla */
                     tablaModelo.setRowCount(0);
                     llenarTabla();
-                    
-                    double reserva = 0, aprobadas = 0, supera =0;
-                    
+
+                    double reserva = 0, aprobadas = 0, supera = 0;
+
                     ResultSet rs = datos.getMonto();
-                    
+
                     while (rs.next()) {
                         reserva = rs.getDouble("monto");
                     }
-                    
+
                     ResultSet rsApro = datos.getSumaMontoAprobadas();
                     while (rsApro.next()) {
                         aprobadas = rsApro.getDouble("total");
                     }
-                    
-                    if(aprobadas > reserva){
-                        
+
+                    if (aprobadas > reserva) {
+
                         supera = aprobadas - reserva;
                         JOptionPane.showMessageDialog(this, "La reserva es de " + reserva
-                                + "ha sido superada  por la cantidad de: " + supera);
-                        
+                                + " ha sido superada  por la cantidad de: " + supera);
+
                     }
-                    
-                    
+
                 } catch (SQLException ex) {
-                    Logger.getLogger(frmFacturaUp.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(frmFacturaUp.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
 
             } else {

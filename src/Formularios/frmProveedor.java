@@ -236,13 +236,14 @@ public class frmProveedor extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNomProKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomProKeyTyped
-        /* Validar solo letras */
+        /* Validar solo letras 
         char c = evt.getKeyChar();
 
         if (Character.isDigit(c)) {
             getToolkit().beep();
             evt.consume();
         }
+        */
 
         if (txtNomPro.getText().length() >= 40) {
             evt.consume();

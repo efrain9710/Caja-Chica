@@ -941,7 +941,7 @@ public class frmPersonal extends javax.swing.JInternalFrame {
             cmbProyecto.requestFocusInWindow();
             return;
         }
-        
+
         for (int i = 0; i < filas; i++) {
 
             if (((Opcion) cmbProyecto.getSelectedItem()).
@@ -1083,9 +1083,16 @@ public class frmPersonal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCedulaFocusLost
 
     private void txtCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyTyped
+        
+        if (evt.getKeyChar() == 'ñ') {
+            evt.consume();
+        }
+        
         if (txtCorreo.getText().length() >= 40) {
             evt.consume();
         }
+
+
     }//GEN-LAST:event_txtCorreoKeyTyped
 
 

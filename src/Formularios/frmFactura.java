@@ -590,26 +590,10 @@ public class frmFactura extends javax.swing.JInternalFrame {
 
                 /* Instaciamos un objeto de la clase Opcion para cargar el combo box
                  de los Empleados  */
-                Opcion op4 = new Opcion("0", "Seleccione un Empleado");
+                Opcion op4 = new Opcion("" + id, usuario);
 
                 /* Añadimos el primer elemento al combo box */
                 cmbEmpleado.addItem(op4);
-
-                /* Llamos a la funcion getPersonal la cual nos devuelve todo el
-                 Personal que hay, esos datos los guardamos en un ResultSet para luego
-                 llenar el combo box con todos los Empleados */
-                ResultSet rsPer = datos.getPersonal();
-
-                /* Hacemos un while que mientras hallan registros en rs, sobreescrira
-                 al objeto de la clase opcion con los datos del objeto rs, y los añada
-                 al combo box */
-                while (rsPer.next()) {
-                    op4 = new Opcion(
-                            rsPer.getString("id_personal"),
-                            rsPer.getString("nom_per")
-                            + " " + rsPer.getString("ape_per"));
-                    cmbEmpleado.addItem(op4);
-                }
 
                 /* Instaciamos un objeto de la clase Opcion para cargar el combo box
                  de los Empleados  */
