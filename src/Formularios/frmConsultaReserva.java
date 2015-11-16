@@ -39,6 +39,8 @@ public class frmConsultaReserva extends javax.swing.JInternalFrame {
         txtReservaNegativa = new org.edisoncor.gui.textField.TextFieldRoundIcon();
         labelMetric8 = new org.edisoncor.gui.label.LabelMetric();
         txtReservaPositiva = new org.edisoncor.gui.textField.TextFieldRoundIcon();
+        labelMetric9 = new org.edisoncor.gui.label.LabelMetric();
+        txtPagadas = new org.edisoncor.gui.textField.TextFieldRoundIcon();
 
         setClosable(true);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
@@ -64,6 +66,7 @@ public class frmConsultaReserva extends javax.swing.JInternalFrame {
         labelMetric5.setText("Consulta de Reserva");
         labelMetric5.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
 
+        txtAprobadas.setEnabled(false);
         txtAprobadas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtAprobadas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -77,6 +80,7 @@ public class frmConsultaReserva extends javax.swing.JInternalFrame {
         labelMetric3.setText("Reserva:");
         labelMetric3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 
+        txtReserva.setEnabled(false);
         txtReserva.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtReserva.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -94,6 +98,7 @@ public class frmConsultaReserva extends javax.swing.JInternalFrame {
         labelMetric7.setText("Reserva Negativa:");
         labelMetric7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 
+        txtReservaNegativa.setEnabled(false);
         txtReservaNegativa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtReservaNegativa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -104,6 +109,7 @@ public class frmConsultaReserva extends javax.swing.JInternalFrame {
         labelMetric8.setText("Reserva Positiva:");
         labelMetric8.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 
+        txtReservaPositiva.setEnabled(false);
         txtReservaPositiva.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtReservaPositiva.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -111,39 +117,60 @@ public class frmConsultaReserva extends javax.swing.JInternalFrame {
             }
         });
 
+        labelMetric9.setText("Monto Facturas Pagadas:");
+        labelMetric9.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+
+        txtPagadas.setEnabled(false);
+        txtPagadas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtPagadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPagadasActionPerformed(evt);
+            }
+        });
+        txtPagadas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPagadasKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelMetric5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(222, 222, 222))
             .addGroup(panel1Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(122, 122, 122))
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panel1Layout.createSequentialGroup()
+                                .addComponent(labelMetric7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtReservaNegativa, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panel1Layout.createSequentialGroup()
+                                .addComponent(labelMetric8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtReservaPositiva, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addComponent(labelMetric9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtPagadas, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel1Layout.createSequentialGroup()
                         .addComponent(labelMetric3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelMetric7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelMetric6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(labelMetric6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAprobadas, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtReservaNegativa, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addComponent(labelMetric8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtReservaPositiva, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtAprobadas, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(160, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                        .addComponent(labelMetric5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(222, 222, 222))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(282, 282, 282))))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,15 +187,19 @@ public class frmConsultaReserva extends javax.swing.JInternalFrame {
                     .addComponent(txtAprobadas, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelMetric9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPagadas, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelMetric7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtReservaNegativa, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelMetric8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtReservaPositiva, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -252,7 +283,7 @@ public class frmConsultaReserva extends javax.swing.JInternalFrame {
             /* Instanciamos el objetos Datos */
             Datos datos = new Datos();
             
-            double reserva = 0, aprobadas = 0, negativa=0, positiva;
+            double reserva = 0, aprobadas = 0, negativa=0, positiva=0, pagadas =0;
 
             ResultSet rs = datos.getMonto();
 
@@ -270,7 +301,15 @@ public class frmConsultaReserva extends javax.swing.JInternalFrame {
                 aprobadas = rsApro.getDouble("total");
             }
             
-            negativa = reserva - aprobadas;
+            ResultSet rsPago = datos.getSumaMontoPagadas();
+
+            while (rsPago.next()) {
+                txtPagadas.setText("");
+                txtPagadas.setText(rsPago.getString("total"));
+                pagadas = rsPago.getDouble("total");
+            }
+            
+            negativa = reserva - (aprobadas - pagadas);
             
             if(negativa < 0){
                 txtReservaNegativa.setText("" + negativa);
@@ -278,7 +317,7 @@ public class frmConsultaReserva extends javax.swing.JInternalFrame {
                 txtReservaNegativa.setText("0");
             }
             
-            positiva = reserva - aprobadas;
+            positiva = reserva - (aprobadas - pagadas);
             
             if(positiva > 0){
                 txtReservaPositiva.setText("" + positiva);
@@ -297,6 +336,14 @@ public class frmConsultaReserva extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtReservaPositivaKeyTyped
 
+    private void txtPagadasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPagadasKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPagadasKeyTyped
+
+    private void txtPagadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPagadasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPagadasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.edisoncor.gui.button.ButtonAction btnCancelar;
@@ -305,8 +352,10 @@ public class frmConsultaReserva extends javax.swing.JInternalFrame {
     private org.edisoncor.gui.label.LabelMetric labelMetric6;
     private org.edisoncor.gui.label.LabelMetric labelMetric7;
     private org.edisoncor.gui.label.LabelMetric labelMetric8;
+    private org.edisoncor.gui.label.LabelMetric labelMetric9;
     private org.edisoncor.gui.panel.Panel panel1;
     private org.edisoncor.gui.textField.TextFieldRoundIcon txtAprobadas;
+    private org.edisoncor.gui.textField.TextFieldRoundIcon txtPagadas;
     private org.edisoncor.gui.textField.TextFieldRoundIcon txtReserva;
     private org.edisoncor.gui.textField.TextFieldRoundIcon txtReservaNegativa;
     private org.edisoncor.gui.textField.TextFieldRoundIcon txtReservaPositiva;

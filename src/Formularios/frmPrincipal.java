@@ -335,16 +335,9 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuConsultasReservaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
-        if (perfil == 1) {
-            mnuHerramientas.setEnabled(true);
-            mnuFacturaUp.setEnabled(false);
-        }
-
-        if (perfil == 2) {
-
          
-            if (cargo.equals("Director")) {
+       
+        if (cargo.equals("Director")) {
                 mnuFacturaUp.setEnabled(true);
                 mnuHerramientas.setEnabled(true);
             } else {
@@ -357,6 +350,8 @@ public class frmPrincipal extends javax.swing.JFrame {
                 mnuHerramientasUpdateProveedor.setEnabled(false);
                 mnuHerramientasUpdateProyecto.setEnabled(false);
                 mnuHerramientasUsuarioUp.setEnabled(true);
+                mnuHerramientasMontoUpdate.setEnabled(false);
+                mnuConsultasReserva.setEnabled(false);
             }
 
             if (cargo.equals("Gerente")) {
@@ -369,9 +364,9 @@ public class frmPrincipal extends javax.swing.JFrame {
                 mnuHerramientasUpdateProyecto.setEnabled(true);
                 mnuHerramientasUsuarioUp.setEnabled(true);
                 mnuFacturaUp.setEnabled(false);
+                mnuHerramientasMontoUpdate.setEnabled(false);
+                mnuConsultasReserva.setEnabled(false);
             }
-
-        }
 
         this.setTitle(usuario);
     }//GEN-LAST:event_formWindowOpened

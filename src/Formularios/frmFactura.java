@@ -11,6 +11,7 @@ import Clases.Opcion;
 import Clases.Utilidades;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -455,20 +456,25 @@ public class frmFactura extends javax.swing.JInternalFrame {
 
                 File aux = new File(template);
 
-                System.out.println(aux.getParent());
+                
                 /* Aqui comprobamos si el reporte se mando a ejecutar desde un IDE
                  o desde un JAR, si es desde un IDE guardamos la direccion del
                  reporte con System.getProperty("user.dir") + "/src/Reportes/rptFactura.jrxml";
-                 y si no es le pasamos la direccion donde se encuentra el jar */
+                 y si no es le pasamos la direccion donde se encuentra el jar 
                 if (aux.isDirectory()) {
                     template = System.getProperty("user.dir") + "/src/Reportes/rptFinal.jrxml";
                 } else {
                     template = aux.getParent() + "/rptFinal.jrxml";
                 }
 
+                */
+                
+                template = "/Reportes/rptFinal.jrxml";
+                InputStream in = this.getClass().getResourceAsStream(template);
+                
                 /* Le pasamos la direccion del reporte que en este caso es un
                  archivo jrxml, para que lo compile */
-                JasperReport jasperReport = JasperCompileManager.compileReport(template);
+                JasperReport jasperReport = JasperCompileManager.compileReport(in);
 
                 /* Una ves compilado se lo pasamos al objeto Jasperprint para que
                  arme las consultas y los datos que contendran el reporte */

@@ -86,7 +86,7 @@
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="cmbProveedor" linkSize="2" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="cmbStatus" linkSize="2" alignment="0" max="32767" attributes="0"/>
                                               <Component id="cmbServicio" linkSize="2" alignment="0" max="32767" attributes="0"/>
                                               <Component id="cmbEmpleado" linkSize="2" alignment="0" max="32767" attributes="0"/>
                                               <Component id="cmbNumero" linkSize="2" alignment="0" max="32767" attributes="0"/>
@@ -103,7 +103,7 @@
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <EmptySpace pref="49" max="32767" attributes="0"/>
+                                  <EmptySpace pref="75" max="32767" attributes="0"/>
                                   <Component id="rbtFecha" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="rbtFactura" min="-2" max="-2" attributes="0"/>
@@ -112,7 +112,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="rbtServicio" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                  <Component id="rbtProveedor" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rbtStatus" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -138,7 +138,7 @@
                               <Component id="rbtFactura" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="rbtEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="rbtFecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rbtProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbtStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="rbtServicio" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
@@ -168,7 +168,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cmbProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="labelMetric6" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
@@ -260,11 +260,11 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGenerarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="org.edisoncor.gui.comboBox.ComboBoxRound" name="cmbProveedor">
+        <Component class="org.edisoncor.gui.comboBox.ComboBoxRound" name="cmbStatus">
         </Component>
         <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Proveedor:"/>
+            <Property name="text" type="java.lang.String" value="Status:"/>
           </Properties>
         </Component>
         <Component class="org.edisoncor.gui.label.LabelMetric" name="labelMetric7">
@@ -384,7 +384,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtServicioActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rbtProveedor">
+        <Component class="javax.swing.JRadioButton" name="rbtStatus">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="0"/>
@@ -392,7 +392,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Proveedor"/>
+            <Property name="text" type="java.lang.String" value="Status"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -400,7 +400,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtProveedorActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtStatusActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbtSeleccion">

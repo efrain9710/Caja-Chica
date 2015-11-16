@@ -9,6 +9,7 @@ import Clases.Datos;
 import Clases.Opcion;
 import Clases.Utilidades;
 import java.io.File;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -46,7 +47,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
             rbtFactura.setEnabled(false);
             rbtEmpleado.setEnabled(false);
             rbtServicio.setEnabled(false);
-            rbtProveedor.setEnabled(false);
+            rbtStatus.setEnabled(false);
 
             /* Bloqueamos los campos */
             cmbNumero.setEnabled(false);
@@ -54,14 +55,14 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
             dchFechaFinal.setEnabled(false);
             cmbEmpleado.setEnabled(false);
             cmbServicio.setEnabled(false);
-            cmbProveedor.setEnabled(false);
+            cmbStatus.setEnabled(false);
 
         } else {
             rbtFecha.setEnabled(true);
             rbtFactura.setEnabled(true);
             rbtEmpleado.setEnabled(true);
             rbtServicio.setEnabled(true);
-            rbtProveedor.setEnabled(true);
+            rbtStatus.setEnabled(true);
 
             if (rbtFecha.isSelected()) {
 
@@ -70,7 +71,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
                 cmbNumero.setEnabled(false);
                 cmbEmpleado.setEnabled(false);
                 cmbServicio.setEnabled(false);
-                cmbProveedor.setEnabled(false);
+                cmbStatus.setEnabled(false);
             }
 
             if (rbtFactura.isSelected()) {
@@ -80,7 +81,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
                 dchFechaFinal.setEnabled(false);
                 cmbEmpleado.setEnabled(false);
                 cmbServicio.setEnabled(false);
-                cmbProveedor.setEnabled(false);
+                cmbStatus.setEnabled(false);
 
             }
 
@@ -91,7 +92,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
                 dchFechaFinal.setEnabled(false);
                 cmbEmpleado.setEnabled(true);
                 cmbServicio.setEnabled(false);
-                cmbProveedor.setEnabled(false);
+                cmbStatus.setEnabled(false);
 
             }
 
@@ -102,18 +103,18 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
                 dchFechaFinal.setEnabled(false);
                 cmbEmpleado.setEnabled(false);
                 cmbServicio.setEnabled(true);
-                cmbProveedor.setEnabled(false);
+                cmbStatus.setEnabled(false);
 
             }
 
-            if (rbtProveedor.isSelected()) {
+            if (rbtStatus.isSelected()) {
 
                 cmbNumero.setEnabled(false);
                 dchFechaInicial.setEnabled(false);
                 dchFechaFinal.setEnabled(false);
                 cmbEmpleado.setEnabled(false);
                 cmbServicio.setEnabled(false);
-                cmbProveedor.setEnabled(true);
+                cmbStatus.setEnabled(true);
 
             }
 
@@ -137,7 +138,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
         this.cargo = cargo;
         this.nombre = nombre;
     }
-    
+
     Datos datos = new Datos();
 
     /* Definimos una tabla modelo y sobreeescribimos el metodo isCellEditable
@@ -243,7 +244,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
         labelMetric3 = new org.edisoncor.gui.label.LabelMetric();
         btnCancelar = new javax.swing.JButton();
         btnGenerar = new javax.swing.JButton();
-        cmbProveedor = new org.edisoncor.gui.comboBox.ComboBoxRound();
+        cmbStatus = new org.edisoncor.gui.comboBox.ComboBoxRound();
         labelMetric6 = new org.edisoncor.gui.label.LabelMetric();
         labelMetric7 = new org.edisoncor.gui.label.LabelMetric();
         cmbServicio = new org.edisoncor.gui.comboBox.ComboBoxRound();
@@ -259,7 +260,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
         rbtFactura = new javax.swing.JRadioButton();
         rbtEmpleado = new javax.swing.JRadioButton();
         rbtServicio = new javax.swing.JRadioButton();
-        rbtProveedor = new javax.swing.JRadioButton();
+        rbtStatus = new javax.swing.JRadioButton();
         rbtSeleccion = new javax.swing.JRadioButton();
         rbtTodo = new javax.swing.JRadioButton();
         txtBuscar = new org.edisoncor.gui.textField.TextFieldRoundIcon();
@@ -326,7 +327,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
             }
         });
 
-        labelMetric6.setText("Proveedor:");
+        labelMetric6.setText("Status:");
 
         labelMetric7.setText("Servicio:");
 
@@ -390,15 +391,15 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
             }
         });
 
-        rbtProveedor.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        rbtProveedor.setForeground(new java.awt.Color(255, 255, 255));
-        rbtProveedor.setText("Proveedor");
-        rbtProveedor.setBorder(null);
-        rbtProveedor.setContentAreaFilled(false);
-        rbtProveedor.setEnabled(false);
-        rbtProveedor.addActionListener(new java.awt.event.ActionListener() {
+        rbtStatus.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        rbtStatus.setForeground(new java.awt.Color(255, 255, 255));
+        rbtStatus.setText("Status");
+        rbtStatus.setBorder(null);
+        rbtStatus.setContentAreaFilled(false);
+        rbtStatus.setEnabled(false);
+        rbtStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtProveedorActionPerformed(evt);
+                rbtStatusActionPerformed(evt);
             }
         });
 
@@ -470,7 +471,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
                                             .addComponent(labelMetric6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cmbProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(cmbStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(cmbServicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(cmbEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(cmbNumero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -482,7 +483,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
                                         .addComponent(btnCancelar)))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(panel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                                 .addComponent(rbtFecha)
                                 .addGap(18, 18, 18)
                                 .addComponent(rbtFactura)
@@ -491,11 +492,11 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(rbtServicio)
                                 .addGap(7, 7, 7)
-                                .addComponent(rbtProveedor)
+                                .addComponent(rbtStatus)
                                 .addGap(29, 29, 29))))))
         );
 
-        panel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmbEmpleado, cmbNumero, cmbProveedor, cmbServicio, dchFechaFinal, dchFechaInicial});
+        panel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmbEmpleado, cmbNumero, cmbServicio, cmbStatus, dchFechaFinal, dchFechaInicial});
 
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -513,7 +514,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
                             .addComponent(rbtFactura)
                             .addComponent(rbtEmpleado)
                             .addComponent(rbtFecha)
-                            .addComponent(rbtProveedor)
+                            .addComponent(rbtStatus)
                             .addComponent(rbtServicio))
                         .addGap(39, 39, 39)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -537,7 +538,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
                             .addComponent(labelMetric7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelMetric6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -653,15 +654,15 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
                     filtro = "WHERE factura.id_servicio = '" + ((Opcion) cmbServicio.getSelectedItem()).getValor() + "'";
                 }
 
-                if (rbtProveedor.isSelected()) {
+                if (rbtStatus.isSelected()) {
 
-                    if (cmbProveedor.getSelectedIndex() == 0) {
-                        JOptionPane.showMessageDialog(null, "Debe seleccionar un Proveedor");
-                        cmbProveedor.requestFocusInWindow();
+                    if (cmbStatus.getSelectedIndex() == 0) {
+                        JOptionPane.showMessageDialog(null, "Debe seleccionar un Status");
+                        cmbStatus.requestFocusInWindow();
                         return;
                     }
 
-                    filtro = "WHERE factura.id_proveedor = '" + ((Opcion) cmbProveedor.getSelectedItem()).getValor() + "'";
+                    filtro = "WHERE factura.id_status = '" + ((Opcion) cmbStatus.getSelectedItem()).getValor() + "'";
                 }
 
             }
@@ -676,17 +677,17 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
              la funcion getFactura para obtener los datos de la factura */
             JRResultSetDataSource data = new JRResultSetDataSource(datos.getFacturas(sql));
 
-            if(datos.getFacturas(sql) == null){
+            if (datos.getFacturas(sql) == null) {
                 JOptionPane.showMessageDialog(this, "No se encontraron facturas con la consulta proporcionada.");
                 return;
             }
-            
+
             Map parametros = new HashMap();
 
             /* con el metodo put se le pasa el parametros al reporte, en este
              caso el parametro se llama factura */
             parametros.put("total", datos.getMontoTotal());
-            
+
             /* Obtenemos la direccion del reporte*/
             String template = frmFactura.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 
@@ -695,16 +696,20 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
             /* Aqui comprobamos si el reporte se mando a ejecutar desde un IDE
              o desde un JAR, si es desde un IDE guardamos la direccion del
              reporte con System.getProperty("user.dir") + "/src/Reportes/rptFactura.jrxml";
-             y si no es le pasamos la direccion donde se encuentra el jar */
-            if (aux.isDirectory()) {
-                template = System.getProperty("user.dir") + "/src/Reportes/rptFinal_1.jrxml";
-            } else {
-                template = aux.getParent() + "/rptFinal_1.jrxml";
-            }
+             y si no es le pasamos la direccion donde se encuentra el jar 
+             if (aux.isDirectory()) {
+             template = System.getProperty("user.dir") + "/src/Reportes/rptFinal_1.jrxml";
+             } else {
+             template = aux.getParent() + "/rptFinal_1.jrxml";
+             }
+             */
+            template = "/Reportes/rptFinal_1.jrxml";
+
+            InputStream in = getClass().getResourceAsStream(template);
 
             /* Le pasamos la direccion del reporte que en este caso es un
              archivo jrxml, para que lo compile */
-            JasperReport jasperReport = JasperCompileManager.compileReport(template);
+            JasperReport jasperReport = JasperCompileManager.compileReport(in);
 
             /* Una ves compilado se lo pasamos al objeto Jasperprint para que
              arme las consultas y los datos que contendran el reporte, la funcion
@@ -742,9 +747,9 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
         habilitarCampos();
     }//GEN-LAST:event_rbtServicioActionPerformed
 
-    private void rbtProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtProveedorActionPerformed
+    private void rbtStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtStatusActionPerformed
         habilitarCampos();
-    }//GEN-LAST:event_rbtProveedorActionPerformed
+    }//GEN-LAST:event_rbtStatusActionPerformed
 
     private void rbtSeleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSeleccionActionPerformed
         habilitarCampos();
@@ -758,10 +763,10 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
         try {
             /* Evento cuando el formulario se abra */
 
-            if(!cargo.equals("Director") || !cargo.equals("Gerente")){
+            if (!cargo.equals("Director") || !cargo.equals("Gerente")) {
                 llenarTabla(nombre);
             } else {
-                
+
                 llenarTabla();
             }
 
@@ -772,14 +777,14 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
             grupo2.add(rbtFactura);
             grupo2.add(rbtEmpleado);
             grupo2.add(rbtServicio);
-            grupo2.add(rbtProveedor);
+            grupo2.add(rbtStatus);
 
             cmbNumero.setEnabled(false);
             dchFechaInicial.setEnabled(false);
             dchFechaFinal.setEnabled(false);
             cmbEmpleado.setEnabled(false);
             cmbServicio.setEnabled(false);
-            cmbProveedor.setEnabled(false);
+            cmbStatus.setEnabled(false);
 
             /* Instanciamos un objeto de la Clase Datos, para poder acceder a los
              metodos */
@@ -853,26 +858,25 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
             }
 
             /* Instaciamos un objeto de la clase Opcion para cargar el combo box
-             de los proveedores  */
-            Opcion op4 = new Opcion("0", "Seleccione un proveedor");
+             de los Status  */
+            Opcion op4 = new Opcion("0", "Seleccione un Status");
 
             /* Añadimos el primer elemento al combo box */
-            cmbProveedor.addItem(op4);
+            cmbStatus.addItem(op4);
 
-            /* Llamos a la funcion getProveedor la cual nos devuelve todos los
-             proveedores que hay, esos datos los guardamos en un ResultSet para luego
-             llenar el combo box con todos los Proveedores */
-            ResultSet rs = datos.getProveedor();
+            /* Llamos a la funcion getStatus la cual nos devuelve todos los
+             Status que hay, esos datos los guardamos en un ResultSet para luego
+             llenar el combo box con todos los Status */
+            ResultSet rs = datos.getStatus();
 
             /* Hacemos un while que mientras hallan registros en rs, sobreescrira
              al objeto de la clase opcion con los datos del objeto rs, y los añada
              al combo box */
             while (rs.next()) {
                 op4 = new Opcion(
-                        rs.getString("id_proveedor"),
-                        rs.getString("rif_cedula")
-                        + "-" + rs.getString("nom_prove"));
-                cmbProveedor.addItem(op4);
+                        rs.getString("id_status"),
+                        rs.getString("nom_sta"));
+                cmbStatus.addItem(op4);
             }
 
         } catch (SQLException ex) {
@@ -886,18 +890,17 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
          llenamos la tabla con la busqueda */
         if (!txtBuscar.getText().equals("")) {
 
-            if(!cargo.equals("Director") || !cargo.equals("Gerente")){
+            if (!cargo.equals("Director") || !cargo.equals("Gerente") || !cargo.equals("Administrador")) {
                 llenarTabla(nombre);
             } else {
-                
+                tablaModelo.setRowCount(0);
                 llenarTabla(txtBuscar.getText());
             }
-            
 
         } else {
             /* Limpiamos la tabla */
             tablaModelo.setRowCount(0);
-            llenarTabla();
+            llenarTabla(nombre);
 
         }
 
@@ -910,8 +913,8 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnGenerar;
     private org.edisoncor.gui.comboBox.ComboBoxRound cmbEmpleado;
     private org.edisoncor.gui.comboBox.ComboBoxRound cmbNumero;
-    private org.edisoncor.gui.comboBox.ComboBoxRound cmbProveedor;
     private org.edisoncor.gui.comboBox.ComboBoxRound cmbServicio;
+    private org.edisoncor.gui.comboBox.ComboBoxRound cmbStatus;
     private com.toedter.calendar.JDateChooser dchFechaFinal;
     private com.toedter.calendar.JDateChooser dchFechaInicial;
     private javax.swing.ButtonGroup grupo1;
@@ -929,9 +932,9 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton rbtEmpleado;
     private javax.swing.JRadioButton rbtFactura;
     private javax.swing.JRadioButton rbtFecha;
-    private javax.swing.JRadioButton rbtProveedor;
     private javax.swing.JRadioButton rbtSeleccion;
     private javax.swing.JRadioButton rbtServicio;
+    private javax.swing.JRadioButton rbtStatus;
     private javax.swing.JRadioButton rbtTodo;
     private javax.swing.JTable tablaFacturas;
     private org.edisoncor.gui.textField.TextFieldRoundIcon txtBuscar;

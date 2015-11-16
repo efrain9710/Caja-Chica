@@ -43,7 +43,7 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
         @Override
         public boolean isCellEditable(int row, int col) {
 
-            if (col == 7) {
+            if (col == 8) {
                 return true;
             } else {
                 return false;
@@ -62,7 +62,7 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
              - Los datos recibidos lo guardamos en el objeto ResulSet para luego
              llenar la tabla con los registros.
              */
-            ResultSet rs = datos.getFacturasReporte();
+            ResultSet rs = datos.getFacturaStatus();
 
             /* Instaciamos un obejto vector tipo string, el cual nos servira
              para guardar las filas de la tabla. */
@@ -111,7 +111,7 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
              llenar la tabla con los registros.
             
              */
-            ResultSet rs = datos.getFacturasReporteEmpleado(nombre);
+            ResultSet rs = datos.getFacturasStatusNombre(nombre);
 
             String registro[] = new String[10];
 
@@ -324,16 +324,29 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
             return;
         }
 
-        String status = (Utilidades.objectToString(tablaFacturas.getValueAt(s, 7)));
+        String status = (Utilidades.objectToString(tablaFacturas.getValueAt(s, 8)));
 
+        
         int id = (Utilidades.objectToInt(tablaFacturas.getValueAt(s, 0)));
 
+        int monto = (Utilidades.objectToInt(tablaFacturas.getValueAt(s, 9)));
+                
         if (datos.getStatus(status)) {
 
             if (status.equals("Aprobado")) {
                 idsta = 1;
-            } else {
+            }
+
+            if (status.equals("Rechazado")) {
                 idsta = 2;
+            }
+
+            if (status.equals("En proceso")) {
+                idsta = 3;
+            }
+
+            if (status.equals("Pagado")) {
+                idsta = 4;
             }
 
             if (datos.modificarFactura(id, idsta)) {
@@ -345,7 +358,7 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
                     tablaModelo.setRowCount(0);
                     llenarTabla();
 
-                    double reserva = 0, aprobadas = 0, supera = 0;
+                    double reserva = 0, aprobadas = 0, supera = 0, pagadas=0;
 
                     ResultSet rs = datos.getMonto();
 
@@ -357,7 +370,12 @@ public class frmFacturaUp extends javax.swing.JInternalFrame {
                     while (rsApro.next()) {
                         aprobadas = rsApro.getDouble("total");
                     }
-
+                    
+                    ResultSet rsPaga = datos.getSumaMontoPagadas();
+                    while (rsPaga.next()) {
+                        pagadas = rsPaga.getDouble("total");
+                    }
+                    
                     if (aprobadas > reserva) {
 
                         supera = aprobadas - reserva;
