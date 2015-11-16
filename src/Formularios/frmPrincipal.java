@@ -354,7 +354,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 mnuConsultasReserva.setEnabled(false);
             }
 
-            if (cargo.equals("Gerente")) {
+            if (cargo.equals("Gerente") || cargo.equals("Administrador")) {
                 mnuHerramientaEmpleado.setEnabled(true);
                 mnuHerramientasAddProveedor.setEnabled(true);
                 mnuHerramientasAddProyecto.setEnabled(true);

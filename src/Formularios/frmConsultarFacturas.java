@@ -763,11 +763,12 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
         try {
             /* Evento cuando el formulario se abra */
 
-            if (!cargo.equals("Director") || !cargo.equals("Gerente")) {
-                llenarTabla(nombre);
+            if (cargo.equals("Director") || cargo.equals("Gerente") || cargo.equals("Administrador")) {
+                llenarTabla();
             } else {
 
-                llenarTabla();
+                tablaModelo.setRowCount(0);
+                llenarTabla(nombre);
             }
 
             grupo1.add(rbtTodo);
@@ -812,29 +813,49 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
                 cmbNumero.addItem(op);
             }
 
-            /* Instaciamos un objeto de la clase Opcion para cargar el combo box
-             de los Empleados  */
-            Opcion op2 = new Opcion("0", "Seleccione un Empleado ");
+            if (cargo.equals("Director") || cargo.equals("Gerente") || cargo.equals("Administrador")) {
+                /* Instaciamos un objeto de la clase Opcion para cargar el combo box
+                 de los Empleados  */
+                Opcion op2 = new Opcion("0", "Seleccione un Empleado ");
 
-            /* Añadimos el primer elemento al combo box */
-            cmbEmpleado.addItem(op2);
-
-            /* Llamos a la funcion getPersonal la cual nos devuelve todo el
-             Personal que hay, esos datos los guardamos en un ResultSet para luego
-             llenar el combo box con todos los Empleados */
-            ResultSet rsPer = datos.getPersonal();
-
-            /* Hacemos un while que mientras hallan registros en rs, sobreescrira
-             al objeto de la clase opcion con los datos del objeto rs, y los añada
-             al combo box */
-            while (rsPer.next()) {
-                op2 = new Opcion(
-                        rsPer.getString("id_personal"),
-                        rsPer.getString("nom_per")
-                        + " " + rsPer.getString("ape_per"));
+                /* Añadimos el primer elemento al combo box */
                 cmbEmpleado.addItem(op2);
-            }
 
+                /* Llamos a la funcion getPersonal la cual nos devuelve todo el
+                 Personal que hay, esos datos los guardamos en un ResultSet para luego
+                 llenar el combo box con todos los Empleados */
+                ResultSet rsPer = datos.getPersonal();
+
+                /* Hacemos un while que mientras hallan registros en rs, sobreescrira
+                 al objeto de la clase opcion con los datos del objeto rs, y los añada
+                 al combo box */
+                while (rsPer.next()) {
+                    op2 = new Opcion(
+                            rsPer.getString("id_personal"),
+                            rsPer.getString("nom_per")
+                            + " " + rsPer.getString("ape_per"));
+                    cmbEmpleado.addItem(op2);
+                }
+
+            } else {
+                /* Instaciamos un objeto de la clase Opcion para cargar el combo box
+                 de los Empleados  */
+                Opcion op2 = new Opcion("0", "Seleccione un empleado");
+
+                /* Añadimos el primer elemento al combo box */
+                cmbEmpleado.addItem(op2);
+
+                op2 = new Opcion("" + id, usuario);
+
+                /* Añadimos el primer elemento al combo box */
+                cmbEmpleado.addItem(op2);
+
+                rbtTodo.setEnabled(false);
+                rbtSeleccion.setEnabled(false);
+                rbtEmpleado.setSelected(true);
+                cmbEmpleado.setSelectedIndex(1);
+
+            }
             /* Instaciamos un objeto de la clase Opcion para cargar el combo box
              de los servicios  */
             Opcion op3 = new Opcion("0", "Seleccione un servicio");
@@ -890,11 +911,10 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
          llenamos la tabla con la busqueda */
         if (!txtBuscar.getText().equals("")) {
 
-            if (!cargo.equals("Director") || !cargo.equals("Gerente") || !cargo.equals("Administrador")) {
-                llenarTabla(nombre);
-            } else {
-                tablaModelo.setRowCount(0);
+            if (cargo.equals("Director") || cargo.equals("Gerente") || cargo.equals("Administrador")) {
                 llenarTabla(txtBuscar.getText());
+            } else {
+                llenarTabla(nombre);
             }
 
         } else {

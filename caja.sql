@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.9
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 16-11-2015 a las 01:03:57
--- Versión del servidor: 5.5.8
--- Versión de PHP: 5.3.5
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 16-11-2015 a las 09:04:20
+-- Versión del servidor: 5.6.17
+-- Versión de PHP: 5.5.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -29,16 +30,16 @@ CREATE TABLE IF NOT EXISTS `cargo` (
   `id_cargo` int(11) NOT NULL AUTO_INCREMENT,
   `cargo` varchar(255) NOT NULL,
   PRIMARY KEY (`id_cargo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
--- Volcar la base de datos para la tabla `cargo`
+-- Volcado de datos para la tabla `cargo`
 --
 
 INSERT INTO `cargo` (`id_cargo`, `cargo`) VALUES
 (1, 'Director'),
 (2, 'Gerente'),
-(3, 'Coordinador de Infraestructura'),
+(3, 'Administrador'),
 (4, 'DT'),
 (5, 'Coordinador de desarrollo'),
 (6, 'Coordinador de implementacion'),
@@ -48,7 +49,8 @@ INSERT INTO `cargo` (`id_cargo`, `cargo`) VALUES
 (10, 'Soporte Tecnico 2'),
 (13, 'Soporte Tecnico 1'),
 (14, 'Servicios Generales'),
-(15, 'Analista RRHH');
+(15, 'Analista RRHH'),
+(16, 'Coordinador de Infraestructura');
 
 -- --------------------------------------------------------
 
@@ -77,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `factura` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=12 ;
 
 --
--- Volcar la base de datos para la tabla `factura`
+-- Volcado de datos para la tabla `factura`
 --
 
 INSERT INTO `factura` (`id_factura`, `n_factura`, `fecha_fac`, `fecha_carga`, `id_proveedor`, `id_personal`, `id_servicio`, `descri_fac`, `id_status`, `monto`) VALUES
@@ -102,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `monto` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
 --
--- Volcar la base de datos para la tabla `monto`
+-- Volcado de datos para la tabla `monto`
 --
 
 INSERT INTO `monto` (`id_monto`, `monto`) VALUES
@@ -125,17 +127,19 @@ CREATE TABLE IF NOT EXISTS `personal` (
   PRIMARY KEY (`id_personal`),
   UNIQUE KEY `ci_per_2` (`ci_per`),
   KEY `usuario_2` (`usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
 
 --
--- Volcar la base de datos para la tabla `personal`
+-- Volcado de datos para la tabla `personal`
 --
 
 INSERT INTO `personal` (`id_personal`, `usuario`, `ci_per`, `nom_per`, `ape_per`, `tele_per`, `cargo`) VALUES
 (1, 'gerente', '22440748', 'jOSE', 'AGORREA', '4141234321', 'Gerente'),
 (2, 'victor', 'J-21212121-1', 'ROSA', 'YANES', '4147228558', 'Coordinador de Infraestructura'),
 (3, 'em', 'N-22345432', 'DRIAN', 'ASCANIO', '4142312323', 'Coordinador de Infraestructura'),
-(4, 'director', 'N-23131412', 'Yendry', 'Torres', '4142424234', 'Director');
+(4, 'director', 'N-23131412', 'Yendry', 'Torres', '4142424234', 'Director'),
+(5, 'prue', 'N-21323123', 'sdas', 'sad', '4142132312', 'Coordinador de desarrollo'),
+(6, 'admin', 'N-21132132', 'sad', 'sads', '4142112312', 'Administrador');
 
 -- --------------------------------------------------------
 
@@ -153,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `proveedor` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
 
 --
--- Volcar la base de datos para la tabla `proveedor`
+-- Volcado de datos para la tabla `proveedor`
 --
 
 INSERT INTO `proveedor` (`id_proveedor`, `rif_cedula`, `nom_prove`, `tele_prove`, `direcc_prove`) VALUES
@@ -174,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
 --
--- Volcar la base de datos para la tabla `proyecto`
+-- Volcado de datos para la tabla `proyecto`
 --
 
 INSERT INTO `proyecto` (`id_proyecto`, `nom_pro`) VALUES
@@ -193,15 +197,17 @@ CREATE TABLE IF NOT EXISTS `proye_geren` (
   PRIMARY KEY (`id_proge`),
   KEY `id_proyecto` (`id_proyecto`),
   KEY `id_gerente` (`id_gerente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
--- Volcar la base de datos para la tabla `proye_geren`
+-- Volcado de datos para la tabla `proye_geren`
 --
 
 INSERT INTO `proye_geren` (`id_proge`, `id_proyecto`, `id_gerente`) VALUES
 (1, 1, 3),
-(2, 1, 4);
+(2, 1, 4),
+(3, 1, 5),
+(4, 1, 6);
 
 -- --------------------------------------------------------
 
@@ -218,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `servicio` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
 
 --
--- Volcar la base de datos para la tabla `servicio`
+-- Volcado de datos para la tabla `servicio`
 --
 
 INSERT INTO `servicio` (`id_servicio`, `nom_servi`, `descri_servi`) VALUES
@@ -242,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `status` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
--- Volcar la base de datos para la tabla `status`
+-- Volcado de datos para la tabla `status`
 --
 
 INSERT INTO `status` (`id_status`, `nom_sta`) VALUES
@@ -264,7 +270,7 @@ CREATE TABLE IF NOT EXISTS `tipo_usuario` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
--- Volcar la base de datos para la tabla `tipo_usuario`
+-- Volcado de datos para la tabla `tipo_usuario`
 --
 
 INSERT INTO `tipo_usuario` (`id_tipo`, `nom_tipo`) VALUES
@@ -288,20 +294,22 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   KEY `tipo_usu` (`tipo_usu`),
   KEY `usuario` (`usuario`),
   KEY `usuario_2` (`usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
 
 --
--- Volcar la base de datos para la tabla `usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `tipo_usu`, `usuario`, `clave`, `correo_usu`) VALUES
 (1, 1, 'gerente', '11', 'gerente@gmail.com'),
 (2, 1, 'victor', '22', 'sda@sads.com'),
 (3, 2, 'em', '11', 'sads@sad.com'),
-(4, 2, 'director', '11', 'eqeqw@sa.com');
+(4, 2, 'director', '11', 'eqeqw@sa.com'),
+(5, 2, 'prue', '11', 'sads@sads.com'),
+(6, 1, 'admin', '11', 'sdas@sdasd.com');
 
 --
--- Filtros para las tablas descargadas (dump)
+-- Restricciones para tablas volcadas
 --
 
 --
@@ -331,3 +339,7 @@ ALTER TABLE `proye_geren`
 --
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_4` FOREIGN KEY (`tipo_usu`) REFERENCES `tipo_usuario` (`id_tipo`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
