@@ -19,12 +19,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JRViewer;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
@@ -334,7 +336,7 @@ public class frmFactura extends javax.swing.JInternalFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         /* Evento de click sobre el boton de REGISTRAR EMPLEADO */
 
-        /* Instanciamos un objeto de la Clase Datos */
+ /* Instanciamos un objeto de la Clase Datos */
         Datos datos = new Datos();
 
         /* Validaciones */
@@ -349,7 +351,7 @@ public class frmFactura extends javax.swing.JInternalFrame {
             dchFactura.requestFocusInWindow();
             return;
         }
-        
+
         if (dchFactura.getDate().after(dchCarga.getDate())) {
             JOptionPane.showMessageDialog(rootPane, "La fecha no puede ser mayor a la de hoy");
             dchFactura.requestFocusInWindow();
@@ -367,7 +369,7 @@ public class frmFactura extends javax.swing.JInternalFrame {
             txtNFactura.requestFocusInWindow();
             return;
         }
-        
+
         if (!txtNFactura.getText().equals("")) {
 
             if (datos.getNumeroFac(Integer.parseInt(txtNFactura.getText()))) {
@@ -415,11 +417,11 @@ public class frmFactura extends javax.swing.JInternalFrame {
             txtMonto.requestFocusInWindow();
             return;
         }
-        
+
         int ready = JOptionPane.showConfirmDialog(this, "Verifique que sus datos sean correctos, "
                 + "Si lo son presione el boton de si");
-        
-        if(ready == 1 || ready == 2){
+
+        if (ready == 1 || ready == 2) {
             return;
         }
 
@@ -443,7 +445,7 @@ public class frmFactura extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Factura agregada Correctamente");
 
                 /* Si la factura se registra exitosamente pasamos armar el pdf*/
-                /* Instanciamos un objeto de tipo Map para pasarle los parametros
+ /* Instanciamos un objeto de tipo Map para pasarle los parametros
                  al reporte */
                 Map parametros = new HashMap();
 
@@ -456,7 +458,6 @@ public class frmFactura extends javax.swing.JInternalFrame {
 
                 File aux = new File(template);
 
-                
                 /* Aqui comprobamos si el reporte se mando a ejecutar desde un IDE
                  o desde un JAR, si es desde un IDE guardamos la direccion del
                  reporte con System.getProperty("user.dir") + "/src/Reportes/rptFactura.jrxml";
@@ -467,11 +468,10 @@ public class frmFactura extends javax.swing.JInternalFrame {
                     template = aux.getParent() + "/rptFinal.jrxml";
                 }
 
-                */
-                
-                template = "/Reportes/rptFinal.jrxml";
+                 */
+                template = "/Reportes/report_Todo.jrxml";
                 InputStream in = this.getClass().getResourceAsStream(template);
-                
+
                 /* Le pasamos la direccion del reporte que en este caso es un
                  archivo jrxml, para que lo compile */
                 JasperReport jasperReport = JasperCompileManager.compileReport(in);
@@ -480,8 +480,20 @@ public class frmFactura extends javax.swing.JInternalFrame {
                  arme las consultas y los datos que contendran el reporte */
                 JasperPrint print = JasperFillManager.fillReport(jasperReport, parametros, datos.getCon());
 
+                /* Lo hacemos visible en pantalla 
+                JFrame frame = new JFrame("Report");
+                frame.setSize(250, 250);
+                frame.getContentPane().add(new JRViewer(print));
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);*/
+                
                 /* Lo hacemos visible en pantalla */
-                JasperViewer.viewReport(print);
+               JasperViewer visor = new JasperViewer(print, false);
+               
+               visor.setVisible(true); 
+
+                
 
             } catch (JRException ex) {
                 Logger.getLogger(frmFactura.class.getName()).log(Level.SEVERE, null, ex);
@@ -515,7 +527,7 @@ public class frmFactura extends javax.swing.JInternalFrame {
         try {
             /* Evento cuando el formulario se abra */
 
-            /* Instanciamos un objeto de la Clase Datos, para poder acceder a los
+ /* Instanciamos un objeto de la Clase Datos, para poder acceder a los
              metodos */
             Datos datos = new Datos();
 

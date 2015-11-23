@@ -666,9 +666,11 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
                 }
 
             }
+            
+            
 
             /* Adicionamos el filtro a la consulta */
-            sql = sql + filtro;
+            sql = sql + filtro + "ORDER by numero";
 
             /* Instanciamos un objeto de la Clase Datos */
             Datos datos = new Datos();
@@ -693,17 +695,7 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
 
             File aux = new File(template);
 
-            /* Aqui comprobamos si el reporte se mando a ejecutar desde un IDE
-             o desde un JAR, si es desde un IDE guardamos la direccion del
-             reporte con System.getProperty("user.dir") + "/src/Reportes/rptFactura.jrxml";
-             y si no es le pasamos la direccion donde se encuentra el jar 
-             if (aux.isDirectory()) {
-             template = System.getProperty("user.dir") + "/src/Reportes/rptFinal_1.jrxml";
-             } else {
-             template = aux.getParent() + "/rptFinal_1.jrxml";
-             }
-             */
-            template = "/Reportes/rptFinal_1.jrxml";
+            template = "/Reportes/report_consulta.jrxml";
 
             InputStream in = getClass().getResourceAsStream(template);
 
@@ -723,7 +715,8 @@ public class frmConsultarFacturas extends javax.swing.JInternalFrame {
             JasperPrint print = JasperFillManager.fillReport(jasperReport, parametros, data);
 
             /* Lo hacemos visible en pantalla */
-            JasperViewer.viewReport(print);
+            JasperViewer visor = new JasperViewer(print, false);
+            visor.setVisible(true);
 
             JOptionPane.showMessageDialog(null, "Reporte Generado");
         } catch (Exception ex) {

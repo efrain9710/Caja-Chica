@@ -634,7 +634,7 @@ public class Datos {
 
         try {
             String sql = "SELECT * FROM proyecto "
-                    + "WHERE nom_pro LIKE  '" + nombre + "%'";
+                    + "WHERE nom_pro LIKE  '%" + nombre + "%'";
 
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -650,7 +650,7 @@ public class Datos {
 
         try {
             String sql = "SELECT * FROM personal "
-                    + "WHERE nom_per LIKE  '" + nombre + "%'";
+                    + "WHERE nom_per LIKE  '%" + nombre + "%'";
 
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -666,7 +666,7 @@ public class Datos {
 
         try {
             String sql = "SELECT * FROM proveedor "
-                    + "WHERE nom_prove LIKE  '" + nombre + "%'";
+                    + "WHERE nom_prove LIKE  '%" + nombre + "%'";
 
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -682,7 +682,7 @@ public class Datos {
 
         try {
             String sql = "SELECT * FROM usuarios "
-                    + "WHERE usuario LIKE  '" + nombre + "%'";
+                    + "WHERE usuario LIKE  '%" + nombre + "%'";
 
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
